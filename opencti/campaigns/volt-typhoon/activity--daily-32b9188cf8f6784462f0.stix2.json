@@ -1,0 +1,1524 @@
+{
+  "type": "bundle",
+  "id": "bundle--61a77c82-0674-4fed-b588-de9390372468",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽",
+      "description": "LumenのBlack Lotus Labsは、中国国家支援型Volt Typhoonが使う中継基盤Silent Trainを約3年間追跡した。必要に応じて機器を侵害し、中継経路を入れ替えて重要標的への攻撃を隠蔽する。 米国外のVPSから侵害済みのルーターなどを経由して攻撃する構成で、海外の中継にはIntelbrasモデム、米国内の経由地点にはNetgear Orbiを使用したと報告している。 VeloCloud Orchestrator、Cisco Catalyst SD-WAN、N-able N-central、Versa Directorへのゼロデイ悪用を観測した。Quest KACEについてもゼロデイの疑いがあり、集中管理基盤から顧客環境へアクセスを広げる。 中継機器にはSSH接続に必要な最小限のツールや鍵を配置し、通常8時間未満のセッション終了後に削除する。2025年初頭からは、1～3カ月保持する侵害済み企業システムも併用していた。 標的は通信、政府、防衛、教育、電力などの重要インフラやMSPなど。カリフォルニア、テキサス、ハワイへの集中と中国標準時に沿う活動から、重要標的を選ぶ慎重な運用と評価されている。",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-32b9188cf8f6784462f0",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--32b9188cf8f6784462f07831 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 採用。Lumen Black Lotus Labs原文を確認した。Silent TrainをVolt Typhoonの中継・隠蔽基盤として直接帰属（「Volt Typhoon's Silent Train is a covert network designed to gain and maintain access」）し、約3年間追跡。VeloCloud Orchestratorのゼロデイ（CVE-2026-16812）、N-able N-centralの未公開脆弱性チェーン（CVE-2025-8875/8876）、Quest KACEのゼロデイ疑い（moderate confidence）を観測。Cisco Catalyst SD-WANは公表済み重大脆弱性の悪用でありゼロデイとは記述されない（tech-memo要約の「ゼロデイ悪用を観測した」一括記述を原文に基づき補正）。Versa Directorは2024年中頃に公知。海外中継はIntelbrasモデム、米国内経由はNetgear Orbi、2025年初頭からは1〜3カ月保持の侵害済み企業システムを併用するハイブリッド構成。既定の自動分類infrastructure-operationが実態に一致するため変更しない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--volt-typhoon",
+          "name": "Volt Typhoon",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--932f4928d5e1ec28e2df",
+            "target--activity-rule--sector--b94dc560a327b601965d",
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+            "target--mitre-group--country--f4393d9017c8437438b5"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--c725e3d8aad2a887ff1c"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+            "precision": "month",
+            "status": "known",
+            "value": "2023-11-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-07-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+              "target--mitre-group--country--f4393d9017c8437438b5"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-80facae04c59c1bd916e"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2023-11-01T00:00:00Z",
+      "last_seen": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1d0608d8-1430-4961-ad7c-ac5ceaa6cd1d",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "教育・研究",
+      "identity_class": "class",
+      "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1e2e34c2-7300-4ae6-9751-84c34a733e62",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "IT・ソフトウェア",
+      "identity_class": "class",
+      "description": "活動「中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/chinese-volt-typhoon-hackers-exploited-versa-zero-day-to-breach-isps-msps/",
+          "external_id": "source--daily-640ce5a9037301fa77ea",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-volt-typhoon-hackers-exploited-versa-zero-day-to-breach-isps-msps/"
+        },
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--779fe7d6-c4c8-4173-8da0-3c3f4321e616",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府・行政",
+      "identity_class": "class",
+      "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--210dddb39397dbe50e91",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--7896002a-905a-4a81-a81d-6e52dfad7ddc",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽",
+      "identity_class": "organization",
+      "description": "LumenのBlack Lotus Labsは、中国国家支援型Volt Typhoonが使う中継基盤Silent Trainを約3年間追跡した。必要に応じて機器を侵害し、中継経路を入れ替えて重要標的への攻撃を隠蔽する。 米国外のVPSから侵害済みのルーターなどを経由して攻撃する構成で、海外の中継にはIntelbrasモデム、米国内の経由地点にはNetgear Orbiを使用したと報告している。 VeloCloud Orchestrator、Cisco Catalyst SD-WAN、N-able N-central、Versa Directorへのゼロデイ悪用を観測した。Quest KACEについてもゼロデイの疑いがあり、集中管理基盤から顧客環境へアクセスを広げる。 中継機器にはSSH接続に必要な最小限のツールや鍵を配置し、通常8時間未満のセッション終了後に削除する。2025年初頭からは、1～3カ月保持する侵害済み企業システムも併用していた。 標的は通信、政府、防衛、教育、電力などの重要インフラやMSPなど。カリフォルニア、テキサス、ハワイへの集中と中国標準時に沿う活動から、重要標的を選ぶ慎重な運用と評価されている。",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--c725e3d8aad2a887ff1c",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "target--mitre-group--country--f4393d9017c8437438b5"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "ネットワーク機器"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--91d8d509-fb0a-45ce-a890-68f4f5a4910b",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "防衛・軍事",
+      "identity_class": "class",
+      "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--b94dc560a327b601965d",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--dcca81e6-9c86-4fc1-b6d3-35c23fc6513c",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "エネルギー",
+      "identity_class": "class",
+      "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Volt Typhoon",
+      "aliases": [],
+      "description": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021, primarily targeting critical infrastructure organizations in the US and its territories including Guam. [Volt Typhoon](https://attack.mitre.org/groups/G1017)'s targeting and pattern of behavior have been assessed as pre-positioning to enable lateral movement to operational technology (OT) assets for potential destructive or disruptive attacks. [Volt Typhoon](https://attack.mitre.org/groups/G1017) has emphasized stealth in operations using web shells, living-off-the-land (LOTL) binaries, hands on keyboard activities, and stolen credentials.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023). The group has leveraged compromised SOHO routers to proxy command and control traffic and obscure its infrastructure, activity associated with the KV botnet.(Citation: DOJ KVBotnet 2024). \n\nReporting indicates a separate initial access cluster, SYLVANITE, has been observed exploiting internet-facing edge devices and transferring access to [Volt Typhoon](https://attack.mitre.org/groups/G1017), also tracked as VOLTZITE, for follow-on operations. (Citation: Dragos 2025 Year in Review)",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_id": "actor--volt-typhoon",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "BRONZE SILHOUETTE",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "DazedToad",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "DEV-0391",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Insidious Taurus",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC3236",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Vanguard Panda",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Voltzite",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "VersaMem, Net, certutil, Impacket, ipconfig, Tasklist, FRP, netstat, netsh, Systeminfo, Nltest, Mimikatz, Ping, cmd, Reg, Wevtutil, PsExec",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=中国、米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--41382182-8081-46c4-bb6b-af4d5fbc55d9",
+      "created": "2026-07-29T15:36:13Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "United States of America",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--mitre-group--country--f4393d9017c8437438b5",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "USA",
+      "x_opencti_reference_id": "location--dbac05fd-3616-4d7c-9bcd-e6b867c1f5be",
+      "x_opencti_aliases": [
+        "US",
+        "USA",
+        "米国"
+      ],
+      "latitude": 37.09024,
+      "longitude": -95.712891,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--a4cc2b9f-074f-4a5a-a071-a1208ce27273",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "China",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "CHN",
+      "x_opencti_reference_id": "location--bce7047c-c986-4601-9395-d46f577ce237",
+      "x_opencti_aliases": [
+        "CHN",
+        "CN",
+        "中国"
+      ],
+      "latitude": 35.86166,
+      "longitude": 104.195397,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0649f5ae-e3c7-4d69-890e-9e4ec5bf47ec",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "identity--dcca81e6-9c86-4fc1-b6d3-35c23fc6513c",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 targets target--activity-rule--sector--fb803c0a91ed53ea76f9.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--16f84e10-b1d4-46e1-984d-4d57e8020e04",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "target_ref": "identity--779fe7d6-c4c8-4173-8da0-3c3f4321e616",
+      "description": "Volt Typhoon targets 政府・行政 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--18625009-0c62-4703-9713-68bb6fff6aff",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "target_ref": "identity--dcca81e6-9c86-4fc1-b6d3-35c23fc6513c",
+      "description": "Volt Typhoon targets エネルギー (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--25f67bd8-fbf9-4cd9-9189-172cb8b03bc7",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "target_ref": "location--a4cc2b9f-074f-4a5a-a071-a1208ce27273",
+      "description": "Volt Typhoon targets 中国 (profile target category: countries).\n\nEvidence: 活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2b8d342a-f79c-460e-8f3a-1afd7b3472db",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "target_ref": "location--41382182-8081-46c4-bb6b-af4d5fbc55d9",
+      "description": "Volt Typhoon targets 米国 (profile target category: countries).\n\nEvidence: [Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021, primarily targeting critical infrastructure organizations in the US and its territories including Guam.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/expanded-jdy-iot-and-soho-botnet-enables-rapid-vulnerability-exploitation",
+          "external_id": "source--daily-0c44ac5482af2d245bb8",
+          "url": "https://www.lumen.com/blog/en-us/expanded-jdy-iot-and-soho-botnet-enables-rapid-vulnerability-exploitation"
+        },
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Black Lotus LabsのJDY追跡開始年; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2022-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Black Lotus LabsのJDY追跡開始年; activity-period",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2022-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2f916081-1d8b-4385-a01e-46a685a6a6d1",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "identity--7896002a-905a-4a81-a81d-6e52dfad7ddc",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 affected victim--activity-rule--c725e3d8aad2a887ff1c.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--490b6cdc-a82c-488c-ad2f-6579e6b79e0a",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "location--a4cc2b9f-074f-4a5a-a071-a1208ce27273",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 targets target--activity-rule--country--95e363d6dfa8c6f2ecbb.\n\nEvidence: 活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された国・地域。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4f2f487c-9ddc-48d9-9bc5-4955d7ae116e",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 is attributed or linked to Volt Typhoon.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4fee4afc-fea1-43e6-8c83-944d85d9c2f3",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "identity--1d0608d8-1430-4961-ad7c-ac5ceaa6cd1d",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 targets target--activity-rule--sector--e7608f51421ca8b1e297.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--54214534-fdd3-4256-b3c0-fc9845d1aa38",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "target_ref": "identity--91d8d509-fb0a-45ce-a890-68f4f5a4910b",
+      "description": "Volt Typhoon targets 防衛・軍事 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--64e5bc16-8cf0-4d68-99e9-eb2b5c95058e",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "identity--779fe7d6-c4c8-4173-8da0-3c3f4321e616",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 targets target--activity-rule--sector--210dddb39397dbe50e91.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8240aee5-7485-42bb-923c-de4428dedc66",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "identity--1e2e34c2-7300-4ae6-9751-84c34a733e62",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 targets target--activity-rule--sector--932f4928d5e1ec28e2df.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9ec5178b-6536-4152-ad4f-b6866f698d38",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "target_ref": "identity--1d0608d8-1430-4961-ad7c-ac5ceaa6cd1d",
+      "description": "Volt Typhoon targets 教育・研究 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bda024aa-9534-4c74-9165-5b38b9ac41e7",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "identity--91d8d509-fb0a-45ce-a890-68f4f5a4910b",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 targets target--activity-rule--sector--b94dc560a327b601965d.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dcbadf0f-b741-4382-a185-0396f67ca650",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+      "target_ref": "location--41382182-8081-46c4-bb6b-af4d5fbc55d9",
+      "description": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 targets target--mitre-group--country--f4393d9017c8437438b5.\n\nEvidence: [Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021, primarily targeting critical infrastructure organizations in the US and its territories including Guam.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        },
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/expanded-jdy-iot-and-soho-botnet-enables-rapid-vulnerability-exploitation",
+          "external_id": "source--daily-0c44ac5482af2d245bb8",
+          "url": "https://www.lumen.com/blog/en-us/expanded-jdy-iot-and-soho-botnet-enables-rapid-vulnerability-exploitation"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ffea349a-9669-42db-ac65-6821c65dd6d6",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+      "target_ref": "identity--1e2e34c2-7300-4ae6-9751-84c34a733e62",
+      "description": "Volt Typhoon targets IT・ソフトウェア (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/chinese-volt-typhoon-hackers-exploited-versa-zero-day-to-breach-isps-msps/",
+          "external_id": "source--daily-640ce5a9037301fa77ea",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-volt-typhoon-hackers-exploited-versa-zero-day-to-breach-isps-msps/"
+        },
+        {
+          "source_name": "lumen.com",
+          "description": "Source: https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+        "last": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2023-11-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2d487185-99c9-4f95-b19a-ad8e94a5332b",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+        "relationship--2b8d342a-f79c-460e-8f3a-1afd7b3472db",
+        "relationship--dcbadf0f-b741-4382-a185-0396f67ca650"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--volt-typhoon:activity--daily-32b9188cf8f6784462f0",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3a4ee138-af89-4e93-98e6-741395710cbe",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-08-28T00:00:00Z",
+      "object_refs": [
+        "identity--1e2e34c2-7300-4ae6-9751-84c34a733e62",
+        "relationship--ffea349a-9669-42db-ac65-6821c65dd6d6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-640ce5a9037301fa77ea",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-volt-typhoon-hackers-exploited-versa-zero-day-to-breach-isps-msps/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-640ce5a9037301fa77ea",
+      "x_evidence_slice_scope": "campaign:actor--volt-typhoon:activity--daily-32b9188cf8f6784462f0",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--8e506833-cd30-4c09-8751-90d36441f84d",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-10-29T00:00:00Z",
+      "object_refs": [
+        "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+        "identity--1d0608d8-1430-4961-ad7c-ac5ceaa6cd1d",
+        "identity--1e2e34c2-7300-4ae6-9751-84c34a733e62",
+        "identity--779fe7d6-c4c8-4173-8da0-3c3f4321e616",
+        "identity--7896002a-905a-4a81-a81d-6e52dfad7ddc",
+        "identity--91d8d509-fb0a-45ce-a890-68f4f5a4910b",
+        "identity--dcca81e6-9c86-4fc1-b6d3-35c23fc6513c",
+        "relationship--0649f5ae-e3c7-4d69-890e-9e4ec5bf47ec",
+        "relationship--16f84e10-b1d4-46e1-984d-4d57e8020e04",
+        "relationship--18625009-0c62-4703-9713-68bb6fff6aff",
+        "relationship--25f67bd8-fbf9-4cd9-9189-172cb8b03bc7",
+        "relationship--2b8d342a-f79c-460e-8f3a-1afd7b3472db",
+        "relationship--2f916081-1d8b-4385-a01e-46a685a6a6d1",
+        "relationship--490b6cdc-a82c-488c-ad2f-6579e6b79e0a",
+        "relationship--4f2f487c-9ddc-48d9-9bc5-4955d7ae116e",
+        "relationship--4fee4afc-fea1-43e6-8c83-944d85d9c2f3",
+        "relationship--54214534-fdd3-4256-b3c0-fc9845d1aa38",
+        "relationship--64e5bc16-8cf0-4d68-99e9-eb2b5c95058e",
+        "relationship--8240aee5-7485-42bb-923c-de4428dedc66",
+        "relationship--9ec5178b-6536-4152-ad4f-b6866f698d38",
+        "relationship--bda024aa-9534-4c74-9165-5b38b9ac41e7",
+        "relationship--dcbadf0f-b741-4382-a185-0396f67ca650",
+        "relationship--ffea349a-9669-42db-ac65-6821c65dd6d6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "external_id": "source--daily-80facae04c59c1bd916e",
+          "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-80facae04c59c1bd916e",
+      "x_evidence_slice_scope": "campaign:actor--volt-typhoon:activity--daily-32b9188cf8f6784462f0",
+      "x_source_publisher": "lumen.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b6f6f35f-3e9f-46ae-b6de-f1ddab8a6d1d",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国関連JDYボットネット、米軍ネットワークへの標的化を拡大",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-11T00:00:00Z",
+      "object_refs": [
+        "relationship--2b8d342a-f79c-460e-8f3a-1afd7b3472db",
+        "relationship--dcbadf0f-b741-4382-a185-0396f67ca650"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "lumen.com",
+          "external_id": "source--daily-0c44ac5482af2d245bb8",
+          "url": "https://www.lumen.com/blog/en-us/expanded-jdy-iot-and-soho-botnet-enables-rapid-vulnerability-exploitation"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-0c44ac5482af2d245bb8",
+      "x_evidence_slice_scope": "campaign:actor--volt-typhoon:activity--daily-32b9188cf8f6784462f0",
+      "x_source_publisher": "lumen.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1b662d59-e63c-4f92-95cf-ebc163d6a9fe",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Volt Typhoon / Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽",
+      "description": "LumenのBlack Lotus Labsは、中国国家支援型Volt Typhoonが使う中継基盤Silent Trainを約3年間追跡した。必要に応じて機器を侵害し、中継経路を入れ替えて重要標的への攻撃を隠蔽する。 米国外のVPSから侵害済みのルーターなどを経由して攻撃する構成で、海外の中継にはIntelbrasモデム、米国内の経由地点にはNetgear Orbiを使用したと報告している。 VeloCloud Orchestrator、Cisco Catalyst SD-WAN、N-able N-central、Versa Directorへのゼロデイ悪用を観測した。Quest KACEについてもゼロデイの疑いがあり、集中管理基盤から顧客環境へアクセスを広げる。 中継機器にはSSH接続に必要な最小限のツールや鍵を配置し、通常8時間未満のセッション終了後に削除する。2025年初頭からは、1～3カ月保持する侵害済み企業システムも併用していた。 標的は通信、政府、防衛、教育、電力などの重要インフラやMSPなど。カリフォルニア、テキサス、ハワイへの集中と中国標準時に沿う活動から、重要標的を選ぶ慎重な運用と評価されている。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-11-15T09:02:09Z",
+      "object_refs": [
+        "campaign--416ae6ec-b943-4fa5-9c7d-f8e8d02beb46",
+        "identity--1d0608d8-1430-4961-ad7c-ac5ceaa6cd1d",
+        "identity--1e2e34c2-7300-4ae6-9751-84c34a733e62",
+        "identity--779fe7d6-c4c8-4173-8da0-3c3f4321e616",
+        "identity--7896002a-905a-4a81-a81d-6e52dfad7ddc",
+        "identity--91d8d509-fb0a-45ce-a890-68f4f5a4910b",
+        "identity--dcca81e6-9c86-4fc1-b6d3-35c23fc6513c",
+        "intrusion-set--c1af9e24-0247-4e42-ae1a-d6309f7daf00",
+        "location--41382182-8081-46c4-bb6b-af4d5fbc55d9",
+        "location--a4cc2b9f-074f-4a5a-a071-a1208ce27273",
+        "relationship--0649f5ae-e3c7-4d69-890e-9e4ec5bf47ec",
+        "relationship--16f84e10-b1d4-46e1-984d-4d57e8020e04",
+        "relationship--18625009-0c62-4703-9713-68bb6fff6aff",
+        "relationship--25f67bd8-fbf9-4cd9-9189-172cb8b03bc7",
+        "relationship--2b8d342a-f79c-460e-8f3a-1afd7b3472db",
+        "relationship--2f916081-1d8b-4385-a01e-46a685a6a6d1",
+        "relationship--490b6cdc-a82c-488c-ad2f-6579e6b79e0a",
+        "relationship--4f2f487c-9ddc-48d9-9bc5-4955d7ae116e",
+        "relationship--4fee4afc-fea1-43e6-8c83-944d85d9c2f3",
+        "relationship--54214534-fdd3-4256-b3c0-fc9845d1aa38",
+        "relationship--64e5bc16-8cf0-4d68-99e9-eb2b5c95058e",
+        "relationship--8240aee5-7485-42bb-923c-de4428dedc66",
+        "relationship--9ec5178b-6536-4152-ad4f-b6866f698d38",
+        "relationship--bda024aa-9534-4c74-9165-5b38b9ac41e7",
+        "relationship--dcbadf0f-b741-4382-a185-0396f67ca650",
+        "relationship--ffea349a-9669-42db-ac65-6821c65dd6d6",
+        "report--2d487185-99c9-4f95-b19a-ad8e94a5332b",
+        "report--3a4ee138-af89-4e93-98e6-741395710cbe",
+        "report--8e506833-cd30-4c09-8751-90d36441f84d",
+        "report--b6f6f35f-3e9f-46ae-b6de-f1ddab8a6d1d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--volt-typhoon",
+      "x_activity_id": "activity--daily-32b9188cf8f6784462f0"
+    }
+  ]
+}

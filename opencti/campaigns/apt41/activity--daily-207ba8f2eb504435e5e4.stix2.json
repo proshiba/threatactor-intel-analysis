@@ -27,7 +27,7 @@
       "spec_version": "2.1",
       "id": "campaign--4dd49f78-e54a-4066-a9b4-c9e9f2d4b8db",
       "created": "2026-09-21T04:35:02Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -65,6 +65,7 @@
           "malware_refs": [
             "malware--antsword",
             "malware--bluebeam",
+            "malware--cobalt-strike",
             "malware--dustpan",
             "malware--dusttrap",
             "malware--pinegrove",
@@ -102,7 +103,9 @@
           },
           "activity_type": "intrusion",
           "phases": [],
-          "results": [],
+          "results": [
+            "data-theft"
+          ],
           "direction": {
             "source_countries": [
               "China"
@@ -145,13 +148,13 @@
       "spec_version": "2.1",
       "id": "identity--ca607c4b-32d4-4a39-aa99-53aeb3120523",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "被害事例: 中国のAPT41が再び活動を再開し、企業を侵害",
+      "name": "被害事例: APT41、2023年以降に複数国・複数業種へ継続侵入",
       "identity_class": "organization",
-      "description": "APT41は世界中の複数の組織を侵害。 2023年以来、長期間にわたり不正アクセスを維持。機密データを抜き出すことに成功した。 イタリア、スペイン、台湾、トルコ、英国が主要ターゲット。 メディア、技術、自動車業界などが標的。 DUSTPANやDUSTTRAPなどのコードネームを持つカスタムツールと一般的な悪意のあるソフトウェアを使用。",
+      "description": "Mandiantは、APT41が2023年以降、イタリア、スペイン、台湾、タイ、トルコ、英国の海運・物流、メディア・娯楽、技術、自動車組織へ継続的に侵入したと報告した。攻撃ではANTSword、BLUEBEAM、DUSTPAN、Cobalt Strike Beacon、DUSTTRAP、SQLULDR2、PINEGROVEを組み合わせ、長期アクセスとデータ窃取を行った。",
       "external_references": [
         {
           "source_name": "security-next.com",
@@ -172,17 +175,27 @@
       "x_case_status": "reported",
       "x_target_refs": [],
       "x_malware_refs": [
+        "malware--antsword",
+        "malware--bluebeam",
+        "malware--cobalt-strike",
         "malware--dustpan",
-        "malware--dusttrap"
+        "malware--dusttrap",
+        "malware--pinegrove",
+        "malware--sqluldr2"
       ],
       "x_ttp_refs": [],
       "x_affected_assets": [],
-      "x_impacts": [],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "攻撃ではANTSword、BLUEBEAM、DUSTPAN、Cobalt Strike Beacon、DUSTTRAP、SQLULDR2、PINEGROVEを組み合わせ、長期アクセスとデータ窃取を行った。"
+        }
+      ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
       },
       "x_last_observed": {
         "value": null,
@@ -191,10 +204,10 @@
         "basis": "not-stated"
       },
       "x_reported_at": {
-        "value": "2024-07-20T00:00:00Z",
+        "value": "2024-07-18T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
       "x_confidence": "high",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
@@ -206,7 +219,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-23T11:09:18Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -317,7 +330,7 @@
         "history": "2024年10月、GTIGはAPT41が侵害済み政府サイトからLNKを含むZIPを配布し、PLUSDROP、PLUSINJECT、TOUGHPROGRESSを展開する活動を確認した。最終段はGoogle Calendarを暗号化C2として悪用した。",
         "capability_details": "DUSTTRAP, DUSTPAN, ASPXSpy, China Chopper, LightSpy, PlugX, KEYPLUG, Winnti for Linux, gh0st RAT, Derusbi, MESSAGETAP, Cobalt Strike, MOPSLED, ROCKBOOT, ZxShell, BLACKCOFFEE, njRAT, ShadowPad, CRACKSHOT, GEARSHIFT, HIGHNOON, JUMPALL, POISONPLUG, HOTCHAI, LATELUNCH, LIFEBOAT, LOWKEY, PACMAN, PHOTO, POTROAST, SAGEHIRE, SWEETCANDLE, SOGU, TERA, TIDYELF, WIDETONE, WINTERLOVE, XDoor, Xmrig, Net, certutil, PowerSploit, Impacket, ipconfig, Empire, dsquery, netstat, BITSAdmin, sqlmap, pwdump, Mimikatz, Ping, ftp",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=イタリア、台湾、日本、米国。標的地域=東アジア。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=イタリア、台湾、日本、米国。標的地域=中央アジア、東アジア。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck_assessment": "matched",
@@ -388,7 +401,7 @@
       "spec_version": "2.1",
       "id": "malware--1602e996-0fab-44b3-bed0-f31fbe80af27",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -400,6 +413,11 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
           "external_id": "source--mandiant-apt41-arisen-from-dust-2024",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--dusttrap",
@@ -448,7 +466,7 @@
       "spec_version": "2.1",
       "id": "malware--5ab16330-bc1f-417d-b69d-d9ca6e6ab6ba",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -460,6 +478,11 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
           "external_id": "source--mandiant-apt41-arisen-from-dust-2024",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--dustpan",
@@ -470,6 +493,39 @@
         "Windows"
       ],
       "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--af825c91-0e80-4bf3-806a-948a2a65b787",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Cobalt Strike",
+      "description": "[Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)\n\nIn addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--cobalt-strike",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ],
+      "aliases": [
+        "Cobalt Strike"
+      ],
       "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
@@ -601,6 +657,65 @@
         "last": "not-stated",
         "first_precision": "year",
         "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2023-01-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2708c0a2-c9d2-402d-a08a-a7bbe66ea941",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--4dd49f78-e54a-4066-a9b4-c9e9f2d4b8db",
+      "target_ref": "malware--af825c91-0e80-4bf3-806a-948a2a65b787",
+      "description": "APT41、2023年以降に複数国・複数業種へ継続侵入 uses malware--cobalt-strike.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "security-next.com",
+          "description": "Source: https://www.security-next.com/159902",
+          "external_id": "source--daily-54c9607dee646f91a92f",
+          "url": "https://www.security-next.com/159902"
+        },
+        {
+          "source_name": "Mandiant",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
+          "external_id": "source--mandiant-apt41-arisen-from-dust-2024",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
       },
       "start_time": "2023-01-01T00:00:00Z",
       "confidence": 85,
@@ -826,7 +941,7 @@
       "spec_version": "2.1",
       "id": "relationship--51954294-05cf-435b-8932-27357d683f2f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-24T14:03:24Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -841,6 +956,11 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
           "external_id": "source--mandiant-apt41-arisen-from-dust-2024",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_first_observed": {
@@ -850,23 +970,21 @@
         "basis": "source-stated"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2024-06-30T22:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign; activity-period"
       },
       "x_temporal_basis": {
         "first": "source-stated",
-        "last": "not-stated",
+        "last": "mitre-attack-campaign; activity-period",
         "first_precision": "year",
-        "last_precision": "unknown"
+        "last_precision": "second"
       },
       "start_time": "2023-01-01T00:00:00Z",
+      "stop_time": "2024-06-30T22:00:00.000Z",
       "confidence": 85,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
-      "stop_time": "2023-01-01T00:00:00Z",
-      "x_stop_time_is_fallback": true,
-      "x_stop_time_basis": "opencti-required-start-time-fallback"
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "relationship",
@@ -932,7 +1050,7 @@
       "spec_version": "2.1",
       "id": "relationship--8e6d82ea-7c7c-4583-a2e2-e37a8b4bee9f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-24T14:03:24Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -947,6 +1065,11 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
           "external_id": "source--mandiant-apt41-arisen-from-dust-2024",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_first_observed": {
@@ -956,23 +1079,21 @@
         "basis": "source-stated"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2024-06-30T22:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign; activity-period"
       },
       "x_temporal_basis": {
         "first": "source-stated",
-        "last": "not-stated",
+        "last": "mitre-attack-campaign; activity-period",
         "first_precision": "year",
-        "last_precision": "unknown"
+        "last_precision": "second"
       },
       "start_time": "2023-01-01T00:00:00Z",
+      "stop_time": "2024-06-30T22:00:00.000Z",
       "confidence": 85,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
-      "stop_time": "2023-01-01T00:00:00Z",
-      "x_stop_time_is_fallback": true,
-      "x_stop_time_basis": "opencti-required-start-time-fallback"
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "relationship",
@@ -1258,6 +1379,50 @@
       "x_stop_time_basis": "opencti-required-start-time-fallback"
     },
     {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fdee0fca-ccb1-440a-a233-d32488862a25",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
+      "target_ref": "malware--af825c91-0e80-4bf3-806a-948a2a65b787",
+      "description": "APT41 uses Cobalt Strike.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-06-30T22:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "mitre-attack; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2024-06-30T22:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--089b6bac-51b9-425a-9fa0-fe4266235559",
@@ -1334,7 +1499,7 @@
       "spec_version": "2.1",
       "id": "report--294e2ea0-b9fe-43a1-9bab-9ad1f38b3302",
       "created": "2026-09-23T12:16:55Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1345,7 +1510,13 @@
       ],
       "published": "2026-08-05T00:00:00Z",
       "object_refs": [
-        "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33"
+        "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
+        "malware--1602e996-0fab-44b3-bed0-f31fbe80af27",
+        "malware--5ab16330-bc1f-417d-b69d-d9ca6e6ab6ba",
+        "malware--af825c91-0e80-4bf3-806a-948a2a65b787",
+        "relationship--51954294-05cf-435b-8932-27357d683f2f",
+        "relationship--8e6d82ea-7c7c-4583-a2e2-e37a8b4bee9f",
+        "relationship--fdee0fca-ccb1-440a-a233-d32488862a25"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
@@ -1370,7 +1541,7 @@
       "spec_version": "2.1",
       "id": "report--2edef830-2f75-47ff-81f7-ee7fed80f0e9",
       "created": "2026-09-21T22:28:38Z",
-      "modified": "2026-09-21T22:28:38Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1391,6 +1562,7 @@
         "malware--dc84a56e-ff91-4cfd-a014-976807e34a01",
         "relationship--0027e036-5a33-441d-b87e-7fcd77ab1cee",
         "relationship--15a13fb3-0af8-4117-907c-0ca3b32e3ca3",
+        "relationship--2708c0a2-c9d2-402d-a08a-a7bbe66ea941",
         "relationship--2755cc6c-50fa-4a45-ab55-8e26255c5690",
         "relationship--33b2aef2-fda0-4f42-8c73-643cad7272cf",
         "relationship--364449ca-2687-487f-b7a2-4009f0e67ccb",
@@ -1427,7 +1599,7 @@
       "spec_version": "2.1",
       "id": "report--43ba3106-fbed-44b7-a7ab-2a2cc5702cfa",
       "created": "2026-09-21T22:28:38Z",
-      "modified": "2026-09-21T22:28:38Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1441,6 +1613,7 @@
         "campaign--4dd49f78-e54a-4066-a9b4-c9e9f2d4b8db",
         "identity--ca607c4b-32d4-4a39-aa99-53aeb3120523",
         "relationship--0027e036-5a33-441d-b87e-7fcd77ab1cee",
+        "relationship--2708c0a2-c9d2-402d-a08a-a7bbe66ea941",
         "relationship--33b2aef2-fda0-4f42-8c73-643cad7272cf",
         "relationship--36c8a148-ec92-42d4-a27b-d19b90d40cab",
         "relationship--6e80e275-9694-40b1-9dca-2898923d32d3",
@@ -1508,7 +1681,7 @@
       "spec_version": "2.1",
       "id": "report--5d39efb8-5ae0-4b1d-a2df-c8f456d9efe9",
       "created": "2026-09-21T22:28:38Z",
-      "modified": "2026-10-12T11:06:20Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1517,7 +1690,7 @@
       "report_types": [
         "campaign"
       ],
-      "published": "2026-10-12T11:06:20Z",
+      "published": "2026-11-15T09:02:08Z",
       "object_refs": [
         "campaign--4dd49f78-e54a-4066-a9b4-c9e9f2d4b8db",
         "identity--ca607c4b-32d4-4a39-aa99-53aeb3120523",
@@ -1527,9 +1700,11 @@
         "malware--1602e996-0fab-44b3-bed0-f31fbe80af27",
         "malware--45db59fc-71fa-4d27-84f9-b421fbe2d22f",
         "malware--5ab16330-bc1f-417d-b69d-d9ca6e6ab6ba",
+        "malware--af825c91-0e80-4bf3-806a-948a2a65b787",
         "malware--dc84a56e-ff91-4cfd-a014-976807e34a01",
         "relationship--0027e036-5a33-441d-b87e-7fcd77ab1cee",
         "relationship--15a13fb3-0af8-4117-907c-0ca3b32e3ca3",
+        "relationship--2708c0a2-c9d2-402d-a08a-a7bbe66ea941",
         "relationship--2755cc6c-50fa-4a45-ab55-8e26255c5690",
         "relationship--33b2aef2-fda0-4f42-8c73-643cad7272cf",
         "relationship--364449ca-2687-487f-b7a2-4009f0e67ccb",
@@ -1542,6 +1717,7 @@
         "relationship--ed615ae0-c059-481c-94b6-d93616c05639",
         "relationship--f81bfae5-aa6d-4e5f-b085-0ee57ead7ea2",
         "relationship--fb3d777c-e11b-4d95-8109-7edf29c1f849",
+        "relationship--fdee0fca-ccb1-440a-a233-d32488862a25",
         "report--089b6bac-51b9-425a-9fa0-fe4266235559",
         "report--129fcb99-d89f-4688-aa94-c3c2d33540c3",
         "report--294e2ea0-b9fe-43a1-9bab-9ad1f38b3302",

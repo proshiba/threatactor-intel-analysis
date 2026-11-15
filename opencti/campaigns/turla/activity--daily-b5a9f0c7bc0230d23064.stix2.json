@@ -1,0 +1,777 @@
+{
+  "type": "bundle",
+  "id": "bundle--f35cfbf3-b81e-43f7-8584-3dea99507a4e",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--0165ebef-a23a-494f-b437-28ac148e3e47",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Turla、新マルウェアCerealで政府機関のExchangeメールを傍受",
+      "description": "ESETは、ロシア国家支援グループTurlaが、新たな.NET製ツール群Cerealで政府機関のExchangeサーバーを監視していたと報告した。2025年末にカザフスタンで発見し、その後ルーマニアでも確認した。 CerealBoxはExchangeのEdgeTransport.exeへコード注入され、既存のトランスポートエージェントの処理を乗っ取る。これにより新しいエージェントを登録せず、通常のメール配送を妨げることなく本文などを検査できる。 攻撃者は送受信者や件名、DOC・DOCX・PDFなどの添付条件に一致するメールを選別した。ルーマニアではNATOやEUの代表者とのやり取りを選択的に収集していた。 CerealNeuronは正規のExchangeサービスに似せたパスで暗号化Web要求を待ち受け、CerealRunner内のコードをメモリ上で実行する。メール取得、AD照会、認証情報抽出、ファイル操作などに対応する。 外部C2は観測されず、侵害したExchange自体が制御点となっていた。暗号化ファイルから命令を読むCerealHermitも確認され、ESETは小さなディスク上の痕跡と高度な隠蔽を備えた長期諜報用基盤と評価している。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/",
+          "external_id": "source--daily-bc8d2dcf4f5426ed94e8",
+          "url": "https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-b5a9f0c7bc0230d23064",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--b5a9f0c7bc0230d23064b0be から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 採用。ESET原文を確認した。「We attribute Cereal, with high confidence, to the Russia-aligned APT group Turla」と明示（別のTurla関連コンポーネントの併用と旧Turlaマルウェアとの概念的類似が根拠）。標的はカザフスタンとルーマニアの政府組織各1。カザフスタンで2025-11-28に初検知、ルーマニアは2025-12-23に侵害、カザフスタンで2026-01-15に活動急増。CerealBoxはEdgeTransport.exeへ注入され新規トランスポートエージェント登録なしにメール本文を検査、ルーマニアではNATO・EU関連アドレスのメールを選別収集。CerealNeuronは正規Exchangeサービス風パスで暗号化Web要求を待ち受け、外部C2は観測されず侵害Exchange自体が制御点。ロシア反体制派の可視化目的はESETの仮説であり断定しない。capability候補は本レコードにはなく、Cereal各コンポーネントはESET IOCリポジトリ由来レコードのcapability_decisionsで承認した。自動分類cyber-espionageが実態に一致。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--turla",
+          "name": "Turla",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-315563032ff2683f7583",
+            "malware--daily-95d9fef0212a79305176"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+            "precision": "day",
+            "status": "known",
+            "value": "2025-11-28T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-01-15T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-11-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-bc8d2dcf4f5426ed94e8"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "precision": "day",
+        "status": "known",
+        "value": "2025-11-28T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-01-15T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-11-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2025-11-28T00:00:00Z",
+      "last_seen": "2026-01-15T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "created": "2026-07-25T15:23:05Z",
+      "modified": "2026-09-23T12:16:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Turla",
+      "aliases": [
+        "TURLA RELIC",
+        "Turla Team"
+      ],
+      "description": "[Turla](https://attack.mitre.org/groups/G0010) is a cyber espionage threat group that has been attributed to Russia's Federal Security Service (FSB).  They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies. [Turla](https://attack.mitre.org/groups/G0010) is known for conducting watering hole and spearphishing campaigns, and leveraging in-house tools and malware, such as [Uroburos](https://attack.mitre.org/software/S0022).(Citation: Kaspersky Turla)(Citation: ESET Gazer Aug 2017)(Citation: CrowdStrike VENOMOUS BEAR)(Citation: ESET Turla Mosquito Jan 2018)(Citation: Joint Cybersecurity Advisory AA23-129A Snake Malware May 2023)",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection."
+      ],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+          "external_id": "source--gtig-unified-actor-naming-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+        }
+      ],
+      "x_profile_id": "actor--turla",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "BELUGASTURGEON",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Group 88",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "IRON HUNTER",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Krypton",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Secret Blizzard",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Snake",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TURLA RELIC",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Turla Team",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Venomous Bear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Waterbug",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "WhiteBear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "KOPILUWAK, TinyTurla, HyperStack, Kazuar, LunarLoader, Epic, LightNeuron, Gazer, Uroburos, Crutch, Mosquito, LunarMail, Carbon, Penquin, ComRAT, PowerStallion, LunarWeb, Net, certutil, Tasklist, Arp, Empire, netstat, Systeminfo, Mimikatz, IronNetInjector, nbtstat, NBTscan, Reg, PsExec",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、イタリア、インド、ウクライナ。標的地域=南アジア、欧州。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--213d92b3-3082-4a3d-9baf-3a106501e901",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CerealHermit",
+      "description": "Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "github.com",
+          "description": "Source: https://github.com/eset/malware-ioc/tree/master/turla",
+          "external_id": "source--daily-eacab060a5426f098bf1",
+          "url": "https://github.com/eset/malware-ioc/tree/master/turla"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-315563032ff2683f7583",
+      "x_confidence": "medium",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--e8ee7a0d-e3a2-41b9-9682-9d9184b97e5e",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CerealRunner",
+      "description": "Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "github.com",
+          "description": "Source: https://github.com/eset/malware-ioc/tree/master/turla",
+          "external_id": "source--daily-eacab060a5426f098bf1",
+          "url": "https://github.com/eset/malware-ioc/tree/master/turla"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-95d9fef0212a79305176",
+      "x_confidence": "medium",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "unknown"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--451fff17-9650-42a8-9faa-b954abe5be34",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--0165ebef-a23a-494f-b437-28ac148e3e47",
+      "target_ref": "malware--e8ee7a0d-e3a2-41b9-9682-9d9184b97e5e",
+      "description": "Turla、新マルウェアCerealで政府機関のExchangeメールを傍受 uses malware--daily-95d9fef0212a79305176.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/",
+          "external_id": "source--daily-bc8d2dcf4f5426ed94e8",
+          "url": "https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "precision": "day",
+        "status": "known",
+        "value": "2025-11-28T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-01-15T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "last": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-11-28T00:00:00Z",
+      "stop_time": "2026-01-15T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4e0aef39-b9d8-42a0-b3e8-662fb101b55c",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "target_ref": "malware--213d92b3-3082-4a3d-9baf-3a106501e901",
+      "description": "Turla uses CerealHermit.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "github.com",
+          "description": "Source: https://github.com/eset/malware-ioc/tree/master/turla",
+          "external_id": "source--daily-eacab060a5426f098bf1",
+          "url": "https://github.com/eset/malware-ioc/tree/master/turla"
+        }
+      ],
+      "x_first_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": null,
+        "last": null,
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9cbea08e-75d5-4bae-9b8a-a7c43ea133dd",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--0165ebef-a23a-494f-b437-28ac148e3e47",
+      "target_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "description": "Turla、新マルウェアCerealで政府機関のExchangeメールを傍受 is attributed or linked to Turla.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/",
+          "external_id": "source--daily-bc8d2dcf4f5426ed94e8",
+          "url": "https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "precision": "day",
+        "status": "known",
+        "value": "2025-11-28T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-01-15T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "last": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-11-28T00:00:00Z",
+      "stop_time": "2026-01-15T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fba08c7e-a4b8-4859-aaa3-b14943fb3a44",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--0165ebef-a23a-494f-b437-28ac148e3e47",
+      "target_ref": "malware--213d92b3-3082-4a3d-9baf-3a106501e901",
+      "description": "Turla、新マルウェアCerealで政府機関のExchangeメールを傍受 uses malware--daily-315563032ff2683f7583.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/",
+          "external_id": "source--daily-bc8d2dcf4f5426ed94e8",
+          "url": "https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "precision": "day",
+        "status": "known",
+        "value": "2025-11-28T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-01-15T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "last": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-11-28T00:00:00Z",
+      "stop_time": "2026-01-15T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fec28096-e640-4b51-9d31-bb45b2f1f785",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "target_ref": "malware--e8ee7a0d-e3a2-41b9-9682-9d9184b97e5e",
+      "description": "Turla uses CerealRunner.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "github.com",
+          "description": "Source: https://github.com/eset/malware-ioc/tree/master/turla",
+          "external_id": "source--daily-eacab060a5426f098bf1",
+          "url": "https://github.com/eset/malware-ioc/tree/master/turla"
+        }
+      ],
+      "x_first_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": null,
+        "last": null,
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--05f118fd-30ed-41fe-92fc-baeafaba5a2a",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Updated Cyber Threat Actor Naming System",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-24T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "external_id": "source--gtig-unified-actor-naming-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--gtig-unified-actor-naming-2026",
+      "x_evidence_slice_scope": "campaign:actor--turla:activity--daily-b5a9f0c7bc0230d23064",
+      "x_source_publisher": "Google Threat Intelligence Group",
+      "x_source_type": "official-vendor-actor-mapping",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--28dd13c6-f6e3-4a6c-a1b5-e909a8484b8b",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--turla:activity--daily-b5a9f0c7bc0230d23064",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--9476f6a8-14fc-4880-b890-60d4d771994f",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "https://github.com/eset/malware-ioc/tree/master/turla",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-11-11T00:00:00Z",
+      "object_refs": [
+        "malware--213d92b3-3082-4a3d-9baf-3a106501e901",
+        "malware--e8ee7a0d-e3a2-41b9-9682-9d9184b97e5e",
+        "relationship--4e0aef39-b9d8-42a0-b3e8-662fb101b55c",
+        "relationship--fec28096-e640-4b51-9d31-bb45b2f1f785"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-eacab060a5426f098bf1",
+          "url": "https://github.com/eset/malware-ioc/tree/master/turla"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-eacab060a5426f098bf1",
+      "x_evidence_slice_scope": "campaign:actor--turla:activity--daily-b5a9f0c7bc0230d23064",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b3553188-338f-41f3-bf28-1a86c71c884f",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Turla、新マルウェアCerealで政府機関のExchangeメールを傍受",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-11-11T00:00:00Z",
+      "object_refs": [
+        "campaign--0165ebef-a23a-494f-b437-28ac148e3e47",
+        "relationship--451fff17-9650-42a8-9faa-b954abe5be34",
+        "relationship--9cbea08e-75d5-4bae-9b8a-a7c43ea133dd",
+        "relationship--fba08c7e-a4b8-4859-aaa3-b14943fb3a44"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "external_id": "source--daily-bc8d2dcf4f5426ed94e8",
+          "url": "https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-bc8d2dcf4f5426ed94e8",
+      "x_evidence_slice_scope": "campaign:actor--turla:activity--daily-b5a9f0c7bc0230d23064",
+      "x_source_publisher": "welivesecurity.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e5cff5d4-e5ab-4fbc-b147-739d3d58c68e",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Turla / Turla、新マルウェアCerealで政府機関のExchangeメールを傍受",
+      "description": "ESETは、ロシア国家支援グループTurlaが、新たな.NET製ツール群Cerealで政府機関のExchangeサーバーを監視していたと報告した。2025年末にカザフスタンで発見し、その後ルーマニアでも確認した。 CerealBoxはExchangeのEdgeTransport.exeへコード注入され、既存のトランスポートエージェントの処理を乗っ取る。これにより新しいエージェントを登録せず、通常のメール配送を妨げることなく本文などを検査できる。 攻撃者は送受信者や件名、DOC・DOCX・PDFなどの添付条件に一致するメールを選別した。ルーマニアではNATOやEUの代表者とのやり取りを選択的に収集していた。 CerealNeuronは正規のExchangeサービスに似せたパスで暗号化Web要求を待ち受け、CerealRunner内のコードをメモリ上で実行する。メール取得、AD照会、認証情報抽出、ファイル操作などに対応する。 外部C2は観測されず、侵害したExchange自体が制御点となっていた。暗号化ファイルから命令を読むCerealHermitも確認され、ESETは小さなディスク上の痕跡と高度な隠蔽を備えた長期諜報用基盤と評価している。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-11-15T09:02:09Z",
+      "object_refs": [
+        "campaign--0165ebef-a23a-494f-b437-28ac148e3e47",
+        "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+        "malware--213d92b3-3082-4a3d-9baf-3a106501e901",
+        "malware--e8ee7a0d-e3a2-41b9-9682-9d9184b97e5e",
+        "relationship--451fff17-9650-42a8-9faa-b954abe5be34",
+        "relationship--4e0aef39-b9d8-42a0-b3e8-662fb101b55c",
+        "relationship--9cbea08e-75d5-4bae-9b8a-a7c43ea133dd",
+        "relationship--fba08c7e-a4b8-4859-aaa3-b14943fb3a44",
+        "relationship--fec28096-e640-4b51-9d31-bb45b2f1f785",
+        "report--05f118fd-30ed-41fe-92fc-baeafaba5a2a",
+        "report--28dd13c6-f6e3-4a6c-a1b5-e909a8484b8b",
+        "report--9476f6a8-14fc-4880-b890-60d4d771994f",
+        "report--b3553188-338f-41f3-bf28-1a86c71c884f"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--turla",
+      "x_activity_id": "activity--daily-b5a9f0c7bc0230d23064"
+    }
+  ]
+}
