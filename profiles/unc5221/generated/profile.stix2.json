@@ -524,6 +524,106 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--4d912cc9-9f6e-48db-9aab-0c869b4c837e",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正",
+      "description": "BeyondTrustは、Remote Support（RS）26.2.3以前に影響する認証回避の脆弱性CVE-2026-102764を修正した。認証されていない遠隔の攻撃者が、対象機器でファイル操作を行える。 Mandiantは、中国との関連が疑われる諜報アクターARMORY CASTLE（旧UNC5221）が、2026年8月下旬から本脆弱性をゼロデイとして悪用していた証拠を確認した。 攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。ログを削除し、侵害した管理者認証情報で内部システムへ横展開した。 root権限の取得により、機器が保存・仲介する認証情報へのアクセスや、再起動・設定リセット後も残るファイルの改変が可能になった。Mandiantは、悪用期間中に公開されていた脆弱な機器の調査を求めている。 SaaS環境には修正済みだが、自動更新を有効にしていない自社運用環境は手動対応が必要。Privileged Remote Accessでは悪用方法は確認されていないものの、共通コードを使うため予防的な修正が提供された。",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-94cbe6031d634a353dc2",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--94cbe6031d634a353dc207d9 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attribution-uncertain。 レビュー: 採用。一次ソース（BeyondTrust BT26-05）は取得時に403で原文を確認できなかった（明記）。tech-memo要約に加え、The Record・CyberScoop・CSO Online・BleepingComputer等の独立した二次報道で、Mandiant/GTIGが追跡するARMORY CASTLE（旧UNC5221、別名Warp Panda）によるCVE-2026-102764（Remote Support 26.2.3以前、CVSS 9.3）のゼロデイ悪用をBeyondTrustがmoderate-to-high confidenceで帰属したことを確認した。悪用開始は2026-08-29。root権限取得・認証情報窃取・横展開が報じられている。SAWFLYウェブシェルとBARECLAWトンネラーの名称はtech-memo要約由来で二次報道からは確認できなかったため、capability候補は生成されておらず取り込まない。確信度は「moderate to high」の帰属とUNC5221照合（exact、ニュース本文）を考慮しmediumとする。ARMORY CASTLEはMandiantによるUNC5221の改称であり、unc5221プロファイルのaliasへ追加する提案として報告する（本取込では追加しない）。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc5221",
+          "name": "UNC5221",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--791c96ceb07a4f2920da"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-29T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "reported_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Persistence"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-3d7ecedf875a40701af6"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-08-29T00:00:00Z"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--7aff55a3-ebe5-4dca-9720-85b8bb366987",
       "created": "2026-07-27T11:04:38Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -630,7 +730,7 @@
       "spec_version": "2.1",
       "id": "campaign--de39e49a-9649-4281-8c13-efd41a18b876",
       "created": "2026-09-21T04:35:03Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -674,6 +774,10 @@
         },
         "victim": {
           "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--260bd106ff4950e5430d",
+            "target--activity-rule--sector--4221b5fbb827488c6eaa",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
             "target--targeting-audit--region--180d1b3625871cf9d7dd",
             "target--targeting-audit--region--5fdf840a1b32be12ea15",
             "target--targeting-audit--region--fa76e62075b99f42c3b7"
@@ -854,15 +958,131 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--8ce9667a-728e-4a68-a5f1-357b593485c4",
-      "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "被害事例: Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用",
+      "name": "政府・行政",
       "identity_class": "organization",
-      "description": "中国系ハッカーが、Ivanti Endpoint Manager Mobile（EPMM）のリモートコード実行脆弱性（CVE-2025-4428）を悪用。 この脆弱性は、特別に細工されたAPIリクエストにより、バージョン12.5.0.0以前のEPMMでコード実行が可能。 Ivantiは、認証バイパスの脆弱性（CVE-2025-4427）とともに、2025年5月13日にこれらの脆弱性を修正。 EclecticIQの研究者は、2025年5月15日以降、CVE-2025-4428が広範に悪用されていることを確認。 攻撃は、Ivanti製品のゼロデイ脆弱性を専門とするUNC5221と呼ばれるグループによるものとされる。",
+      "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "医療・ヘルスケア",
+      "identity_class": "organization",
+      "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "金融",
+      "identity_class": "organization",
+      "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "運輸・航空・海運",
+      "identity_class": "organization",
+      "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8ce9667a-728e-4a68-a5f1-357b593485c4",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用",
+      "identity_class": "organization",
+      "description": "EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させたIvanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを介してSliverを展開し、AWS S3を配布基盤に使用した。",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -881,32 +1101,40 @@
       "x_disclosure_status": "anonymous",
       "x_victim_type": "unknown",
       "x_case_status": "reported",
-      "x_target_refs": [],
-      "x_malware_refs": [],
+      "x_target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--260bd106ff4950e5430d",
+        "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4"
+      ],
+      "x_malware_refs": [
+        "malware--krustyloader",
+        "malware--sliver"
+      ],
       "x_ttp_refs": [],
       "x_affected_assets": [
-        "エンドポイント"
+        "クラウド／SaaS"
       ],
       "x_impacts": [],
       "x_first_observed": {
         "value": "2025-05-15T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "activity-description-explicit-period"
+        "basis": "source-stated"
       },
       "x_last_observed": {
-        "value": "2025-05-15T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "x_reported_at": {
-        "value": "2025-05-23T00:00:00Z",
+        "value": "2025-05-21T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "x_confidence": "medium",
+      "x_confidence": "high",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
@@ -971,6 +1199,52 @@
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--73d834a3-89ec-4808-9d10-6ea8f5dafef0",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Web Shell",
+      "description": "攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003",
+          "url": "https://attack.mitre.org/techniques/T1505/003/"
+        },
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--791c96ceb07a4f2920da",
+      "x_tactic": "Persistence",
+      "x_activity_refs": [
+        "activity--daily-94cbe6031d634a353dc2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
       "type": "attack-pattern",
@@ -1290,6 +1564,198 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--59908703-77fe-4222-982c-ab946fd7c136",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "UNC5221 targets 政府・行政 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--68fede7e-f1f4-43f4-9553-645ae7863ae8",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "target_ref": "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
+      "description": "UNC5221 targets 医療・ヘルスケア (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--369aab72-91c2-47ee-934d-4df542985a6b",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "UNC5221 targets 金融 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bda41e67-b29e-4dff-8672-eea17f5d1639",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "UNC5221 targets 運輸・航空・海運 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--903e29bc-cc70-427b-bbd9-bb1198376d2d",
       "created": "2026-07-27T11:17:26Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -1427,6 +1893,102 @@
         "status": "known",
         "basis": "daily-news-file-date"
       }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--50855efd-c2fc-43b3-b83b-0cdb0000f77c",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--4d912cc9-9f6e-48db-9aab-0c869b4c837e",
+      "target_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "description": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正 is attributed or linked to UNC5221.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "last": null,
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-29T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ea890033-af19-4935-82c3-52d5146ba623",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--4d912cc9-9f6e-48db-9aab-0c869b4c837e",
+      "target_ref": "attack-pattern--73d834a3-89ec-4808-9d10-6ea8f5dafef0",
+      "description": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正 uses ttp--activity-rule--791c96ceb07a4f2920da.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "last": null,
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-29T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -1734,6 +2296,222 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--57416025-8350-4c7a-8b42-3c3cded7584e",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--de39e49a-9649-4281-8c13-efd41a18b876",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 targets target--activity-rule--sector--210dddb39397dbe50e91.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--34ae3af0-e44e-4633-b0f2-6fa966d4b977",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--de39e49a-9649-4281-8c13-efd41a18b876",
+      "target_ref": "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
+      "description": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 targets target--activity-rule--sector--260bd106ff4950e5430d.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--44babc7c-8886-46da-81ff-9b2d74717754",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--de39e49a-9649-4281-8c13-efd41a18b876",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99c74d14-69c5-4619-8ec5-cb227fda0d78",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--de39e49a-9649-4281-8c13-efd41a18b876",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/",
+          "external_id": "source--daily-9c44f6340b9488e0ae9a",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/"
+        },
+        {
+          "source_name": "EclecticIQ",
+          "description": "Source: https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+          "external_id": "source--eclecticiq-unc5221-epmm-2025",
+          "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-05-15T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--6d462fad-02f7-4275-8417-8bc9ad8d99ec",
       "created": "2026-09-21T08:16:06Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -1950,6 +2728,48 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--eb26f40e-ddc1-4693-bd2f-6ae575eb70f5",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "target_ref": "attack-pattern--73d834a3-89ec-4808-9d10-6ea8f5dafef0",
+      "description": "攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。; activity-period",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-08-29T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--847bf9f8-a54d-4f7e-8cf3-568b7e65f7f6",
       "created": "2026-07-29T15:20:24Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -2010,7 +2830,7 @@
       "spec_version": "2.1",
       "id": "report--88196185-20ef-4948-9af6-33add4345b1e",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T09:02:09Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2019,21 +2839,27 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T13:20:00Z",
+      "published": "2026-11-15T09:02:09Z",
       "object_refs": [
         "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
         "malware--3d4e2af3-988e-41dc-8188-7aa6611c8a77",
         "malware--aa68ad6b-a78b-4e83-b194-85ba7ff9c75d",
         "campaign--022e1fba-103f-42bc-bb65-bba5a7dc51bc",
         "campaign--03ee755b-7057-476a-bf12-3a4d5d779ed4",
+        "campaign--4d912cc9-9f6e-48db-9aab-0c869b4c837e",
         "campaign--7aff55a3-ebe5-4dca-9720-85b8bb366987",
         "campaign--de39e49a-9649-4281-8c13-efd41a18b876",
         "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
         "identity--aae48124-8e93-48fd-8fb0-396f24877bbe",
         "identity--d9fd0fd1-4f70-4246-b04e-647c0ec7286e",
         "identity--a8b0098e-9b1b-4e94-8ff4-e1deab84ea52",
+        "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+        "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
+        "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
         "identity--8ce9667a-728e-4a68-a5f1-357b593485c4",
         "identity--91dd1f7b-2c05-4578-af5c-03054dc1b3ca",
+        "attack-pattern--73d834a3-89ec-4808-9d10-6ea8f5dafef0",
         "attack-pattern--fc9c1e67-ad4d-42ae-a624-5ec34e1874a4"
       ],
       "x_schema_version": "1.4.0"

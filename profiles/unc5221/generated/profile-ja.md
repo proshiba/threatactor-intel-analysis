@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc5221`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-11-15T09:02:09Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -143,8 +143,9 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | CISA、RESURGEマルウェアがIvantiデバイスで休眠する可能性を警告 | malware-campaign | 不明 | 不明 | 2026-02-28 |  |  |  |  | CISAはCVE-2025-0282を突くゼロデイで侵害されたIvanti Connect Secure向けRESURGEの新情報を公開 更新内容は、機器上で長期間検知されにくい「潜伏」と、ネットワーク層の回避・認証手口に焦点を当てている Mandiantは本脆弱性が2024年12月中旬以降、中国関連のUNC5221によりゼロデイ悪用されたと報告 RESURGEは外向きビーコンせず特定のTLS流入を待機し、CRC32フィンガープリントと偽Ivanti証明書で通信相手を識別する CISAは「接続が試みられるまで休眠し得る」ため未検知感染の可能性を警告し、更新IoCでの検出・除去を促した | 中 | `source--daily-ba66767df3d87f8e056a` |
 | Ivanti、3月中旬以降悪用されたConnect Secureのゼロデイ脆弱性を修正 | cyber-espionage | 不明 | 不明 | 2025-04-04 |  |  | ttp--activity-rule--d804599bbb259da95aad |  | IvantiはConnect Secureのリモートコード実行（RCE）脆弱性CVE-2025-22457を修正 この脆弱性はスタックベースのバッファオーバーフローに起因 Pulse Connect Secure 9.1x、Ivanti Connect Secure 22.7R2.5以前、Policy Secure、Neurons for ZTAゲートウェイに影響 2月11日にリリースされたバージョン22.7R2.6で修正済み 中国関連のサイバースパイグループUNC5221が3月中旬以降、この脆弱性を悪用してTRAILBLAZE（インメモリドロッパー）とBRUSHFIRE（パッシブバックドア）などのマルウェアを展開 | 中 | `source--daily-91b63e035fe4123d4de8` |
+| BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正 | cyber-espionage | 2026-08-29 | 不明 | 2026-10-17 |  |  | ttp--activity-rule--791c96ceb07a4f2920da |  | BeyondTrustは、Remote Support（RS）26.2.3以前に影響する認証回避の脆弱性CVE-2026-102764を修正した。認証されていない遠隔の攻撃者が、対象機器でファイル操作を行える。 Mandiantは、中国との関連が疑われる諜報アクターARMORY CASTLE（旧UNC5221）が、2026年8月下旬から本脆弱性をゼロデイとして悪用していた証拠を確認した。 攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。ログを削除し、侵害した管理者認証情報で内部システムへ横展開した。 root権限の取得により、機器が保存・仲介する認証情報へのアクセスや、再起動・設定リセット後も残るファイルの改変が可能になった。Mandiantは、悪用期間中に公開されていた脆弱な機器の調査を求めている。 SaaS環境には修正済みだが、自動更新を有効にしていない自社運用環境は手動対応が必要。Privileged Remote Accessでは悪用方法は確認されていないものの、共通コードを使うため予防的な修正が提供された。 | 中 | `source--daily-3d7ecedf875a40701af6` |
 | Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | cyber-espionage | 不明 | 不明 | 2025-09-25 | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  | victim--activity-rule--f34bbd1142d16c42d677 | Googleは、技術・法律・SaaS・BPO分野の米組織を主に標的とした、UNC5221によるBrickstormを使った長期スパイ活動を確認し、継続的なデータ窃取を報告。 BrickstormはGo製バックドアで、Webサーバ/ファイル操作/ドロッパ/SOCKS中継/シェル実行など多機能に振る舞う。 平均潜伏は393日。EDR非対応のvCenter/ESXi等に常駐し、CloudflareやHeroku風トラフィックでC2通信を偽装。 初期侵入はエッジデバイスのゼロデイ悪用が濃厚。vCenterに「Bricksteal」を導入し資格情報収集、VM複製やSSH有効化で横展開。 目的はEntra ID経由のメール流出。UNC5221に紐付けられ、Mandiantが検出スクリプト公開も限界（検出保証なし等）を明記。 | 中 | `source--daily-851d3853332e52ad741a` |
-| UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 | intrusion | 2025-05-15 | 不明 | 2025-05-21 | target--targeting-audit--region--180d1b3625871cf9d7dd, target--targeting-audit--region--5fdf840a1b32be12ea15, target--targeting-audit--region--fa76e62075b99f42c3b7 | malware--krustyloader, malware--sliver |  | victim--activity-rule--2777d9aa01e356b0a630 | EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させたIvanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを介してSliverを展開し、AWS S3を配布基盤に使用した。 | 高 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
+| UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 | intrusion | 2025-05-15 | 不明 | 2025-05-21 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--targeting-audit--region--180d1b3625871cf9d7dd, target--targeting-audit--region--5fdf840a1b32be12ea15, target--targeting-audit--region--fa76e62075b99f42c3b7 | malware--krustyloader, malware--sliver |  | victim--activity-rule--2777d9aa01e356b0a630 | EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させたIvanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを介してSliverを展開し、AWS S3を配布基盤に使用した。 | 高 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -152,8 +153,9 @@ Aliasなし
 |---|---|---|---|---|---|---|---|
 | CISA、RESURGEマルウェアがIvantiデバイスで休眠する可能性を警告 | UNC5221 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | Ivanti、3月中旬以降悪用されたConnect Secureのゼロデイ脆弱性を修正 | UNC5221 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 情報なし | 中 |
+| BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正 | UNC5221 | 情報なし | T1505.003 Web Shell | 情報なし | 情報なし | 情報なし | 中 |
 | Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | UNC5221 | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | 中 |
-| UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 | UNC5221 | KrustyLoader, Sliver | 情報なし | 情報なし | アジア太平洋, 欧州, 北米 | 被害事例: Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用 | 高 |
+| UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 | UNC5221 | KrustyLoader, Sliver | 情報なし | 情報なし | 政府・行政, 医療・ヘルスケア, 金融, 運輸・航空・海運, アジア太平洋, 欧州, 北米 | 被害事例: UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 | 高 |
 
 
 
@@ -165,6 +167,10 @@ Aliasなし
 | regions | アジア太平洋 | 活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的地域としてアジア太平洋が明示されている。 | 2025-05-15 | 不明 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
 | regions | 北米 | 活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的地域として北米が明示されている。 | 2025-05-15 | 不明 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
 | regions | 欧州 | 活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的地域として欧州が明示されている。 | 2025-05-15 | 不明 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
+| sectors | 政府・行政 | 活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。 | 2025-05-15 | 不明 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
+| sectors | 医療・ヘルスケア | 活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。 | 2025-05-15 | 不明 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
+| sectors | 金融 | 活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。 | 2025-05-15 | 不明 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
+| sectors | 運輸・航空・海運 | 活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。 | 2025-05-15 | 不明 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -172,13 +178,14 @@ Aliasなし
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用 | 非公開 | anonymous | unknown | reported |  |  |  | エンドポイント |  | 2025-05-15 | 2025-05-15 | 2025-05-23 | 中 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
+| 被害事例: UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--b8d6639a1884e2bacaa4 | malware--krustyloader, malware--sliver |  | クラウド／SaaS |  | 2025-05-15 | 不明 | 2025-05-21 | 高 | `source--daily-9c44f6340b9488e0ae9a`, `source--eclecticiq-unc5221-epmm-2025` |
 | 被害事例: Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  | メール／メールアカウント | data-theft: Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取<br>espionage: Googleは、技術・法律・SaaS・BPO分野の米組織を主に標的とした、UNC5221によるBrickstormを使った長期スパイ活動を確認し、継続的なデータ窃取を報告。 | 不明 | 不明 | 2025-09-25 | 中 | `source--daily-851d3853332e52ad741a` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Persistence | T1505.003 | Web Shell | 攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。 |  | activity--daily-94cbe6031d634a353dc2 | 2026-08-29 | 不明 | 中 | `source--daily-3d7ecedf875a40701af6` |
 | Initial Access | T1190 | Exploit Public-Facing Application | IvantiはConnect Secureのリモートコード実行（RCE）脆弱性CVE-2025-22457を修正 この脆弱性はスタックベースのバッファオーバーフローに起因 Pulse Connect Secure 9.1x、Ivanti Connect Secure 22.7R2.5以前、Policy Secure、Neurons for ZTAゲートウェイに影響 2月11日にリリースされたバージョン22.7R2.6で修正済み 中国関連のサイバースパイグループUNC5221が3月中旬以降、この脆弱性を悪用してTRAILBLAZE（インメモリドロッパー）とBRUSHFIRE（パッシブバックドア）などのマルウェアを展開 |  | activity--daily-2f66c9c7118896c3d86d | 不明 | 不明 | 中 | `source--daily-91b63e035fe4123d4de8` |
 
 ## IOC／artifact概要
@@ -207,12 +214,17 @@ Aliasなし
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-3d7ecedf875a40701af6 | BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正 | beyondtrust.com | 2026-10-17 | https://www.beyondtrust.com/trust-center/security-advisories/bt26-05 | osint-report | TLP:CLEAR | 中 |
 | source--daily-851d3853332e52ad741a | Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | bleepingcomputer.com | 2025-09-25 | https://www.bleepingcomputer.com/news/security/google-brickstorm-malware-used-to-steal-us-orgs-data-for-over-a-year/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-91b63e035fe4123d4de8 | Ivanti、3月中旬以降悪用されたConnect Secureのゼロデイ脆弱性を修正 | bleepingcomputer.com | 2025-04-04 | https://www.bleepingcomputer.com/news/security/ivanti-patches-connect-secure-zero-day-exploited-since-mid-march/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-9c44f6340b9488e0ae9a | Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用 | bleepingcomputer.com | 2025-05-23 | https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-ba66767df3d87f8e056a | CISA、RESURGEマルウェアがIvantiデバイスで休眠する可能性を警告 | bleepingcomputer.com | 2026-02-28 | https://www.bleepingcomputer.com/news/security/cisa-warns-that-resurge-malware-can-be-dormant-on-ivanti-devices/ | osint-report | TLP:CLEAR | 中 |
+| source--eclecticiq-unc5221-epmm-2025 | China-Nexus Threat Actor Actively Exploiting Ivanti Endpoint Manager Mobile (CVE-2025-4428) Vulnerability | EclecticIQ | 2025-05-21 | https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability | vendor-threat-research | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc5221--0f7d918e38c7c2d3 | cybersecurity forecast 2026 en |  | 2026 | summary/2025/cybersecurity-forecast-2026-en.pdf | report | TLP:CLEAR | 中 |
 | source--unc5221--18058cb4e929ed14 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
 | source--unc5221--28ac6a664c181814 | eset apt activity report q4 2025 q1 2026 |  | 2025 | summary/2026/eset-apt-activity-report-q4-2025-q1-2026.pdf | report | TLP:CLEAR | 中 |
@@ -227,10 +239,6 @@ Aliasなし
 | source--unc5221--993f95ce09dc4e0b | SixMap Research Energy Sector Exposure Assessment |  | 不明 | summary/2025/SixMap-Research_Energy-Sector-Exposure-Assessment.pdf | report | TLP:CLEAR | 中 |
 | source--unc5221--b2f42356a5b0d760 | unc5221 |  | 不明 | actor_profile/evidence/unc5221.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc5221--bac10c3e8714d8ca | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--eclecticiq-unc5221-epmm-2025 | China-Nexus Threat Actor Actively Exploiting Ivanti Endpoint Manager Mobile (CVE-2025-4428) Vulnerability | EclecticIQ | 2025-05-21 | https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

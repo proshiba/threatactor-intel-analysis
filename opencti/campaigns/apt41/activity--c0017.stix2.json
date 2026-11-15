@@ -1390,7 +1390,7 @@
       "spec_version": "2.1",
       "id": "campaign--06e80bda-60ff-4643-91ac-14bdcaee94ec",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1453,6 +1453,11 @@
             "ttp--mitre-campaign--dd2806caf9ed7ce8832e",
             "ttp--mitre-campaign--e08d88171340f247d673",
             "ttp--mitre-campaign--e297da4a7e091757ba2c"
+          ],
+          "tool_refs": [
+            "tool--dsquery",
+            "tool--mimikatz",
+            "tool--ping"
           ]
         },
         "infrastructure": {
@@ -1516,6 +1521,11 @@
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       },
+      "x_tool_refs": [
+        "tool--dsquery",
+        "tool--mimikatz",
+        "tool--ping"
+      ],
       "x_first_observed": {
         "value": "2021-05-01T04:00:00.000Z",
         "precision": "second",
@@ -1631,7 +1641,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-23T11:09:18Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1742,7 +1752,7 @@
         "history": "2024年10月、GTIGはAPT41が侵害済み政府サイトからLNKを含むZIPを配布し、PLUSDROP、PLUSINJECT、TOUGHPROGRESSを展開する活動を確認した。最終段はGoogle Calendarを暗号化C2として悪用した。",
         "capability_details": "DUSTTRAP, DUSTPAN, ASPXSpy, China Chopper, LightSpy, PlugX, KEYPLUG, Winnti for Linux, gh0st RAT, Derusbi, MESSAGETAP, Cobalt Strike, MOPSLED, ROCKBOOT, ZxShell, BLACKCOFFEE, njRAT, ShadowPad, CRACKSHOT, GEARSHIFT, HIGHNOON, JUMPALL, POISONPLUG, HOTCHAI, LATELUNCH, LIFEBOAT, LOWKEY, PACMAN, PHOTO, POTROAST, SAGEHIRE, SWEETCANDLE, SOGU, TERA, TIDYELF, WIDETONE, WINTERLOVE, XDoor, Xmrig, Net, certutil, PowerSploit, Impacket, ipconfig, Empire, dsquery, netstat, BITSAdmin, sqlmap, pwdump, Mimikatz, Ping, ftp",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=イタリア、台湾、日本、米国。標的地域=東アジア。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=イタリア、台湾、日本、米国。標的地域=中央アジア、東アジア。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck_assessment": "matched",
@@ -2063,6 +2073,50 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--09c560cf-e4d2-4b48-ae82-128983d0c159",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
+      "target_ref": "tool--32d17ab5-5942-4efa-a07f-28ffe4b0170f",
+      "description": "APT41 uses Mimikatz.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2022-02-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "mitre-attack; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2022-02-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--0ac9a11b-3e63-45ba-a899-24cdd3e4d202",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -2211,6 +2265,56 @@
       "source_ref": "campaign--06e80bda-60ff-4643-91ac-14bdcaee94ec",
       "target_ref": "identity--299d8ed6-f459-4d56-8c3d-9cf4ad28d150",
       "description": "C0017 affected victim--activity-rule--78b363fe1951d005f3f9.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2022-02-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2022-02-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0fc27cba-7705-423a-9cad-a61caee4a54d",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--06e80bda-60ff-4643-91ac-14bdcaee94ec",
+      "target_ref": "tool--32d17ab5-5942-4efa-a07f-28ffe4b0170f",
+      "description": "C0017 uses tool--mimikatz.",
       "x_confidence": "high",
       "external_references": [
         {
@@ -2903,6 +3007,56 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--31ac331b-f0e1-443d-90e8-7a7fc3282786",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--06e80bda-60ff-4643-91ac-14bdcaee94ec",
+      "target_ref": "tool--9d3f9615-fa3e-4159-9e7e-efd441eeb9b2",
+      "description": "C0017 uses tool--dsquery.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2022-02-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2022-02-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--358f3505-bee1-41af-9a05-eaf8768a0f71",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -3329,6 +3483,100 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--6bbc23a8-280d-46af-bc34-7ae67359bcd6",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--06e80bda-60ff-4643-91ac-14bdcaee94ec",
+      "target_ref": "tool--8a0b2348-1b39-4adc-8134-e0c91d8bedd4",
+      "description": "C0017 uses tool--ping.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2022-02-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2022-02-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--70adf5ac-3014-40c6-af7b-412d0e2d91c3",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
+      "target_ref": "tool--9d3f9615-fa3e-4159-9e7e-efd441eeb9b2",
+      "description": "APT41 uses dsquery.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2022-02-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "mitre-attack; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2022-02-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--7100212b-d881-41d6-a221-fd8e3f051950",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -3644,6 +3892,50 @@
       "x_temporal_basis": {
         "first": "mitre-attack-campaign; activity-period",
         "last": "mitre-attack-campaign; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2022-02-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--915023d1-9266-40f4-ad76-a35121f31d8f",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
+      "target_ref": "tool--8a0b2348-1b39-4adc-8134-e0c91d8bedd4",
+      "description": "APT41 uses Ping.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2022-02-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "mitre-attack; activity-period",
         "first_precision": "second",
         "last_precision": "second"
       },
@@ -5079,7 +5371,7 @@
       "spec_version": "2.1",
       "id": "report--1a7ea77c-d44e-4131-aea1-78b7fafad7a0",
       "created": "2026-09-21T22:28:38Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5129,10 +5421,12 @@
         "relationship--03814c99-3604-4b2e-9c78-000df3c0055d",
         "relationship--03f58e31-264f-47ba-90d2-a2e7500c2db1",
         "relationship--0538a85b-aa1e-4235-a01f-591760566964",
+        "relationship--09c560cf-e4d2-4b48-ae82-128983d0c159",
         "relationship--0ac9a11b-3e63-45ba-a899-24cdd3e4d202",
         "relationship--0b1f489f-2a96-411b-bc6b-367110976c89",
         "relationship--0d0a81f6-cbb8-400b-a30c-866b35c23c82",
         "relationship--0dd6dec3-8249-451a-a151-b6f17eca9f0f",
+        "relationship--0fc27cba-7705-423a-9cad-a61caee4a54d",
         "relationship--1716bdd3-40e0-46a0-8f54-4e2eea42f2ae",
         "relationship--17fc0899-6a90-4742-8e79-931ee28dcd8a",
         "relationship--1a4769fb-41ef-4b8e-bfb3-b084889d8061",
@@ -5147,6 +5441,7 @@
         "relationship--2b9d6d79-bf76-4135-bc1c-b34f55ca0ba0",
         "relationship--2cafb66a-be2a-4416-9e60-93d5e8834d26",
         "relationship--2d18e9a6-70bb-44a4-a757-125368b2ebb1",
+        "relationship--31ac331b-f0e1-443d-90e8-7a7fc3282786",
         "relationship--358f3505-bee1-41af-9a05-eaf8768a0f71",
         "relationship--3cd9f9f7-9c8e-4354-b80b-168d0003dbea",
         "relationship--442915e1-c53d-4770-81f5-f4e974950551",
@@ -5156,6 +5451,8 @@
         "relationship--57a78f3c-6851-4096-981e-a0600e0a535d",
         "relationship--61c9c788-91a6-4d13-a3ae-49414f820354",
         "relationship--623192f1-9bd7-48fa-ab08-335c25d7d366",
+        "relationship--6bbc23a8-280d-46af-bc34-7ae67359bcd6",
+        "relationship--70adf5ac-3014-40c6-af7b-412d0e2d91c3",
         "relationship--7100212b-d881-41d6-a221-fd8e3f051950",
         "relationship--78e220f0-e898-4f78-ab96-3945f234f0c5",
         "relationship--827fe83b-c054-46e8-94f2-38ce4252b15e",
@@ -5163,6 +5460,7 @@
         "relationship--8bde66d4-48c6-4432-b87b-399f9625fbb4",
         "relationship--8c3df731-09be-46de-ba84-afdc74a5aa29",
         "relationship--8f5b9afb-fa7c-4ba3-b143-3eed8d787771",
+        "relationship--915023d1-9266-40f4-ad76-a35121f31d8f",
         "relationship--93458afa-ecb9-4205-8340-77b8270b1037",
         "relationship--940ab3f9-7239-45b7-806d-7fb45d33eb28",
         "relationship--98eb42c5-36b4-43e9-aa9c-4f5980fe70f8",
@@ -5192,7 +5490,10 @@
         "relationship--f3b4c400-2eaa-4a81-a03a-e5eca2d25dee",
         "relationship--f3c818ea-b8df-4ce1-97ea-e202535dd5c0",
         "relationship--fdee0fca-ccb1-440a-a233-d32488862a25",
-        "relationship--feb90ce6-20bd-4cdc-975d-088fa872ee35"
+        "relationship--feb90ce6-20bd-4cdc-975d-088fa872ee35",
+        "tool--32d17ab5-5942-4efa-a07f-28ffe4b0170f",
+        "tool--8a0b2348-1b39-4adc-8134-e0c91d8bedd4",
+        "tool--9d3f9615-fa3e-4159-9e7e-efd441eeb9b2"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
@@ -5321,11 +5622,92 @@
       "x_temporal_role": "publication-only"
     },
     {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--32d17ab5-5942-4efa-a07f-28ffe4b0170f",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mimikatz",
+      "description": "[Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--mimikatz",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--8a0b2348-1b39-4adc-8134-e0c91d8bedd4",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ping",
+      "description": "[Ping](https://attack.mitre.org/software/S0097) is an operating system utility commonly used to troubleshoot and verify network connections. (Citation: TechNet Ping)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--ping",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "unknown"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--9d3f9615-fa3e-4159-9e7e-efd441eeb9b2",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "dsquery",
+      "description": "[dsquery](https://attack.mitre.org/software/S0105) is a command-line utility that can be used to query Active Directory for information from a system within a domain. (Citation: TechNet Dsquery) It is typically installed only on Windows Server versions but can be installed on non-server variants through the Microsoft-provided Remote Server Administration Tools bundle.",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--dsquery",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--6fb68bff-7706-4806-9845-b09cdebdd147",
       "created": "2026-09-21T22:28:38Z",
-      "modified": "2026-10-12T11:06:20Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5334,7 +5716,7 @@
       "report_types": [
         "campaign"
       ],
-      "published": "2026-10-12T11:06:20Z",
+      "published": "2026-11-15T09:02:08Z",
       "object_refs": [
         "attack-pattern--029567c7-3d7b-412f-81eb-959ed6ccc26b",
         "attack-pattern--0fd86969-c4af-44a0-9552-07a37f60d3f7",
@@ -5376,10 +5758,12 @@
         "relationship--03814c99-3604-4b2e-9c78-000df3c0055d",
         "relationship--03f58e31-264f-47ba-90d2-a2e7500c2db1",
         "relationship--0538a85b-aa1e-4235-a01f-591760566964",
+        "relationship--09c560cf-e4d2-4b48-ae82-128983d0c159",
         "relationship--0ac9a11b-3e63-45ba-a899-24cdd3e4d202",
         "relationship--0b1f489f-2a96-411b-bc6b-367110976c89",
         "relationship--0d0a81f6-cbb8-400b-a30c-866b35c23c82",
         "relationship--0dd6dec3-8249-451a-a151-b6f17eca9f0f",
+        "relationship--0fc27cba-7705-423a-9cad-a61caee4a54d",
         "relationship--1716bdd3-40e0-46a0-8f54-4e2eea42f2ae",
         "relationship--17fc0899-6a90-4742-8e79-931ee28dcd8a",
         "relationship--1a4769fb-41ef-4b8e-bfb3-b084889d8061",
@@ -5394,6 +5778,7 @@
         "relationship--2b9d6d79-bf76-4135-bc1c-b34f55ca0ba0",
         "relationship--2cafb66a-be2a-4416-9e60-93d5e8834d26",
         "relationship--2d18e9a6-70bb-44a4-a757-125368b2ebb1",
+        "relationship--31ac331b-f0e1-443d-90e8-7a7fc3282786",
         "relationship--358f3505-bee1-41af-9a05-eaf8768a0f71",
         "relationship--3cd9f9f7-9c8e-4354-b80b-168d0003dbea",
         "relationship--442915e1-c53d-4770-81f5-f4e974950551",
@@ -5403,6 +5788,8 @@
         "relationship--57a78f3c-6851-4096-981e-a0600e0a535d",
         "relationship--61c9c788-91a6-4d13-a3ae-49414f820354",
         "relationship--623192f1-9bd7-48fa-ab08-335c25d7d366",
+        "relationship--6bbc23a8-280d-46af-bc34-7ae67359bcd6",
+        "relationship--70adf5ac-3014-40c6-af7b-412d0e2d91c3",
         "relationship--7100212b-d881-41d6-a221-fd8e3f051950",
         "relationship--78e220f0-e898-4f78-ab96-3945f234f0c5",
         "relationship--827fe83b-c054-46e8-94f2-38ce4252b15e",
@@ -5410,6 +5797,7 @@
         "relationship--8bde66d4-48c6-4432-b87b-399f9625fbb4",
         "relationship--8c3df731-09be-46de-ba84-afdc74a5aa29",
         "relationship--8f5b9afb-fa7c-4ba3-b143-3eed8d787771",
+        "relationship--915023d1-9266-40f4-ad76-a35121f31d8f",
         "relationship--93458afa-ecb9-4205-8340-77b8270b1037",
         "relationship--940ab3f9-7239-45b7-806d-7fb45d33eb28",
         "relationship--98eb42c5-36b4-43e9-aa9c-4f5980fe70f8",
@@ -5443,7 +5831,10 @@
         "report--1a7ea77c-d44e-4131-aea1-78b7fafad7a0",
         "report--1efba3b1-cb43-4503-b1b4-dad605069547",
         "report--a111c14a-cdd4-47d7-9d0e-e3abe9ca5a7d",
-        "report--b3a60d10-ace7-4a97-8fe7-011bea880ec4"
+        "report--b3a60d10-ace7-4a97-8fe7-011bea880ec4",
+        "tool--32d17ab5-5942-4efa-a07f-28ffe4b0170f",
+        "tool--8a0b2348-1b39-4adc-8134-e0c91d8bedd4",
+        "tool--9d3f9615-fa3e-4159-9e7e-efd441eeb9b2"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "x_opencti_bundle_scope": "campaign",

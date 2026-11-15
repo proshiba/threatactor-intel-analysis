@@ -261,6 +261,14 @@ Bundleに同じIDで現れます。プロファイルごとに正当に揺れる
 前進として扱い、`modified`をコーパスの生成時刻へ進めて再出力します。evidenceの
 減少やその他の意味変化は従来どおり`modified`の明示的な前進が無い限り拒否します。
 
+Relationshipの`description`は、参照先Activityのタイトル等を引用して組み立てる
+派生narrativeであり、enrichの再実行やタイトルのcuration改名で文面だけが追従して
+変わります。relationship-typeのオブジェクトで、`description`以外のフィールドが
+不変（`external_references`は等しいか純増）の場合は管理された表現更新として、
+`modified`をコーパスの生成時刻へ進めて取り込みます。relationship以外の
+オブジェクトの`description`変更、および評価・参照・期間に及ぶ変更は、従来どおり
+`modified`の明示的な前進が無い限り拒否します。
+
 コミット済みBundle群が部分再生成で世代混在になっている場合、版ベースラインの
 読み込みでは上記の整合を適用したうえで、残る不一致は最新の`modified`を持つ定義を
 直前の版として採ります。ベースラインの役割は直前の版を与えることだけで、

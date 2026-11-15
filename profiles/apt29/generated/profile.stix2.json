@@ -6429,6 +6429,123 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
+      "created": "2026-11-15T08:50:08Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+      "description": "Sekoiaは、侵害した正規サイトや偽サイトを通じてiOS・Android端末を狙う水飲み場攻撃を分析し、中～高程度の確度でAPT29へ帰属した。サイト閲覧後、追加の利用者操作なしに既知脆弱性の攻撃チェーンが実行される。 攻撃者は正規サイトへのJavaScript挿入に加え、America250やロンドンのホテルを装うサイトを使用した。訪問者の端末とブラウザのバージョンを識別し、C2から対応する攻撃チェーンを配信した。 ウクライナのWeb分析サービスPlerdyも侵害され、8月27日～9月3日にSEOトラッカーが改変された。同トラッカーは主にウクライナの数千サイトで読み込まれていたが、端末の感染台数は示されていない。 iOS向け攻撃はSafariのCookieに加え、一部のチェーンでWhatsApp・Telegramのデータベース、Keychain認証情報、位置情報、写真を窃取した。Android向けはAndroSnitchでChromeの認証情報や履歴、Wi-Fi認証情報などを収集した。 分析されたペイロードに永続化機能はなく、再起動で活動を停止できるが、侵害サイトへの再訪で再感染する可能性がある。悪用された脆弱性はすべて修正済みで、最新のセキュリティ更新の適用が推奨される。",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-73cc25666a7d9eccdad3",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--73cc25666a7d9eccdad31740 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 採用。Sekoia原文を確認した。「we assess with moderate to high confidence that this campaign was conducted by APT29」（または少なくともそのサブグループ）と帰属。侵害した正規サイトへのJavaScript挿入とAmerica250・ロンドンのホテルを装う偽サイトで、iOS 16.7/18.5とAndroid Chrome 139-145（143除く）の既知脆弱性チェーンを配信する水飲み場攻撃。ウクライナのWeb分析サービスPlerdyの侵害（8/27-9/3）で主にウクライナの数千サイト（軍・防衛関連含む）にトラッカー改変が波及。被害は欧州・米国にも分布。AndroSnitchはAndroidチェーン最終段として解析されたが被害端末上での実行確認は示されておらず、capability候補も生成されていないため取り込まない。インフラ作成日（2026年4〜8月）は観測日に転用しない。確信度はmoderate-to-highの帰属に基づきmedium。モバイル端末からの情報窃取を目的とするためactivity_typeを自動値infrastructure-operationからcyber-espionageへ変更。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt29",
+          "name": "APT29",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--b3b416aa3c4bf9d1a36a",
+            "ttp--activity-rule--ce8fe6f4d89af65dfa39"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--activity-rule--sector--570d54d1d21fab6540a9"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--ac8b51b10600da1c9b6a"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-27T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-03T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-11-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Credential Access",
+            "Initial Access"
+          ],
+          "results": [
+            "credential-theft",
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-172c9516eb85d9143e6c"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-08-27T00:00:00Z",
+      "last_seen": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--abbca11c-873e-4a3d-b723-fe5eb0061d55",
       "created": "2026-07-27T11:04:29Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -7191,7 +7308,7 @@
       "spec_version": "2.1",
       "id": "campaign--720c6da2-518c-4940-8399-33aca8d11f20",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7234,6 +7351,9 @@
             "ttp--mitre-campaign--8d0c3ef35c6b78c974ca",
             "ttp--mitre-campaign--f1623a8396ba4e8e44e4",
             "ttp--mitre-campaign--fa1fdfa1bf3835fb4054"
+          ],
+          "tool_refs": [
+            "tool--psexec"
           ]
         },
         "infrastructure": {
@@ -7286,6 +7406,9 @@
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       },
+      "x_tool_refs": [
+        "tool--psexec"
+      ],
       "x_first_observed": {
         "value": "2013-09-01T04:00:00.000Z",
         "precision": "second",
@@ -7312,7 +7435,7 @@
       "spec_version": "2.1",
       "id": "campaign--f6600dfe-45aa-4878-bb3d-cbff32fb1a8a",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7424,6 +7547,10 @@
             "ttp--mitre-campaign--f6913436435eb02c01f2",
             "ttp--mitre-campaign--f77f47cdd527932a702f",
             "ttp--mitre-campaign--fcda76405153f86ebd4c"
+          ],
+          "tool_refs": [
+            "tool--adfind",
+            "tool--mimikatz"
           ]
         },
         "infrastructure": {
@@ -7504,6 +7631,10 @@
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       },
+      "x_tool_refs": [
+        "tool--adfind",
+        "tool--mimikatz"
+      ],
       "x_first_observed": {
         "value": "2019-08-01T05:00:00.000Z",
         "precision": "second",
@@ -7530,7 +7661,7 @@
       "spec_version": "2.1",
       "id": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7538,6 +7669,12 @@
       "identity_class": "organization",
       "description": "活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された国・地域。",
       "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        },
         {
           "source_name": "thehackernews.com",
           "description": "Source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
@@ -7852,7 +7989,7 @@
       "spec_version": "2.1",
       "id": "identity--3968da33-41ff-4d7e-941b-3f3079bda9d5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7860,6 +7997,12 @@
       "identity_class": "organization",
       "description": "Microsoft reported particular targeting across Europe.",
       "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        },
         {
           "source_name": "bleepingcomputer.com",
           "description": "Source: https://www.bleepingcomputer.com/news/security/russian-hackers-target-german-political-parties-with-wineloader-malware/",
@@ -7915,7 +8058,7 @@
       "spec_version": "2.1",
       "id": "identity--d375fa8d-dd42-49d3-a54d-84f9efab1de0",
       "created": "2026-09-15T22:14:20Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7923,6 +8066,12 @@
       "identity_class": "organization",
       "description": "活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された産業。",
       "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        },
         {
           "source_name": "anthropic.com",
           "description": "Source: https://www.anthropic.com/threat-intelligence-report-september-2026",
@@ -8589,13 +8738,13 @@
       "spec_version": "2.1",
       "id": "identity--96838548-c361-4253-bc30-ae3dc582ea42",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "被害事例: SEC、SolarWinds攻撃を過小評価した技術企業を告発",
+      "name": "被害事例: SEC、SolarWinds関連開示を巡り技術企業4社を処分",
       "identity_class": "organization",
-      "description": "SECは、SolarWinds攻撃に関するリスクを過小評価していたとして、4つの技術企業を告発。 Unisys、Avaya、Check Point、Mimecastは、侵害の影響を投資家に誤認させた。 各企業は、罰金支払いに合意し、合計罰金は数百万ドルに上る。 SolarWinds攻撃は、2020年のSolarWinds Orionハッキングインシデントであり、APT29（ロシアのハッカーグループ）によるもの。",
+      "description": "米SECは、SolarWinds Orion侵害に関連するサイバーリスクと影響の開示が投資家を誤解させたとして、Unisys、Avaya、Check Point、Mimecastを処分した。SEC原文は侵入者を『SolarWinds Orion攻撃の背後にいる可能性が高い脅威アクター』と記すにとどまり、APT29を名指ししていない。このレコードは2020年の侵害そのものではなく、2024年の法執行・開示上の後続事象を整理するGroupingである。",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -8632,10 +8781,10 @@
         "basis": "not-stated"
       },
       "x_reported_at": {
-        "value": "2024-10-23T00:00:00Z",
+        "value": "2024-10-22T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
@@ -8759,6 +8908,74 @@
         "basis": "source-stated"
       },
       "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--5af32050-d289-4faa-8066-8282fe81dbb9",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+      "identity_class": "organization",
+      "description": "Sekoiaは、侵害した正規サイトや偽サイトを通じてiOS・Android端末を狙う水飲み場攻撃を分析し、中～高程度の確度でAPT29へ帰属した。サイト閲覧後、追加の利用者操作なしに既知脆弱性の攻撃チェーンが実行される。 攻撃者は正規サイトへのJavaScript挿入に加え、America250やロンドンのホテルを装うサイトを使用した。訪問者の端末とブラウザのバージョンを識別し、C2から対応する攻撃チェーンを配信した。 ウクライナのWeb分析サービスPlerdyも侵害され、8月27日～9月3日にSEOトラッカーが改変された。同トラッカーは主にウクライナの数千サイトで読み込まれていたが、端末の感染台数は示されていない。 iOS向け攻撃はSafariのCookieに加え、一部のチェーンでWhatsApp・Telegramのデータベース、Keychain認証情報、位置情報、写真を窃取した。Android向けはAndroSnitchでChromeの認証情報や履歴、Wi-Fi認証情報などを収集した。 分析されたペイロードに永続化機能はなく、再起動で活動を停止できるが、侵害サイトへの再訪で再感染する可能性がある。悪用された脆弱性はすべて修正済みで、最新のセキュリティ更新の適用が推奨される。",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--ac8b51b10600da1c9b6a",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--570d54d1d21fab6540a9"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--b3b416aa3c4bf9d1a36a",
+        "ttp--activity-rule--ce8fe6f4d89af65dfa39"
+      ],
+      "x_affected_assets": [
+        "エンドポイント",
+        "モバイル端末"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "iOS向け攻撃はSafariのCookieに加え、一部のチェーンでWhatsApp・Telegramのデータベース、Keychain認証情報、位置情報、写真を窃取した。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "iOS向け攻撃はSafariのCookieに加え、一部のチェーンでWhatsApp・Telegramのデータベース、Keychain認証情報、位置情報、写真を窃取した。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
@@ -9279,6 +9496,52 @@
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
+      "id": "attack-pattern--a80caa36-1e48-474a-acd3-d7aede3871e5",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Drive-by Compromise",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1189",
+          "url": "https://attack.mitre.org/techniques/T1189/"
+        },
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--b3b416aa3c4bf9d1a36a",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--daily-73cc25666a7d9eccdad3"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
       "id": "attack-pattern--d64fa122-b895-4f5b-8435-23996a557c36",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -9318,6 +9581,52 @@
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9e7b2d8b-7106-4452-913b-f3dd649ba1f8",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Credentials from Web Browsers",
+      "description": "Android向けはAndroSnitchでChromeの認証情報や履歴、Wi-Fi認証情報などを収集した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1555.003",
+          "url": "https://attack.mitre.org/techniques/T1555/003/"
+        },
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--ce8fe6f4d89af65dfa39",
+      "x_tactic": "Credential Access",
+      "x_activity_refs": [
+        "activity--daily-73cc25666a7d9eccdad3"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
@@ -23494,7 +23803,7 @@
       "spec_version": "2.1",
       "id": "relationship--0247ca50-e6bc-4464-9bb5-e1ef677f2b04",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -23504,6 +23813,12 @@
       "description": "APT29 targets ウクライナ (profile target category: countries).",
       "x_confidence": "medium",
       "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        },
         {
           "source_name": "thehackernews.com",
           "description": "Source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
@@ -23524,23 +23839,25 @@
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
       },
       "x_temporal_basis": {
-        "first": "not-stated",
-        "last": "not-stated",
-        "first_precision": "unknown",
-        "last_precision": "unknown"
-      }
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -24065,7 +24382,7 @@
       "spec_version": "2.1",
       "id": "relationship--7416e777-5c97-442f-9606-4a4418e6a331",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -24075,6 +24392,12 @@
       "description": "APT29 targets 欧州 (profile target category: regions).",
       "x_confidence": "high",
       "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        },
         {
           "source_name": "bleepingcomputer.com",
           "description": "Source: https://www.bleepingcomputer.com/news/security/russian-hackers-target-german-political-parties-with-wineloader-malware/",
@@ -24148,7 +24471,7 @@
       "spec_version": "2.1",
       "id": "relationship--299be334-84d6-466a-bedb-dacc143d6447",
       "created": "2026-09-15T22:14:20Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -24159,6 +24482,12 @@
       "x_confidence": "medium",
       "external_references": [
         {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        },
+        {
           "source_name": "anthropic.com",
           "description": "Source: https://www.anthropic.com/threat-intelligence-report-september-2026",
           "external_id": "source--daily-d957d6c999575906f6dc",
@@ -24166,23 +24495,25 @@
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
       },
       "x_temporal_basis": {
-        "first": "not-stated",
-        "last": "not-stated",
-        "first_precision": "unknown",
-        "last_precision": "unknown"
-      }
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -25824,6 +26155,300 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--fa10dc5d-5886-49e1-9ccc-a41ca64eb5aa",
+      "created": "2026-11-15T08:50:08Z",
+      "modified": "2026-11-15T08:50:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取 is attributed or linked to APT29.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--624f1f5f-7101-4d3c-9b60-28b8961ec15e",
+      "created": "2026-11-15T08:50:08Z",
+      "modified": "2026-11-15T08:50:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
+      "target_ref": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取 targets target--activity-rule--country--36f1b9323d5faab92f39.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5edd8e1-1253-4c9d-98a3-5bf5e18f8a7b",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
+      "target_ref": "identity--d375fa8d-dd42-49d3-a54d-84f9efab1de0",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取 targets target--activity-rule--sector--570d54d1d21fab6540a9.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a2d142b1-079c-48a4-bd3a-105fb902cbd3",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
+      "target_ref": "attack-pattern--a80caa36-1e48-474a-acd3-d7aede3871e5",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取 uses ttp--activity-rule--b3b416aa3c4bf9d1a36a.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ff0c59b4-6572-4045-9853-e54bf66812b8",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
+      "target_ref": "attack-pattern--9e7b2d8b-7106-4452-913b-f3dd649ba1f8",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取 uses ttp--activity-rule--ce8fe6f4d89af65dfa39.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0814a03d-3da7-4499-aea5-5e16fdb19918",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
+      "target_ref": "identity--5af32050-d289-4faa-8066-8282fe81dbb9",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取 affected victim--activity-rule--ac8b51b10600da1c9b6a.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--6ec82547-bb4e-4f19-bc5a-98b27d5dfa51",
       "created": "2026-07-27T11:04:29Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -27390,6 +28015,54 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--92f267cc-3e99-4f44-9e6b-914b615a26cb",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--720c6da2-518c-4940-8399-33aca8d11f20",
+      "target_ref": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
+      "description": "Operation Ghost uses tool--psexec.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2013-09-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2019-10-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "start_time": "2013-09-01T04:00:00.000Z",
+      "stop_time": "2019-10-01T04:00:00.000Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--1ac4daf2-ce8b-4997-8d4d-154d66c7cccd",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -28216,6 +28889,102 @@
       "source_ref": "campaign--f6600dfe-45aa-4878-bb3d-cbff32fb1a8a",
       "target_ref": "malware--e9d459ec-efb7-45ca-aa0d-0883d3a8e4ba",
       "description": "SolarWinds Compromise uses malware--trailblazer.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2019-08-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2021-01-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "start_time": "2019-08-01T05:00:00.000Z",
+      "stop_time": "2021-01-01T06:00:00.000Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2129c7e8-968f-4511-8d66-8577d73e04e4",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f6600dfe-45aa-4878-bb3d-cbff32fb1a8a",
+      "target_ref": "tool--58d2326a-96f0-4550-ba42-9681e849143c",
+      "description": "SolarWinds Compromise uses tool--adfind.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2019-08-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2021-01-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "start_time": "2019-08-01T05:00:00.000Z",
+      "stop_time": "2021-01-01T06:00:00.000Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0147dd39-b3ba-43e6-98d7-80de2e8a6c47",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f6600dfe-45aa-4878-bb3d-cbff32fb1a8a",
+      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+      "description": "SolarWinds Compromise uses tool--mimikatz.",
       "x_confidence": "high",
       "external_references": [
         {
@@ -32303,6 +33072,49 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--2f53a59b-cc01-4f7e-9b9f-6f38820bc56f",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "attack-pattern--a80caa36-1e48-474a-acd3-d7aede3871e5",
+      "description": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--675df169-518e-41c8-958c-cdd3de1aee3f",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -32340,6 +33152,49 @@
         "first_precision": "unknown",
         "last_precision": "unknown"
       }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--87013d68-f325-45cc-aeef-fa7b5b242543",
+      "created": "2026-11-15T08:51:02Z",
+      "modified": "2026-11-15T08:51:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "attack-pattern--9e7b2d8b-7106-4452-913b-f3dd649ba1f8",
+      "description": "Android向けはAndroSnitchでChromeの認証情報や履歴、Wi-Fi認証情報などを収集した。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sekoia.com",
+          "description": "Source: https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "external_id": "source--daily-172c9516eb85d9143e6c",
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+        "last": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-27T00:00:00Z",
+      "stop_time": "2026-09-03T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -152174,7 +153029,7 @@
       "spec_version": "2.1",
       "id": "report--4273d3ab-0c72-4bf6-831e-bc0b83cdfc85",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -152183,7 +153038,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-23T12:16:55Z",
+      "published": "2026-11-15T09:02:08Z",
       "object_refs": [
         "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
         "malware--5ec1a868-48f7-49ad-957f-5471749d18ec",
@@ -152245,6 +153100,7 @@
         "incident--7bc0e10b-0e40-4321-88c6-8d292031f752",
         "incident--8018944f-7b90-4eef-99a7-5743b1197dfa",
         "campaign--1be5b67c-0040-45fc-b570-f8e3ee604e17",
+        "campaign--55141dd2-e8c2-44cd-8bca-6b3117632223",
         "campaign--abbca11c-873e-4a3d-b723-fe5eb0061d55",
         "campaign--7473d8e8-4c70-4b40-89e3-b7bbcd622380",
         "campaign--d72efa30-95e2-4eaa-84c4-868000210506",
@@ -152284,6 +153140,7 @@
         "identity--96838548-c361-4253-bc30-ae3dc582ea42",
         "identity--27b415e3-f753-4f23-b576-83636aac916e",
         "identity--11876547-f714-4b14-b63c-02446c774cdf",
+        "identity--5af32050-d289-4faa-8066-8282fe81dbb9",
         "identity--51abaf2f-b74c-4817-b22d-a816feba716c",
         "identity--3e730800-c9c3-4323-89f5-da53b75ec9f1",
         "identity--51fc8adc-ed49-44ea-83f1-181ece7a1244",
@@ -152294,7 +153151,9 @@
         "attack-pattern--a67d1ad4-e852-4fc0-889c-d097bea4fa27",
         "attack-pattern--e89bfb16-4e22-49fd-8cc4-3456adeb50dc",
         "attack-pattern--a1421e3f-26c5-47a2-8eed-a90fb604a407",
+        "attack-pattern--a80caa36-1e48-474a-acd3-d7aede3871e5",
         "attack-pattern--d64fa122-b895-4f5b-8435-23996a557c36",
+        "attack-pattern--9e7b2d8b-7106-4452-913b-f3dd649ba1f8",
         "attack-pattern--9b419a87-52c6-44fc-8d8f-14b594f93ae7",
         "attack-pattern--b9bad243-3677-4811-a9b1-5e86d311ca00",
         "attack-pattern--f153a578-c794-47af-9e7f-231d6f85a16b",

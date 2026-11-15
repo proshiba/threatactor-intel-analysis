@@ -1,0 +1,435 @@
+{
+  "type": "bundle",
+  "id": "bundle--08465ee7-4bf6-46c3-99bc-e9c895716784",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--72cd6dcd-f817-456f-a27c-d7f8d2a02dfe",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Web Shell",
+      "description": "攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003",
+          "url": "https://attack.mitre.org/techniques/T1505/003/"
+        },
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--791c96ceb07a4f2920da",
+      "x_tactic": "Persistence",
+      "x_activity_refs": [
+        "activity--daily-94cbe6031d634a353dc2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--77cdf761-a4f5-482e-90d7-6522661defc4",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正",
+      "description": "BeyondTrustは、Remote Support（RS）26.2.3以前に影響する認証回避の脆弱性CVE-2026-102764を修正した。認証されていない遠隔の攻撃者が、対象機器でファイル操作を行える。 Mandiantは、中国との関連が疑われる諜報アクターARMORY CASTLE（旧UNC5221）が、2026年8月下旬から本脆弱性をゼロデイとして悪用していた証拠を確認した。 攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。ログを削除し、侵害した管理者認証情報で内部システムへ横展開した。 root権限の取得により、機器が保存・仲介する認証情報へのアクセスや、再起動・設定リセット後も残るファイルの改変が可能になった。Mandiantは、悪用期間中に公開されていた脆弱な機器の調査を求めている。 SaaS環境には修正済みだが、自動更新を有効にしていない自社運用環境は手動対応が必要。Privileged Remote Accessでは悪用方法は確認されていないものの、共通コードを使うため予防的な修正が提供された。",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-94cbe6031d634a353dc2",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--94cbe6031d634a353dc207d9 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attribution-uncertain。 レビュー: 採用。一次ソース（BeyondTrust BT26-05）は取得時に403で原文を確認できなかった（明記）。tech-memo要約に加え、The Record・CyberScoop・CSO Online・BleepingComputer等の独立した二次報道で、Mandiant/GTIGが追跡するARMORY CASTLE（旧UNC5221、別名Warp Panda）によるCVE-2026-102764（Remote Support 26.2.3以前、CVSS 9.3）のゼロデイ悪用をBeyondTrustがmoderate-to-high confidenceで帰属したことを確認した。悪用開始は2026-08-29。root権限取得・認証情報窃取・横展開が報じられている。SAWFLYウェブシェルとBARECLAWトンネラーの名称はtech-memo要約由来で二次報道からは確認できなかったため、capability候補は生成されておらず取り込まない。確信度は「moderate to high」の帰属とUNC5221照合（exact、ニュース本文）を考慮しmediumとする。ARMORY CASTLEはMandiantによるUNC5221の改称であり、unc5221プロファイルのaliasへ追加する提案として報告する（本取込では追加しない）。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc5221",
+          "name": "UNC5221",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--791c96ceb07a4f2920da"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-29T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "reported_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Persistence"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-3d7ecedf875a40701af6"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-08-29T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "created": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC5221",
+      "aliases": [],
+      "description": "UNC5221の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--unc5221",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC5221の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=米国。標的地域=アジア太平洋、北米、欧州。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--930a715b-9d43-4124-a5bd-cff2ddeb164e",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--77cdf761-a4f5-482e-90d7-6522661defc4",
+      "target_ref": "attack-pattern--72cd6dcd-f817-456f-a27c-d7f8d2a02dfe",
+      "description": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正 uses ttp--activity-rule--791c96ceb07a4f2920da.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "last": null,
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-29T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2026-08-29T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--98c8ee5e-21fd-475c-9d2c-112563ac3d19",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--77cdf761-a4f5-482e-90d7-6522661defc4",
+      "target_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "description": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正 is attributed or linked to UNC5221.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "last": null,
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-29T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2026-08-29T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dfd58775-9a1a-4210-8910-56b57b52ce88",
+      "created": "2026-11-15T08:51:06Z",
+      "modified": "2026-11-15T08:51:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+      "target_ref": "attack-pattern--72cd6dcd-f817-456f-a27c-d7f8d2a02dfe",
+      "description": "攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "description": "Source: https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。; activity-period",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-08-29T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2026-08-29T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2948fa7e-a12f-4232-b673-f15728283b27",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-10-17T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--72cd6dcd-f817-456f-a27c-d7f8d2a02dfe",
+        "campaign--77cdf761-a4f5-482e-90d7-6522661defc4",
+        "relationship--930a715b-9d43-4124-a5bd-cff2ddeb164e",
+        "relationship--98c8ee5e-21fd-475c-9d2c-112563ac3d19",
+        "relationship--dfd58775-9a1a-4210-8910-56b57b52ce88"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "beyondtrust.com",
+          "external_id": "source--daily-3d7ecedf875a40701af6",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-3d7ecedf875a40701af6",
+      "x_evidence_slice_scope": "campaign:actor--unc5221:activity--daily-94cbe6031d634a353dc2",
+      "x_source_publisher": "beyondtrust.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b87ffcb6-4eb5-4b46-a3d4-15ad2745404a",
+      "created": "2026-11-15T09:02:09Z",
+      "modified": "2026-11-15T09:02:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC5221 / BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正",
+      "description": "BeyondTrustは、Remote Support（RS）26.2.3以前に影響する認証回避の脆弱性CVE-2026-102764を修正した。認証されていない遠隔の攻撃者が、対象機器でファイル操作を行える。 Mandiantは、中国との関連が疑われる諜報アクターARMORY CASTLE（旧UNC5221）が、2026年8月下旬から本脆弱性をゼロデイとして悪用していた証拠を確認した。 攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。ログを削除し、侵害した管理者認証情報で内部システムへ横展開した。 root権限の取得により、機器が保存・仲介する認証情報へのアクセスや、再起動・設定リセット後も残るファイルの改変が可能になった。Mandiantは、悪用期間中に公開されていた脆弱な機器の調査を求めている。 SaaS環境には修正済みだが、自動更新を有効にしていない自社運用環境は手動対応が必要。Privileged Remote Accessでは悪用方法は確認されていないものの、共通コードを使うため予防的な修正が提供された。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-11-15T09:02:09Z",
+      "object_refs": [
+        "attack-pattern--72cd6dcd-f817-456f-a27c-d7f8d2a02dfe",
+        "campaign--77cdf761-a4f5-482e-90d7-6522661defc4",
+        "intrusion-set--68aa5db7-f7d3-4c89-9af5-6e3f60b01d82",
+        "relationship--930a715b-9d43-4124-a5bd-cff2ddeb164e",
+        "relationship--98c8ee5e-21fd-475c-9d2c-112563ac3d19",
+        "relationship--dfd58775-9a1a-4210-8910-56b57b52ce88",
+        "report--2948fa7e-a12f-4232-b673-f15728283b27"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc5221",
+      "x_activity_id": "activity--daily-94cbe6031d634a353dc2"
+    }
+  ]
+}

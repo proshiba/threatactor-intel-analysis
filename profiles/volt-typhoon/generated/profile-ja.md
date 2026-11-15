@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--volt-typhoon`
 - 状態: draft
-- 更新日時: 2026-09-23T12:16:55Z
+- 更新日時: 2026-11-15T09:02:09Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -163,6 +163,7 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 | infrastructure-operation | 2023-11 | 2026-07 | 2026-10-29 | target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--932f4928d5e1ec28e2df, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--country--f4393d9017c8437438b5 |  |  | victim--activity-rule--c725e3d8aad2a887ff1c | LumenのBlack Lotus Labsは、中国国家支援型Volt Typhoonが使う中継基盤Silent Trainを約3年間追跡した。必要に応じて機器を侵害し、中継経路を入れ替えて重要標的への攻撃を隠蔽する。 米国外のVPSから侵害済みのルーターなどを経由して攻撃する構成で、海外の中継にはIntelbrasモデム、米国内の経由地点にはNetgear Orbiを使用したと報告している。 VeloCloud Orchestrator、Cisco Catalyst SD-WAN、N-able N-central、Versa Directorへのゼロデイ悪用を観測した。Quest KACEについてもゼロデイの疑いがあり、集中管理基盤から顧客環境へアクセスを広げる。 中継機器にはSSH接続に必要な最小限のツールや鍵を配置し、通常8時間未満のセッション終了後に削除する。2025年初頭からは、1～3カ月保持する侵害済み企業システムも併用していた。 標的は通信、政府、防衛、教育、電力などの重要インフラやMSPなど。カリフォルニア、テキサス、ハワイへの集中と中国標準時に沿う活動から、重要標的を選ぶ慎重な運用と評価されている。 | 高 | `source--daily-80facae04c59c1bd916e` |
 | Volt Typhoon、FBIによる妨害後にマルウェアボットネットを再構築 | disruptive-activity | 不明 | 不明 | 2024-11-13 |  |  | ttp--activity-rule--914bec8075d5e33dd574 | victim--activity-rule--11e01d2032dd7761b63d | Volt TyphoonはFBIによる妨害後、ネットワーク機器を感染させボットネットを再構築中。 中国政府支援のこのハッカー集団はSOHOルーターを狙い、KV-Botnetと呼ばれる新たなネットワークを構築。 2024年1月にFBIによってボットネットが解体されたが、2024年8月に再構築を始めた。その後、Volt Typhoonは古いCiscoおよびNetgearルーターを標的とし、わずか1か月余りでかなりの数のデバイスを侵害した。 MIPSベースのマルウェアと、標準以外のポートで通信するウェブシェルを使用して侵害されており、検出がより困難になっている。 ボットネットはDigital Ocean、Quadranet、Vultrなどで登録され、アジアとアメリカ間の交通を隠蔽。 ボットネットの規模は以前のものにはほど遠いものの、中国のハッカーは、継続的な永続性をもって前進することは間違いない。 | 高 | `source--daily-d2c7805eca93d907d04d` |
 | 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | malware-campaign | 2022 | 不明 | 2026-06-11 | target--mitre-group--country--f4393d9017c8437438b5 |  |  | victim--activity-rule--a1b1ba9ced5d8a662854 | JDYボットネットは、Volt Typhoonなど中国系脅威アクターと関連付けられているマルウェアネットワーク。 Black Lotus Labsによると、JDYは米国に強く集中し、米軍および関連ネットワークを重点的に標的化している。 JDYは2024年1月の約650台から、現在は1,500台超の侵害済みSOHO・IoT機器へ拡大した。 ボットネットはサービス探索、バナー取得、TLS証明書収集、プロトコル識別、脆弱性重視の偵察を行う。 FortinetのCVE-2026-35616公開直後にJDYのスキャンが観測され、新規公開脆弱性を素早く標的化している。 | 低 | `source--daily-0c44ac5482af2d245bb8` |
 | 中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害 | malware-campaign | 不明 | 不明 | 2024-08-28 | target--activity-rule--sector--932f4928d5e1ec28e2df, target--activity-rule--sector--97fa6f38a056d42117be |  |  | victim--activity-rule--f2a213e7f786b2f7afa1 | 中国国家支援のVolt Typhoonが、Versa Directorのゼロデイ脆弱性を悪用し、ISPやMSPに侵入。 Versa Directorの脆弱性（CVE-2024-39717）は、管理者権限でマルウェアをアップロードするために利用された。 被害は主に資格情報の盗難であり、少なくとも5つの組織が影響を受けた。 Versaはバージョン22.1.4へのアップグレードを推奨。 攻撃者はSOHOルーターを利用し、トラフィックを隠蔽。 | 高 | `source--daily-640ce5a9037301fa77ea` |
@@ -174,6 +175,7 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 | Volt Typhoon | 情報なし | 情報なし | 情報なし | 中国, 政府・行政, IT・ソフトウェア, 防衛・軍事, 教育・研究, エネルギー, 米国 | 被害事例: Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 | 高 |
 | Volt Typhoon、FBIによる妨害後にマルウェアボットネットを再構築 | Volt Typhoon | 情報なし | T1505.003 Web Shell | 情報なし | 情報なし | 被害事例: Volt Typhoon、FBIによる妨害後にマルウェアボットネットを再構築 | 高 |
 | 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | Volt Typhoon | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | 低 |
 | 中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害 | Volt Typhoon | 情報なし | 情報なし | 情報なし | IT・ソフトウェア, 情報通信 | 被害事例: 中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害 | 高 |
@@ -187,9 +189,14 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 米国 | [Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021, primarily targeting critical infrastructure organizations in the US and its territories including Guam. | 2022 | 2024-01-01T05:00:00.000Z | 高 | `source--daily-0c44ac5482af2d245bb8`, `source--mitre-attack-19-2` |
-| sectors | IT・ソフトウェア | 活動「中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-640ce5a9037301fa77ea` |
+| countries | 中国 | 活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された国・地域。 | 2023-11 | 2026-07 | 中 | `source--daily-80facae04c59c1bd916e` |
+| countries | 米国 | [Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021, primarily targeting critical infrastructure organizations in the US and its territories including Guam. | 2022 | 2026-07 | 高 | `source--daily-0c44ac5482af2d245bb8`, `source--daily-80facae04c59c1bd916e`, `source--mitre-attack-19-2` |
+| sectors | 政府・行政 | 活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。 | 2023-11 | 2026-07 | 中 | `source--daily-80facae04c59c1bd916e` |
+| sectors | IT・ソフトウェア | 活動「中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害」の記述で標的として明示された産業。 | 2023-11 | 2026-07 | 中 | `source--daily-640ce5a9037301fa77ea`, `source--daily-80facae04c59c1bd916e` |
 | sectors | 情報通信 | 活動「中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-640ce5a9037301fa77ea` |
+| sectors | 防衛・軍事 | 活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。 | 2023-11 | 2026-07 | 中 | `source--daily-80facae04c59c1bd916e` |
+| sectors | 教育・研究 | 活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。 | 2023-11 | 2026-07 | 中 | `source--daily-80facae04c59c1bd916e` |
+| sectors | エネルギー | 活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。 | 2023-11 | 2026-07 | 中 | `source--daily-80facae04c59c1bd916e` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -201,6 +208,7 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 | 被害事例: Volt Typhoon、FBIによる妨害後にマルウェアボットネットを再構築 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--914bec8075d5e33dd574 | ネットワーク機器 |  | 不明 | 不明 | 2024-11-13 | 高 | `source--daily-d2c7805eca93d907d04d` |
 | 被害事例: KV Botnet Activity | 非公開 | aggregate | multiple-organizations | reported | target--mitre-group--country--f4393d9017c8437438b5 |  | ttp--activity-rule--92e75880b0a76d476baa, ttp--mitre-campaign--05cb124e09d9c161fbb2, ttp--mitre-campaign--0802523ee6f282494545, ttp--mitre-campaign--2519849e0d4433636b23, ttp--mitre-campaign--2bfc2698042237d9fbe1, ttp--mitre-campaign--2f2050bb2cd5271a557a, ttp--mitre-campaign--30fcdc296da3edbd33cd, ttp--mitre-campaign--3b505285dddb6caed660, ttp--mitre-campaign--49fa1c43561406abd87b, ttp--mitre-campaign--520bb50cfaa8933d684b, ttp--mitre-campaign--8bda75748a923cf69630, ttp--mitre-campaign--91ef50b1dfbbbaf66343, ttp--mitre-campaign--9cbefe83ac6fe74f4bc3, ttp--mitre-campaign--a62508c05bd43d52241f, ttp--mitre-campaign--abbc7a751a3e0251603c, ttp--mitre-campaign--adc6677f8b2e118f89a2, ttp--mitre-campaign--b148a581b33222219e57, ttp--mitre-campaign--ca114dcf84c96227d22e, ttp--mitre-campaign--ee97e563402f86b3949b, ttp--mitre-campaign--eef950d35be822df3a6f, ttp--mitre-campaign--f519c226b3a4bad9d99d |  |  | 2022-10-01T04:00:00.000Z | 2024-01-01T05:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
 | 被害事例: 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | 非公開 | anonymous | unknown | reported | target--mitre-group--country--f4393d9017c8437438b5 |  |  |  |  | 2022 | 不明 | 2026-06-11 | 低 | `source--daily-0c44ac5482af2d245bb8` |
+| 被害事例: Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--932f4928d5e1ec28e2df, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--country--f4393d9017c8437438b5 |  |  | ネットワーク機器 |  | 2023-11 | 2026-07 | 2026-10-29 | 高 | `source--daily-80facae04c59c1bd916e` |
 | 被害事例: 中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--932f4928d5e1ec28e2df, target--activity-rule--sector--97fa6f38a056d42117be |  |  | ネットワーク機器 |  | 不明 | 不明 | 2024-08-28 | 高 | `source--daily-640ce5a9037301fa77ea` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -348,13 +356,19 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-0c44ac5482af2d245bb8 | 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | lumen.com | 2026-06-11 | https://www.lumen.com/blog/en-us/expanded-jdy-iot-and-soho-botnet-enables-rapid-vulnerability-exploitation | osint-report | TLP:CLEAR | 中 |
 | source--daily-640ce5a9037301fa77ea | 中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害 | bleepingcomputer.com | 2024-08-28 | https://www.bleepingcomputer.com/news/security/chinese-volt-typhoon-hackers-exploited-versa-zero-day-to-breach-isps-msps/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-80facae04c59c1bd916e | Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽 | lumen.com | 2026-10-29 | https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework | osint-report | TLP:CLEAR | 中 |
 | source--daily-872ddba47fdd29dd0925 | 英国、中国系ハッカーが検知回避のためプロキシネットワークを利用していると警告 | bleepingcomputer.com | 2026-04-24 | https://www.bleepingcomputer.com/news/security/uk-warns-of-chinese-hackers-using-botnets-of-hijacked-consumer-devices-to-evade-detection/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-d2c7805eca93d907d04d | Volt Typhoon、FBIによる妨害後にマルウェアボットネットを再構築 | bleepingcomputer.com | 2024-11-13 | https://www.bleepingcomputer.com/news/security/volt-typhoon-rebuilds-malware-botnet-following-fbi-disruption/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--volt-typhoon--002b0193611949f5 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
 | source--volt-typhoon--0e915940ef304028 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
 | source--volt-typhoon--177c12b722988dff | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
@@ -386,11 +400,6 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 | source--volt-typhoon--d1bc3c7f4761742d | Norma+Cyber+Annual+Threat+Assessment+ +Spreads |  | 不明 | summary/2024/Norma+Cyber+Annual+Threat+Assessment+-+Spreads.pdf | report | TLP:CLEAR | 中 |
 | source--volt-typhoon--ec6d7ba098071619 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
 | source--volt-typhoon--fd75b99077ebc2cf | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

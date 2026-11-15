@@ -1,0 +1,4428 @@
+{
+  "type": "bundle",
+  "id": "bundle--56ecf2ff-a3f9-4f34-893c-bd42319cf8c6",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--0fa33bb6-1b74-4da4-ab8b-b233998dddce",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "File and Directory Discovery",
+      "description": "最終的にCubridgeをメモリへ読み込み、コマンド実行やファイル操作、画面取得などを可能にする。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1083",
+          "url": "https://attack.mitre.org/techniques/T1083/"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--0dae0673f59439a0fb4b",
+      "x_tactic": "Discovery",
+      "x_activity_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-cac578d12201b56a81a0"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿",
+      "description": "Kasperskyは、2025年7月から韓国組織を狙う「FlashHole」をLazarusに帰属させた。ソフトウェア、建設、有線通信機器製造の少なくとも3社で被害を確認し、実際の影響はさらに広い可能性がある。 フィッシングページから細工したGitHubページへ誘導し、外部JavaScriptとINISAFE CrossWeb EXを介してメモリ上の実行チェーンを開始する。正規のfsquirt.exeを経由し、非公開GitHubリポジトリから取得するTechHubを導入する。 ClientHubはDropbox通信とLPEClientとのデータ交換を担い、LPEClientは端末情報の収集と暗号化ペイロードの処理を行う。最終的にCubridgeをメモリへ読み込み、コマンド実行やファイル操作、画面取得などを可能にする。 LPEClientはC2から耐量子暗号ML-KEM-1024の公開鍵4個を受け取り、共有秘密と暗号文を生成する。暗号文はGOSTアルゴリズムで暗号化して送信し、共有秘密をThreefishの鍵素材として後続ペイロードの復号に使用する。 攻撃ではChromium系ブラウザーの認証情報・Cookie・履歴を狙うツールも確認された。多くのコードをメモリ上で実行し、耐量子暗号と組み合わせて後続ペイロードの解析・検知を難しくしている。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-cdc4a98583750e026424",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--cdc4a98583750e026424ff4f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用。Kaspersky原文を確認した。Operation FlashHoleをLazarusへ帰属し、「we assess with medium-to-high confidence that the same actor is responsible for both the SyncHole and FlashHole operations」として広域Cascade Holeキャンペーンの最新波と位置付ける。2025年7月が最古の証跡。韓国のソフトウェア・建設・有線通信機器製造の少なくとも3社で被害を確認。フィッシングページから細工GitHubページとINISAFE CrossWeb EXを介したメモリ上実行チェーン、非公開GitHubリポジトリからのTechHub取得、LPEClient・ClientHub・Cubridgeの役割、ML-KEM-1024とGOST/Threefishによるペイロード秘匿を原文で確認。2026年1月のKaspersky対応は記載があるが活動終期の明示ではないためlast_observedはunknown。活動の主題は韓国組織への諜報活動であり、initial accessのフィッシング語に引きずられた自動分類phishing-campaignをcyber-espionageへ変更。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--lazarus",
+          "name": "Lazarus Group",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-47e6b118d3eb6fdb9b2a",
+            "malware--daily-990cf1a78e6de4fd0a99",
+            "malware--daily-cac578d12201b56a81a0"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--0dae0673f59439a0fb4b"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--dfc80b76cad93a318adc",
+            "target--osint--country--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--43efe2058b0690a86cb7"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+            "precision": "month",
+            "status": "known",
+            "value": "2025-07-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "reported_at": {
+            "value": "2026-10-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Discovery"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [
+              "target--osint--country--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9f5717bc12f27705b634"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--0e2600ed-13d0-482e-8500-b50865018876",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "pythonapischool.com",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--130f21c4-9fd6-493e-a8a2-7a81c862a820",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "javadevhouse.co.kr",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--2b3a1602-c083-42c9-a597-d95b05939d0c",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "MD5": "c105d6b16f544582772de0159f24c00a"
+      },
+      "x_opencti_labels": [
+        "payload"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--3847e87b-9cc1-4656-afa8-6478dcbcba5f",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "MD5": "676fabe30a28b53925fba98e34b35986"
+      },
+      "x_opencti_labels": [
+        "payload"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--8b1d38d6-46cb-41ae-ad1e-9af373ba3943",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "MD5": "ec84d6cb2ae7974767aedac246b50a3e"
+      },
+      "x_opencti_labels": [
+        "payload"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--99cd8e5f-6cdd-4b96-871e-94f18f7806ac",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "MD5": "b4a7eff35f048f06fb0a2d7631f23a7d"
+      },
+      "x_opencti_labels": [
+        "payload"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--bec11b01-a8f6-4f56-873a-b186637f658e",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "MD5": "2f8475a90a25624ed02f1d18d4e6d65d"
+      },
+      "x_opencti_labels": [
+        "payload"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--cc7df84c-0e3a-41e0-b19f-05676055b830",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "MD5": "a28cba214058fcae2883d8cffc883abd"
+      },
+      "x_opencti_labels": [
+        "payload"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--d03efe76-a5e2-4b87-b4bf-2074e0c6743e",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "MD5": "ff07641dc56914dd90ee0bd7404d7ad7"
+      },
+      "x_opencti_labels": [
+        "related-file"
+      ],
+      "x_ioc_roles": [
+        "related-file"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--5e931489-0c96-4241-a970-e33b7c711a3a",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "製造・産業",
+      "identity_class": "class",
+      "description": "活動「Lazarus、耐量子暗号を用いてマルウェア配信を秘匿」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--dfc80b76cad93a318adc",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--9416dc20-6484-4257-aca7-62291ce0454e",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Lazarus、耐量子暗号を用いてマルウェア配信を秘匿",
+      "identity_class": "organization",
+      "description": "Kasperskyは、2025年7月から韓国組織を狙う「FlashHole」をLazarusに帰属させた。ソフトウェア、建設、有線通信機器製造の少なくとも3社で被害を確認し、実際の影響はさらに広い可能性がある。 フィッシングページから細工したGitHubページへ誘導し、外部JavaScriptとINISAFE CrossWeb EXを介してメモリ上の実行チェーンを開始する。正規のfsquirt.exeを経由し、非公開GitHubリポジトリから取得するTechHubを導入する。 ClientHubはDropbox通信とLPEClientとのデータ交換を担い、LPEClientは端末情報の収集と暗号化ペイロードの処理を行う。最終的にCubridgeをメモリへ読み込み、コマンド実行やファイル操作、画面取得などを可能にする。 LPEClientはC2から耐量子暗号ML-KEM-1024の公開鍵4個を受け取り、共有秘密と暗号文を生成する。暗号文はGOSTアルゴリズムで暗号化して送信し、共有秘密をThreefishの鍵素材として後続ペイロードの復号に使用する。 攻撃ではChromium系ブラウザーの認証情報・Cookie・履歴を狙うツールも確認された。多くのコードをメモリ上で実行し、耐量子暗号と組み合わせて後続ペイロードの解析・検知を難しくしている。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--43efe2058b0690a86cb7",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "target--osint--country--south-korea"
+      ],
+      "x_malware_refs": [
+        "malware--daily-47e6b118d3eb6fdb9b2a",
+        "malware--daily-990cf1a78e6de4fd0a99",
+        "malware--daily-cac578d12201b56a81a0"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--0dae0673f59439a0fb4b"
+      ],
+      "x_affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0182ba44-a7b0-4430-9879-cfbfe3fde54d",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://k-wbc.co.kr/skin/social/social_view.php",
+      "pattern": "[url:value = 'https://k-wbc.co.kr/skin/social/social_view.php']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-990cf1a78e6de4fd0a99"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1930238d-b9a9-4cb8-b0e5-839ce3844475",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: ff07641dc56914dd90ee0bd7404d7ad7",
+      "pattern": "[file:hashes.'MD5' = 'ff07641dc56914dd90ee0bd7404d7ad7']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-990cf1a78e6de4fd0a99"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile",
+      "labels": [
+        "related-file"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--28138c58-95ed-4d22-be7d-5d5bfdfbb103",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 676fabe30a28b53925fba98e34b35986",
+      "pattern": "[file:hashes.'MD5' = '676fabe30a28b53925fba98e34b35986']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-47e6b118d3eb6fdb9b2a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile",
+      "labels": [
+        "payload"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3d48f4d3-a95c-4134-9971-9199b215b6a1",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://fp-news.co.kr/shop/cart",
+      "pattern": "[url:value = 'https://fp-news.co.kr/shop/cart']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-cac578d12201b56a81a0"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5869139e-72a6-438f-a1ac-7ecaadf5ec92",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://pythonapischool.com/api/detach",
+      "pattern": "[url:value = 'https://pythonapischool.com/api/detach']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5bd60bca-1bab-409c-ba41-b48bec136f5b",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://rcsh.co.kr/modules/bbs/tiles/bbs_div/inputForm.php",
+      "pattern": "[url:value = 'https://rcsh.co.kr/modules/bbs/tiles/bbs_div/inputForm.php']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-990cf1a78e6de4fd0a99"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6cfa920f-de68-495c-9596-2ab57cd864f1",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://cubedesign.co.kr/mobile/fashion",
+      "pattern": "[url:value = 'https://cubedesign.co.kr/mobile/fashion']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-cac578d12201b56a81a0"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--705d6eee-97ae-496f-9505-265cd3f529bb",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: pythonapischool.com",
+      "pattern": "[domain-name:value = 'pythonapischool.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Domain-Name",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7f471234-3a7c-4e9b-9aeb-5eed4eb729b9",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: javadevhouse.co.kr",
+      "pattern": "[domain-name:value = 'javadevhouse.co.kr']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Domain-Name",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8c214792-e3f2-438a-9ee8-8404c1f49222",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://javadevhouse.co.kr/ajax/libs/jquery/1.7.3/jquery.min.js",
+      "pattern": "[url:value = 'https://javadevhouse.co.kr/ajax/libs/jquery/1.7.3/jquery.min.js']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8c45cdc5-a481-4a03-bea0-c74e9b4880d1",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 2f8475a90a25624ed02f1d18d4e6d65d",
+      "pattern": "[file:hashes.'MD5' = '2f8475a90a25624ed02f1d18d4e6d65d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-47e6b118d3eb6fdb9b2a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile",
+      "labels": [
+        "payload"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--94c7e322-6785-4ac6-8746-52cfd7d7f916",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: ec84d6cb2ae7974767aedac246b50a3e",
+      "pattern": "[file:hashes.'MD5' = 'ec84d6cb2ae7974767aedac246b50a3e']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-47e6b118d3eb6fdb9b2a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile",
+      "labels": [
+        "payload"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c104b5c6-ae6b-485f-bba1-5fa0c4d67028",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: c105d6b16f544582772de0159f24c00a",
+      "pattern": "[file:hashes.'MD5' = 'c105d6b16f544582772de0159f24c00a']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-47e6b118d3eb6fdb9b2a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile",
+      "labels": [
+        "payload"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c6a19eee-8ad3-466e-924c-8df83dda85c9",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://www.ksog.org/insert_file/handle.php",
+      "pattern": "[url:value = 'https://www.ksog.org/insert_file/handle.php']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-990cf1a78e6de4fd0a99"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ce7c56c0-2868-441a-a5f6-91e7c7f47db8",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://cubedesign.co.kr/news",
+      "pattern": "[url:value = 'https://cubedesign.co.kr/news']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-cac578d12201b56a81a0"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "Url",
+      "labels": [
+        "c2"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ee684920-61c8-4bbc-84fa-3315839c705d",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: a28cba214058fcae2883d8cffc883abd",
+      "pattern": "[file:hashes.'MD5' = 'a28cba214058fcae2883d8cffc883abd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-47e6b118d3eb6fdb9b2a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile",
+      "labels": [
+        "payload"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f11e8c6b-680c-4d02-92ba-1e22adc8e976",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: b4a7eff35f048f06fb0a2d7631f23a7d",
+      "pattern": "[file:hashes.'MD5' = 'b4a7eff35f048f06fb0a2d7631f23a7d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-cdc4a98583750e026424"
+      ],
+      "x_malware_refs": [
+        "malware--daily-47e6b118d3eb6fdb9b2a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-9f5717bc12f27705b634",
+          "value": "2026-10-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile",
+      "labels": [
+        "payload"
+      ]
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-23T12:16:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Lazarus Group",
+      "aliases": [],
+      "description": "[Lazarus Group](https://attack.mitre.org/groups/G0032) is a North Korean state-sponsored cyber threat group attributed to the Reconnaissance General Bureau (RGB). (Citation: US-CERT HIDDEN COBRA June 2017) (Citation: Treasury North Korean Cyber Groups September 2019) [Lazarus Group](https://attack.mitre.org/groups/G0032) has been active since at least 2009 and is reportedly responsible for the November 2014 destructive wiper attack on Sony Pictures Entertainment, identified by Novetta as part of Operation Blockbuster. Malware used by [Lazarus Group](https://attack.mitre.org/groups/G0032) correlates to other reported campaigns, including Operation Flame, Operation 1Mission, Operation Troy, DarkSeoul, and Ten Days of Rain.(Citation: Novetta Blockbuster)\n\nNorth Korea’s cyber operations have shown a consistent pattern of adaptation, forming and reorganizing units as national priorities shift. These units frequently share personnel, infrastructure, malware, and tradecraft, making it difficult to attribute specific operations with high confidence. Public reporting often uses “Lazarus Group” as an umbrella term for multiple North Korean cyber operators conducting espionage, destructive attacks, and financially motivated campaigns.(Citation: Mandiant DPRK Laz Org Breakdown 2022)(Citation: Mandiant DPRK Groups 2023)(Citation: JPCert Blog Laz Subgroups 2025)\n\n",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection.",
+        "Financially motivated intrusion or fraud."
+      ],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_id": "actor--lazarus",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "Diamond Sleet",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Guardians of Peace",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "HIDDEN COBRA",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Labyrinth Chollima",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NICKEL ACADEMY",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "ZINC",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "North Korea"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "Lazarus Groupの標準化プロファイル。リポジトリ内の専用資料27件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack; ThreatNeedle",
+        "capability_details": "BLINDINGCAN, Proxysvc, KEYMARBLE, ThreatNeedle, Bankshot, AuditCred, Dacls, HOPLIGHT, Volgmer, WannaCry, TYPEFRAME, TAINTEDSCRIBE, MagicRAT, RATANKBA, BADCALL, Cryptoistic, HotCroissant, HARDRAIN, AppleJeus, ECCENTRICBANDWAGON, Dtrack, FALLCHILL, Tdrop, Tdrop2, Troy, Destover, FallChill RAT, Hawup, Manuscrypt, WolfRAT, SheepRAT, HtDnDownLoader, RawDisk, netsh, Responder, route",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、インド、オーストラリア、チリ、トルコ、バングラデシュ、パキスタン、フィリピン、ベトナム、メキシコ、ロシア、台湾、日本、米国、英国、韓国。標的地域=アジア、オセアニア、中南米、中東、全世界、北米、南アジア、東アジア、東南アジア、欧州。日本は確認時に個別国として保持する。\n\n標的範囲は日本に限定されない。日本ではDMM Bitcoinを含む暗号資産関連の被害・標的情報があり、日本を個別国として保持する。MITRE ATT&CKはOperation Dream Jobの標的国として米国、イスラエル、オーストラリア、ロシア、インドを明記している。米財務省はWannaCryが少なくとも150か国に影響し、英国NHSが公表被害者だったと記載するほか、LazarusとBluenoroffによるバングラデシュ中央銀行への共同作戦、Bluenoroffによる南アジア・東アジア・東南アジア・中南米などの銀行への作戦を記録している。このため全世界を広域項目として収録し、確認できる国は個別国として併記する。Bluenoroff・Andarielを含む『Lazarus Group』の集合境界は資料ごとに異なるため、中核Lazarusとサブグループの事例は注記で区別する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--8be2bfd5-c66f-4746-9bec-2e6ebbbc13fa",
+      "created": "2026-07-29T22:48:52Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Republic of Korea",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--osint--country--south-korea",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "KOR",
+      "x_opencti_reference_id": "location--69b73a4d-de23-46cc-b870-326ba940bba0",
+      "x_opencti_aliases": [
+        "KOR",
+        "KR",
+        "韓国"
+      ],
+      "latitude": 35.907757,
+      "longitude": 127.766922,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--2842f588-db5f-47c7-b855-024a99df0455",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Cubridge",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-cac578d12201b56a81a0",
+      "x_confidence": "medium",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--306ca17b-059e-4bbc-a579-13de52246949",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ClientHub",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-990cf1a78e6de4fd0a99",
+      "x_confidence": "medium",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor",
+        "loader"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TouchShift",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-47e6b118d3eb6fdb9b2a",
+      "x_confidence": "medium",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "unknown"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0157336b-7e1f-4d27-8b7e-cfc4500f7279",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--3d48f4d3-a95c-4134-9971-9199b215b6a1",
+      "target_ref": "url--672018e0-8d59-4aae-be06-f1d7076d04a6",
+      "description": "indicator--sha256:a2be326c493649288b0561903a2df2ae1e4e6b3e8842ea42ab92ee0d91da3aa4 directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:a2be326c493649288b0561903a2df2ae1e4e6b3e8842ea42ab92ee0d91da3aa4",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--02342125-aecb-4c3e-9dbc-f567049167ae",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6cfa920f-de68-495c-9596-2ab57cd864f1",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--02af7bdf-54c6-416b-b487-b0ee8b09dc10",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--94c7e322-6785-4ac6-8746-52cfd7d7f916",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "md5: ec84d6cb2ae7974767aedac246b50a3e is explicitly linked to malware--daily-47e6b118d3eb6fdb9b2a in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--05f823b5-1719-4f8a-bb01-40317618bdaf",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7f471234-3a7c-4e9b-9aeb-5eed4eb729b9",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "domain: javadevhouse.co.kr is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--07ae5382-c68a-4994-9db6-0f54690e231d",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "attack-pattern--0fa33bb6-1b74-4da4-ab8b-b233998dddce",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 uses ttp--activity-rule--0dae0673f59439a0fb4b.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--07b17da7-c8a4-49a4-b866-11c90a12cb18",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "identity--5e931489-0c96-4241-a970-e33b7c711a3a",
+      "description": "Lazarus Group targets 製造・産業 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。; activity-period",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0f755846-d2d3-4f7c-bd83-f82f15d1a0c5",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--28138c58-95ed-4d22-be7d-5d5bfdfbb103",
+      "target_ref": "file--3847e87b-9cc1-4656-afa8-6478dcbcba5f",
+      "description": "indicator--sha256:1dd5d407a936921fa6d58720ffda054a45bcccac56fc69f055192e5de36dcca7 directly represents the atomic file observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:1dd5d407a936921fa6d58720ffda054a45bcccac56fc69f055192e5de36dcca7",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--165995ec-daf6-418c-a6ea-1859b0adc281",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5bd60bca-1bab-409c-ba41-b48bec136f5b",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--19891b24-ba70-4959-8e35-36488fc259a9",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8c45cdc5-a481-4a03-bea0-c74e9b4880d1",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1b4406f8-97ae-4ce7-9a95-bb8bd7b54859",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ce7c56c0-2868-441a-a5f6-91e7c7f47db8",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1e068d5c-bb2c-4d71-900b-2d1e47d0957c",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6cfa920f-de68-495c-9596-2ab57cd864f1",
+      "target_ref": "malware--2842f588-db5f-47c7-b855-024a99df0455",
+      "description": "url: https://cubedesign.co.kr/mobile/fashion is explicitly linked to malware--daily-cac578d12201b56a81a0 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--207e0752-fa5c-4224-96a7-ff4efd90f60a",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 uses malware--daily-47e6b118d3eb6fdb9b2a.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--23419d10-e8c1-443b-b848-632d1d52e24b",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--ce7c56c0-2868-441a-a5f6-91e7c7f47db8",
+      "target_ref": "url--9106c0f4-1874-46a5-ad36-325ba10ac455",
+      "description": "indicator--sha256:96de4c9feeb41953341d7c85b163e80afb74e8111dd4ac810c44ac6164e64fd1 directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:96de4c9feeb41953341d7c85b163e80afb74e8111dd4ac810c44ac6164e64fd1",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2437493e-66cc-49b5-9388-7b64444b1661",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c6a19eee-8ad3-466e-924c-8df83dda85c9",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://www.ksog.org/insert_file/handle.php is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--274309c4-dec6-4f04-8303-4b685a6334a9",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5869139e-72a6-438f-a1ac-7ecaadf5ec92",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://pythonapischool.com/api/detach is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--27ed6b8c-a69d-4832-a21d-6b793087fc57",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8c45cdc5-a481-4a03-bea0-c74e9b4880d1",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "md5: 2f8475a90a25624ed02f1d18d4e6d65d is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2a15a6ce-99cb-4e87-8254-a3d11a26cda4",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0182ba44-a7b0-4430-9879-cfbfe3fde54d",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://k-wbc.co.kr/skin/social/social_view.php is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2ffa4931-c150-4e5e-a97c-1c87fc54c226",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--28138c58-95ed-4d22-be7d-5d5bfdfbb103",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "md5: 676fabe30a28b53925fba98e34b35986 is explicitly linked to malware--daily-47e6b118d3eb6fdb9b2a in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--30cc91b9-e700-4e46-8703-3d1ff0acaa5f",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--28138c58-95ed-4d22-be7d-5d5bfdfbb103",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "md5: 676fabe30a28b53925fba98e34b35986 is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--371fde70-db00-48b3-93f4-1a472d4e9a77",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f11e8c6b-680c-4d02-92ba-1e22adc8e976",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--386e8939-1d43-43a5-87f6-c54fd314ed3e",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c104b5c6-ae6b-485f-bba1-5fa0c4d67028",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "md5: c105d6b16f544582772de0159f24c00a is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--388317d5-1adf-44ff-8020-de4255b28f27",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5bd60bca-1bab-409c-ba41-b48bec136f5b",
+      "target_ref": "malware--306ca17b-059e-4bbc-a579-13de52246949",
+      "description": "url: https://rcsh.co.kr/modules/bbs/tiles/bbs_div/inputForm.php is explicitly linked to malware--daily-990cf1a78e6de4fd0a99 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3994fa18-040a-43f9-8f22-e9a75ba3da1b",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8c214792-e3f2-438a-9ee8-8404c1f49222",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://javadevhouse.co.kr/ajax/libs/jquery/1.7.3/jquery.min.js is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3996feec-85fb-4076-be79-0d5760eaf402",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--f11e8c6b-680c-4d02-92ba-1e22adc8e976",
+      "target_ref": "file--99cd8e5f-6cdd-4b96-871e-94f18f7806ac",
+      "description": "indicator--sha256:023bdba62079399b16c647f77dd253401243c6643fd15080816d538e758995e4 directly represents the atomic file observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:023bdba62079399b16c647f77dd253401243c6643fd15080816d538e758995e4",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3a856c78-4713-4948-a6fc-a54919584d0a",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "attack-pattern--0fa33bb6-1b74-4da4-ab8b-b233998dddce",
+      "description": "最終的にCubridgeをメモリへ読み込み、コマンド実行やファイル操作、画面取得などを可能にする。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。; activity-period",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3ab32d4c-f7c5-400f-bc52-a1d650396fae",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0182ba44-a7b0-4430-9879-cfbfe3fde54d",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3c8aec1f-c0f0-4c2c-a3f1-858175b9d2d6",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c104b5c6-ae6b-485f-bba1-5fa0c4d67028",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3d91738f-e441-4783-a43e-50b9d5f211bd",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--5869139e-72a6-438f-a1ac-7ecaadf5ec92",
+      "target_ref": "url--e1d2f256-6203-4e1a-b4d3-3dfcb9dc8530",
+      "description": "indicator--sha256:e460d20a7ea02c5c704254d883a28a137e686ceed7cac292d3136f834b3e2f9d directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:e460d20a7ea02c5c704254d883a28a137e686ceed7cac292d3136f834b3e2f9d",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3fc11748-9c9a-448e-940d-cb4a7bf06855",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "location--8be2bfd5-c66f-4746-9bec-2e6ebbbc13fa",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 targets target--osint--country--south-korea.\n\nEvidence: 米財務省は、Lazarus Groupのサブグループと位置付けるBluenoroffが、韓国の銀行に対する作戦を成功させたとの報道を記載している。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        },
+        {
+          "source_name": "U.S. Department of the Treasury",
+          "description": "Source: https://home.treasury.gov/news/press-releases/sm774",
+          "external_id": "source--treasury-dprk-groups-2019",
+          "url": "https://home.treasury.gov/news/press-releases/sm774"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--419b93fd-4d67-47f2-885a-42daa92bcc08",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5bd60bca-1bab-409c-ba41-b48bec136f5b",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://rcsh.co.kr/modules/bbs/tiles/bbs_div/inputForm.php is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--41c2c684-6b07-4b46-82d9-269ac75d7058",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f11e8c6b-680c-4d02-92ba-1e22adc8e976",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "md5: b4a7eff35f048f06fb0a2d7631f23a7d is explicitly linked to malware--daily-47e6b118d3eb6fdb9b2a in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--449e160f-53c4-4bb5-8d09-abcea5f9b8ec",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--8c214792-e3f2-438a-9ee8-8404c1f49222",
+      "target_ref": "url--97dbd1b9-deb8-4076-a6c3-d8f8267ab247",
+      "description": "indicator--sha256:84c0775742bc5aebf882a5cdd426ce49cf375c890c6e77b56375e9b0d8c9f4aa directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:84c0775742bc5aebf882a5cdd426ce49cf375c890c6e77b56375e9b0d8c9f4aa",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4be75689-bcbc-4ccf-9ccb-cd691d854c62",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "Lazarus Group uses TouchShift.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5560e5a5-2ce9-4a56-90fc-042152642f3f",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "identity--9416dc20-6484-4257-aca7-62291ce0454e",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 affected victim--activity-rule--43efe2058b0690a86cb7.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--55a0fd18-e7c0-4276-8201-115383c19ee8",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ce7c56c0-2868-441a-a5f6-91e7c7f47db8",
+      "target_ref": "malware--2842f588-db5f-47c7-b855-024a99df0455",
+      "description": "url: https://cubedesign.co.kr/news is explicitly linked to malware--daily-cac578d12201b56a81a0 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5a721b8f-09a2-4a83-a475-b089256f262c",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ce7c56c0-2868-441a-a5f6-91e7c7f47db8",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://cubedesign.co.kr/news is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6599455e-cb91-43c5-a28a-c382124e381b",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3d48f4d3-a95c-4134-9971-9199b215b6a1",
+      "target_ref": "malware--2842f588-db5f-47c7-b855-024a99df0455",
+      "description": "url: https://fp-news.co.kr/shop/cart is explicitly linked to malware--daily-cac578d12201b56a81a0 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--663210c4-e81f-4c44-a514-af1e6d65ec9e",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--c6a19eee-8ad3-466e-924c-8df83dda85c9",
+      "target_ref": "url--7f7e0008-2e83-4ea0-a704-e095ceda9dab",
+      "description": "indicator--sha256:8ce06701da16ce73dfee81063d6139a473ea39d1a7b77efc2a38d9b43231e465 directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:8ce06701da16ce73dfee81063d6139a473ea39d1a7b77efc2a38d9b43231e465",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6a9523a0-2d46-4efe-b46f-9ac4166a9077",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1930238d-b9a9-4cb8-b0e5-839ce3844475",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6f5f6928-653c-4726-b718-d5721fe816f5",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ee684920-61c8-4bbc-84fa-3315839c705d",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "md5: a28cba214058fcae2883d8cffc883abd is explicitly linked to malware--daily-47e6b118d3eb6fdb9b2a in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6fc9a897-7951-423f-8775-8e6981e4325d",
+      "created": "2026-07-29T22:48:52Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "location--8be2bfd5-c66f-4746-9bec-2e6ebbbc13fa",
+      "description": "Lazarus Group targets 韓国 (profile target category: countries).\n\nEvidence: 米財務省は、Lazarus Groupのサブグループと位置付けるBluenoroffが、韓国の銀行に対する作戦を成功させたとの報道を記載している。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        },
+        {
+          "source_name": "U.S. Department of the Treasury",
+          "description": "Source: https://home.treasury.gov/news/press-releases/sm774",
+          "external_id": "source--treasury-dprk-groups-2019",
+          "url": "https://home.treasury.gov/news/press-releases/sm774"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。; activity-period",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6fcbfc94-6dc1-4fa0-b4e8-589f2ffdaa9c",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3d48f4d3-a95c-4134-9971-9199b215b6a1",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://fp-news.co.kr/shop/cart is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--766b8d2b-b39b-4980-95ae-fb0d753ab130",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--705d6eee-97ae-496f-9505-265cd3f529bb",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "domain: pythonapischool.com is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7b8571e8-4478-4e8e-9a3b-17172ffcd12e",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--705d6eee-97ae-496f-9505-265cd3f529bb",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--808dafda-01eb-48f6-9a05-6abd3c0c107d",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c104b5c6-ae6b-485f-bba1-5fa0c4d67028",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "md5: c105d6b16f544582772de0159f24c00a is explicitly linked to malware--daily-47e6b118d3eb6fdb9b2a in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--81ba8bff-c570-4578-8df5-02a904b48cd3",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--94c7e322-6785-4ac6-8746-52cfd7d7f916",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "md5: ec84d6cb2ae7974767aedac246b50a3e is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--83fab926-c42a-4451-8313-50eea9d57a40",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--0182ba44-a7b0-4430-9879-cfbfe3fde54d",
+      "target_ref": "url--c1a17cdb-c281-4e44-a3f7-4436591c6443",
+      "description": "indicator--sha256:2d688037c83de54dc26248cd53f8cfe5b87f650af10cc43308c035cf8245e6da directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:2d688037c83de54dc26248cd53f8cfe5b87f650af10cc43308c035cf8245e6da",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8875e378-85b1-422e-8739-9b529c822818",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1930238d-b9a9-4cb8-b0e5-839ce3844475",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "md5: ff07641dc56914dd90ee0bd7404d7ad7 is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9021a0d2-1735-470f-9b5c-b158c1293fbb",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 is attributed or linked to Lazarus Group.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--953c122f-d81d-407e-8a32-2235f3ec4f31",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1930238d-b9a9-4cb8-b0e5-839ce3844475",
+      "target_ref": "malware--306ca17b-059e-4bbc-a579-13de52246949",
+      "description": "md5: ff07641dc56914dd90ee0bd7404d7ad7 is explicitly linked to malware--daily-990cf1a78e6de4fd0a99 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--96c2bccb-a9f9-4c5c-bcf9-6b2414333667",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5869139e-72a6-438f-a1ac-7ecaadf5ec92",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9ab469a2-9dc0-4526-8e93-122d446bbd30",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ee684920-61c8-4bbc-84fa-3315839c705d",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9d1a7737-6ea4-4d5d-bdb1-c4676fa273fb",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ee684920-61c8-4bbc-84fa-3315839c705d",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "md5: a28cba214058fcae2883d8cffc883abd is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9dfa9a9d-4ba5-49e5-a299-32e60ce456d0",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "malware--2842f588-db5f-47c7-b855-024a99df0455",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 uses malware--daily-cac578d12201b56a81a0.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9f0a27c8-2490-4f79-aafc-49c60ac451ab",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--2842f588-db5f-47c7-b855-024a99df0455",
+      "description": "Lazarus Group uses Cubridge.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5f297a1-2136-4564-b950-ee05198ba48f",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3d48f4d3-a95c-4134-9971-9199b215b6a1",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--afbe8a6c-54b1-48ac-bce4-c1233cca6f50",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f11e8c6b-680c-4d02-92ba-1e22adc8e976",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "md5: b4a7eff35f048f06fb0a2d7631f23a7d is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b5d765eb-ee82-413a-92b5-a22e9353569b",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "identity--5e931489-0c96-4241-a970-e33b7c711a3a",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 targets target--activity-rule--sector--dfc80b76cad93a318adc.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b816e8ec-ae3f-481e-8b8a-5cb36d00366f",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--1930238d-b9a9-4cb8-b0e5-839ce3844475",
+      "target_ref": "file--d03efe76-a5e2-4b87-b4bf-2074e0c6743e",
+      "description": "indicator--sha256:82bde31abc09866d154f92aa1255acb7205976ce849a525ba31991b7362a4bac directly represents the atomic file observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:82bde31abc09866d154f92aa1255acb7205976ce849a525ba31991b7362a4bac",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "related-file"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c1473454-7923-436c-bb7c-1fce1881b78c",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--94c7e322-6785-4ac6-8746-52cfd7d7f916",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c988577d-f524-4453-b3cd-29704af34867",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--705d6eee-97ae-496f-9505-265cd3f529bb",
+      "target_ref": "domain-name--0e2600ed-13d0-482e-8500-b50865018876",
+      "description": "indicator--sha256:9121590c226d2227d38f2fda203db6158e17f21aed884f7d0a9b11b0949721d2 directly represents the atomic domain-name observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:9121590c226d2227d38f2fda203db6158e17f21aed884f7d0a9b11b0949721d2",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ccba8b01-a2db-4bf9-8a9c-a2e069eafccd",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--ee684920-61c8-4bbc-84fa-3315839c705d",
+      "target_ref": "file--cc7df84c-0e3a-41e0-b19f-05676055b830",
+      "description": "indicator--sha256:5862fbf6a55195ef5b71d6683cc76ef3c3f67b2b3b27a9baa13a7c7a06772924 directly represents the atomic file observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:5862fbf6a55195ef5b71d6683cc76ef3c3f67b2b3b27a9baa13a7c7a06772924",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cea103ab-9c03-4852-bd25-cb9f522a5caf",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6cfa920f-de68-495c-9596-2ab57cd864f1",
+      "target_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "description": "url: https://cubedesign.co.kr/mobile/fashion is explicitly scoped to campaign Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cf9d5af3-cf1d-430b-911c-742601f492c9",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8c214792-e3f2-438a-9ee8-8404c1f49222",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d2d5d9f7-d51a-482f-b5ab-95647a5df2a3",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7f471234-3a7c-4e9b-9aeb-5eed4eb729b9",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d7a7c0fd-1ae1-4b5d-875a-4ebb91e3d65e",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--8c45cdc5-a481-4a03-bea0-c74e9b4880d1",
+      "target_ref": "file--bec11b01-a8f6-4f56-873a-b186637f658e",
+      "description": "indicator--sha256:e269619d68da19f96d4b904ca05f74b25fcd964c62886aab980a7f78dc78ecf2 directly represents the atomic file observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:e269619d68da19f96d4b904ca05f74b25fcd964c62886aab980a7f78dc78ecf2",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--da9255aa-55b3-444e-a1ef-914175642430",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0182ba44-a7b0-4430-9879-cfbfe3fde54d",
+      "target_ref": "malware--306ca17b-059e-4bbc-a579-13de52246949",
+      "description": "url: https://k-wbc.co.kr/skin/social/social_view.php is explicitly linked to malware--daily-990cf1a78e6de4fd0a99 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--db39bd7c-924a-4c54-a474-0d13043cc6e1",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--94c7e322-6785-4ac6-8746-52cfd7d7f916",
+      "target_ref": "file--8b1d38d6-46cb-41ae-ad1e-9af373ba3943",
+      "description": "indicator--sha256:e24171058ac1f8760902f382b8361dec1d37c2d0d2a7ff7c6c95fe4cb03eae2a directly represents the atomic file observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:e24171058ac1f8760902f382b8361dec1d37c2d0d2a7ff7c6c95fe4cb03eae2a",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e3b68266-eddb-4721-aa6f-99e1d7aea677",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c6a19eee-8ad3-466e-924c-8df83dda85c9",
+      "target_ref": "malware--306ca17b-059e-4bbc-a579-13de52246949",
+      "description": "url: https://www.ksog.org/insert_file/handle.php is explicitly linked to malware--daily-990cf1a78e6de4fd0a99 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e411a60f-7374-491d-a075-77dee551dae4",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--6cfa920f-de68-495c-9596-2ab57cd864f1",
+      "target_ref": "url--bac2013c-1cd7-4769-aaea-f3a43bff457b",
+      "description": "indicator--sha256:48033528a8267bdf7538b88edcfbe05d7e6689c8491710975dacb34f6cfcd01c directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:48033528a8267bdf7538b88edcfbe05d7e6689c8491710975dacb34f6cfcd01c",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e4e11c40-0c30-470a-83b3-6cb32c02a5f1",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--c104b5c6-ae6b-485f-bba1-5fa0c4d67028",
+      "target_ref": "file--2b3a1602-c083-42c9-a597-d95b05939d0c",
+      "description": "indicator--sha256:ecdd7a0058dcc6160daae844470161e7c2018479edc81395270bceca6065438c directly represents the atomic file observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:ecdd7a0058dcc6160daae844470161e7c2018479edc81395270bceca6065438c",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "payload"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e83ee8e5-c2b9-4469-942b-a36e4a92a5e5",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--28138c58-95ed-4d22-be7d-5d5bfdfbb103",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ee2f9940-5666-40c7-a69e-d67645cabf13",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--5bd60bca-1bab-409c-ba41-b48bec136f5b",
+      "target_ref": "url--960ff3b2-3654-413a-b39f-1ffc4fd0d269",
+      "description": "indicator--sha256:67446e0d233d98d548735d3597bc5c8c71b37d83d41e2ddef433bc21c97a95dc directly represents the atomic url observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:67446e0d233d98d548735d3597bc5c8c71b37d83d41e2ddef433bc21c97a95dc",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f4cc5c56-4f12-4d92-a20f-c970e9a87122",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8c45cdc5-a481-4a03-bea0-c74e9b4880d1",
+      "target_ref": "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+      "description": "md5: 2f8475a90a25624ed02f1d18d4e6d65d is explicitly linked to malware--daily-47e6b118d3eb6fdb9b2a in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f4ed9fff-1223-4ae6-a27c-be507e07ee19",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--7f471234-3a7c-4e9b-9aeb-5eed4eb729b9",
+      "target_ref": "domain-name--130f21c4-9fd6-493e-a8a2-7a81c862a820",
+      "description": "indicator--sha256:20cbe2d319e3d92cecb01f750d65cdde28c01c596669dbf41a6d56b7a0cf6b20 directly represents the atomic domain-name observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:20cbe2d319e3d92cecb01f750d65cdde28c01c596669dbf41a6d56b7a0cf6b20",
+      "x_observation_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-9f5717bc12f27705b634"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fa24e4fd-c868-4579-8293-63918f44bc42",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--306ca17b-059e-4bbc-a579-13de52246949",
+      "description": "Lazarus Group uses ClientHub.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fa5958eb-add0-4f61-8836-1a0889231dde",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+      "target_ref": "malware--306ca17b-059e-4bbc-a579-13de52246949",
+      "description": "Lazarus、耐量子暗号を用いてマルウェア配信を秘匿 uses malware--daily-990cf1a78e6de4fd0a99.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Source: https://securelist.com/lazarus-operation-flashhole/121541/",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "last": null,
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "stop_time": "2025-07-01T00:00:00Z",
+      "x_stop_time_is_fallback": true,
+      "x_stop_time_basis": "opencti-required-start-time-fallback"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fd3eb69e-741c-4fb1-ab0a-0d8236babf3e",
+      "created": "2026-11-15T08:50:11Z",
+      "modified": "2026-11-15T08:50:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c6a19eee-8ad3-466e-924c-8df83dda85c9",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4b3d7c97-7d6a-48c0-89a9-4bfedf98d78a",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "https://securelist.com/lazarus-operation-flashhole/121541/",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-10-22T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--0fa33bb6-1b74-4da4-ab8b-b233998dddce",
+        "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+        "identity--5e931489-0c96-4241-a970-e33b7c711a3a",
+        "identity--9416dc20-6484-4257-aca7-62291ce0454e",
+        "indicator--0182ba44-a7b0-4430-9879-cfbfe3fde54d",
+        "indicator--1930238d-b9a9-4cb8-b0e5-839ce3844475",
+        "indicator--28138c58-95ed-4d22-be7d-5d5bfdfbb103",
+        "indicator--3d48f4d3-a95c-4134-9971-9199b215b6a1",
+        "indicator--5869139e-72a6-438f-a1ac-7ecaadf5ec92",
+        "indicator--5bd60bca-1bab-409c-ba41-b48bec136f5b",
+        "indicator--6cfa920f-de68-495c-9596-2ab57cd864f1",
+        "indicator--705d6eee-97ae-496f-9505-265cd3f529bb",
+        "indicator--7f471234-3a7c-4e9b-9aeb-5eed4eb729b9",
+        "indicator--8c214792-e3f2-438a-9ee8-8404c1f49222",
+        "indicator--8c45cdc5-a481-4a03-bea0-c74e9b4880d1",
+        "indicator--94c7e322-6785-4ac6-8746-52cfd7d7f916",
+        "indicator--c104b5c6-ae6b-485f-bba1-5fa0c4d67028",
+        "indicator--c6a19eee-8ad3-466e-924c-8df83dda85c9",
+        "indicator--ce7c56c0-2868-441a-a5f6-91e7c7f47db8",
+        "indicator--ee684920-61c8-4bbc-84fa-3315839c705d",
+        "indicator--f11e8c6b-680c-4d02-92ba-1e22adc8e976",
+        "malware--2842f588-db5f-47c7-b855-024a99df0455",
+        "malware--306ca17b-059e-4bbc-a579-13de52246949",
+        "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+        "relationship--0157336b-7e1f-4d27-8b7e-cfc4500f7279",
+        "relationship--07ae5382-c68a-4994-9db6-0f54690e231d",
+        "relationship--07b17da7-c8a4-49a4-b866-11c90a12cb18",
+        "relationship--0f755846-d2d3-4f7c-bd83-f82f15d1a0c5",
+        "relationship--207e0752-fa5c-4224-96a7-ff4efd90f60a",
+        "relationship--23419d10-e8c1-443b-b848-632d1d52e24b",
+        "relationship--3996feec-85fb-4076-be79-0d5760eaf402",
+        "relationship--3a856c78-4713-4948-a6fc-a54919584d0a",
+        "relationship--3d91738f-e441-4783-a43e-50b9d5f211bd",
+        "relationship--3fc11748-9c9a-448e-940d-cb4a7bf06855",
+        "relationship--449e160f-53c4-4bb5-8d09-abcea5f9b8ec",
+        "relationship--4be75689-bcbc-4ccf-9ccb-cd691d854c62",
+        "relationship--5560e5a5-2ce9-4a56-90fc-042152642f3f",
+        "relationship--663210c4-e81f-4c44-a514-af1e6d65ec9e",
+        "relationship--6fc9a897-7951-423f-8775-8e6981e4325d",
+        "relationship--83fab926-c42a-4451-8313-50eea9d57a40",
+        "relationship--9021a0d2-1735-470f-9b5c-b158c1293fbb",
+        "relationship--9dfa9a9d-4ba5-49e5-a299-32e60ce456d0",
+        "relationship--9f0a27c8-2490-4f79-aafc-49c60ac451ab",
+        "relationship--b5d765eb-ee82-413a-92b5-a22e9353569b",
+        "relationship--b816e8ec-ae3f-481e-8b8a-5cb36d00366f",
+        "relationship--c988577d-f524-4453-b3cd-29704af34867",
+        "relationship--ccba8b01-a2db-4bf9-8a9c-a2e069eafccd",
+        "relationship--d7a7c0fd-1ae1-4b5d-875a-4ebb91e3d65e",
+        "relationship--db39bd7c-924a-4c54-a474-0d13043cc6e1",
+        "relationship--e411a60f-7374-491d-a075-77dee551dae4",
+        "relationship--e4e11c40-0c30-470a-83b3-6cb32c02a5f1",
+        "relationship--ee2f9940-5666-40c7-a69e-d67645cabf13",
+        "relationship--f4ed9fff-1223-4ae6-a27c-be507e07ee19",
+        "relationship--fa24e4fd-c868-4579-8293-63918f44bc42",
+        "relationship--fa5958eb-add0-4f61-8836-1a0889231dde"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-9f5717bc12f27705b634",
+          "url": "https://securelist.com/lazarus-operation-flashhole/121541/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-9f5717bc12f27705b634",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-cdc4a98583750e026424",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4d67e5c6-fed9-461c-bfca-7bd6c77569d7",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-cdc4a98583750e026424",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--796a7d01-173e-4d58-a0b4-0e17118d4de2",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-cdc4a98583750e026424",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ce2a42c5-8e1d-4a7b-beb5-c25605dc6d7e",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2019-09-13T00:00:00Z",
+      "object_refs": [
+        "relationship--3fc11748-9c9a-448e-940d-cb4a7bf06855",
+        "relationship--6fc9a897-7951-423f-8775-8e6981e4325d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "U.S. Department of the Treasury",
+          "external_id": "source--treasury-dprk-groups-2019",
+          "url": "https://home.treasury.gov/news/press-releases/sm774"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--treasury-dprk-groups-2019",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-cdc4a98583750e026424",
+      "x_source_publisher": "U.S. Department of the Treasury",
+      "x_source_type": "government-designation",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "document",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--672018e0-8d59-4aae-be06-f1d7076d04a6",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://fp-news.co.kr/shop/cart",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--7f7e0008-2e83-4ea0-a704-e095ceda9dab",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://www.ksog.org/insert_file/handle.php",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--9106c0f4-1874-46a5-ad36-325ba10ac455",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://cubedesign.co.kr/news",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--960ff3b2-3654-413a-b39f-1ffc4fd0d269",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://rcsh.co.kr/modules/bbs/tiles/bbs_div/inputForm.php",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--97dbd1b9-deb8-4076-a6c3-d8f8267ab247",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://javadevhouse.co.kr/ajax/libs/jquery/1.7.3/jquery.min.js",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--bac2013c-1cd7-4769-aaea-f3a43bff457b",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://cubedesign.co.kr/mobile/fashion",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--c1a17cdb-c281-4e44-a3f7-4436591c6443",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://k-wbc.co.kr/skin/social/social_view.php",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--e1d2f256-6203-4e1a-b4d3-3dfcb9dc8530",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "https://pythonapischool.com/api/detach",
+      "x_opencti_labels": [
+        "c2"
+      ],
+      "x_ioc_roles": [
+        "c2"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7b57f296-98bb-4a26-a091-5e7984a5cddd",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Lazarus Group / Lazarus、耐量子暗号を用いてマルウェア配信を秘匿",
+      "description": "Kasperskyは、2025年7月から韓国組織を狙う「FlashHole」をLazarusに帰属させた。ソフトウェア、建設、有線通信機器製造の少なくとも3社で被害を確認し、実際の影響はさらに広い可能性がある。 フィッシングページから細工したGitHubページへ誘導し、外部JavaScriptとINISAFE CrossWeb EXを介してメモリ上の実行チェーンを開始する。正規のfsquirt.exeを経由し、非公開GitHubリポジトリから取得するTechHubを導入する。 ClientHubはDropbox通信とLPEClientとのデータ交換を担い、LPEClientは端末情報の収集と暗号化ペイロードの処理を行う。最終的にCubridgeをメモリへ読み込み、コマンド実行やファイル操作、画面取得などを可能にする。 LPEClientはC2から耐量子暗号ML-KEM-1024の公開鍵4個を受け取り、共有秘密と暗号文を生成する。暗号文はGOSTアルゴリズムで暗号化して送信し、共有秘密をThreefishの鍵素材として後続ペイロードの復号に使用する。 攻撃ではChromium系ブラウザーの認証情報・Cookie・履歴を狙うツールも確認された。多くのコードをメモリ上で実行し、耐量子暗号と組み合わせて後続ペイロードの解析・検知を難しくしている。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-11-15T09:02:08Z",
+      "object_refs": [
+        "attack-pattern--0fa33bb6-1b74-4da4-ab8b-b233998dddce",
+        "campaign--55eed031-a652-445e-a8d8-5d02d1000e50",
+        "domain-name--0e2600ed-13d0-482e-8500-b50865018876",
+        "domain-name--130f21c4-9fd6-493e-a8a2-7a81c862a820",
+        "file--2b3a1602-c083-42c9-a597-d95b05939d0c",
+        "file--3847e87b-9cc1-4656-afa8-6478dcbcba5f",
+        "file--8b1d38d6-46cb-41ae-ad1e-9af373ba3943",
+        "file--99cd8e5f-6cdd-4b96-871e-94f18f7806ac",
+        "file--bec11b01-a8f6-4f56-873a-b186637f658e",
+        "file--cc7df84c-0e3a-41e0-b19f-05676055b830",
+        "file--d03efe76-a5e2-4b87-b4bf-2074e0c6743e",
+        "identity--5e931489-0c96-4241-a970-e33b7c711a3a",
+        "identity--9416dc20-6484-4257-aca7-62291ce0454e",
+        "indicator--0182ba44-a7b0-4430-9879-cfbfe3fde54d",
+        "indicator--1930238d-b9a9-4cb8-b0e5-839ce3844475",
+        "indicator--28138c58-95ed-4d22-be7d-5d5bfdfbb103",
+        "indicator--3d48f4d3-a95c-4134-9971-9199b215b6a1",
+        "indicator--5869139e-72a6-438f-a1ac-7ecaadf5ec92",
+        "indicator--5bd60bca-1bab-409c-ba41-b48bec136f5b",
+        "indicator--6cfa920f-de68-495c-9596-2ab57cd864f1",
+        "indicator--705d6eee-97ae-496f-9505-265cd3f529bb",
+        "indicator--7f471234-3a7c-4e9b-9aeb-5eed4eb729b9",
+        "indicator--8c214792-e3f2-438a-9ee8-8404c1f49222",
+        "indicator--8c45cdc5-a481-4a03-bea0-c74e9b4880d1",
+        "indicator--94c7e322-6785-4ac6-8746-52cfd7d7f916",
+        "indicator--c104b5c6-ae6b-485f-bba1-5fa0c4d67028",
+        "indicator--c6a19eee-8ad3-466e-924c-8df83dda85c9",
+        "indicator--ce7c56c0-2868-441a-a5f6-91e7c7f47db8",
+        "indicator--ee684920-61c8-4bbc-84fa-3315839c705d",
+        "indicator--f11e8c6b-680c-4d02-92ba-1e22adc8e976",
+        "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+        "location--8be2bfd5-c66f-4746-9bec-2e6ebbbc13fa",
+        "malware--2842f588-db5f-47c7-b855-024a99df0455",
+        "malware--306ca17b-059e-4bbc-a579-13de52246949",
+        "malware--3ebfe144-4a01-47d0-bacb-b6a724928afc",
+        "relationship--0157336b-7e1f-4d27-8b7e-cfc4500f7279",
+        "relationship--02342125-aecb-4c3e-9dbc-f567049167ae",
+        "relationship--02af7bdf-54c6-416b-b487-b0ee8b09dc10",
+        "relationship--05f823b5-1719-4f8a-bb01-40317618bdaf",
+        "relationship--07ae5382-c68a-4994-9db6-0f54690e231d",
+        "relationship--07b17da7-c8a4-49a4-b866-11c90a12cb18",
+        "relationship--0f755846-d2d3-4f7c-bd83-f82f15d1a0c5",
+        "relationship--165995ec-daf6-418c-a6ea-1859b0adc281",
+        "relationship--19891b24-ba70-4959-8e35-36488fc259a9",
+        "relationship--1b4406f8-97ae-4ce7-9a95-bb8bd7b54859",
+        "relationship--1e068d5c-bb2c-4d71-900b-2d1e47d0957c",
+        "relationship--207e0752-fa5c-4224-96a7-ff4efd90f60a",
+        "relationship--23419d10-e8c1-443b-b848-632d1d52e24b",
+        "relationship--2437493e-66cc-49b5-9388-7b64444b1661",
+        "relationship--274309c4-dec6-4f04-8303-4b685a6334a9",
+        "relationship--27ed6b8c-a69d-4832-a21d-6b793087fc57",
+        "relationship--2a15a6ce-99cb-4e87-8254-a3d11a26cda4",
+        "relationship--2ffa4931-c150-4e5e-a97c-1c87fc54c226",
+        "relationship--30cc91b9-e700-4e46-8703-3d1ff0acaa5f",
+        "relationship--371fde70-db00-48b3-93f4-1a472d4e9a77",
+        "relationship--386e8939-1d43-43a5-87f6-c54fd314ed3e",
+        "relationship--388317d5-1adf-44ff-8020-de4255b28f27",
+        "relationship--3994fa18-040a-43f9-8f22-e9a75ba3da1b",
+        "relationship--3996feec-85fb-4076-be79-0d5760eaf402",
+        "relationship--3a856c78-4713-4948-a6fc-a54919584d0a",
+        "relationship--3ab32d4c-f7c5-400f-bc52-a1d650396fae",
+        "relationship--3c8aec1f-c0f0-4c2c-a3f1-858175b9d2d6",
+        "relationship--3d91738f-e441-4783-a43e-50b9d5f211bd",
+        "relationship--3fc11748-9c9a-448e-940d-cb4a7bf06855",
+        "relationship--419b93fd-4d67-47f2-885a-42daa92bcc08",
+        "relationship--41c2c684-6b07-4b46-82d9-269ac75d7058",
+        "relationship--449e160f-53c4-4bb5-8d09-abcea5f9b8ec",
+        "relationship--4be75689-bcbc-4ccf-9ccb-cd691d854c62",
+        "relationship--5560e5a5-2ce9-4a56-90fc-042152642f3f",
+        "relationship--55a0fd18-e7c0-4276-8201-115383c19ee8",
+        "relationship--5a721b8f-09a2-4a83-a475-b089256f262c",
+        "relationship--6599455e-cb91-43c5-a28a-c382124e381b",
+        "relationship--663210c4-e81f-4c44-a514-af1e6d65ec9e",
+        "relationship--6a9523a0-2d46-4efe-b46f-9ac4166a9077",
+        "relationship--6f5f6928-653c-4726-b718-d5721fe816f5",
+        "relationship--6fc9a897-7951-423f-8775-8e6981e4325d",
+        "relationship--6fcbfc94-6dc1-4fa0-b4e8-589f2ffdaa9c",
+        "relationship--766b8d2b-b39b-4980-95ae-fb0d753ab130",
+        "relationship--7b8571e8-4478-4e8e-9a3b-17172ffcd12e",
+        "relationship--808dafda-01eb-48f6-9a05-6abd3c0c107d",
+        "relationship--81ba8bff-c570-4578-8df5-02a904b48cd3",
+        "relationship--83fab926-c42a-4451-8313-50eea9d57a40",
+        "relationship--8875e378-85b1-422e-8739-9b529c822818",
+        "relationship--9021a0d2-1735-470f-9b5c-b158c1293fbb",
+        "relationship--953c122f-d81d-407e-8a32-2235f3ec4f31",
+        "relationship--96c2bccb-a9f9-4c5c-bcf9-6b2414333667",
+        "relationship--9ab469a2-9dc0-4526-8e93-122d446bbd30",
+        "relationship--9d1a7737-6ea4-4d5d-bdb1-c4676fa273fb",
+        "relationship--9dfa9a9d-4ba5-49e5-a299-32e60ce456d0",
+        "relationship--9f0a27c8-2490-4f79-aafc-49c60ac451ab",
+        "relationship--a5f297a1-2136-4564-b950-ee05198ba48f",
+        "relationship--afbe8a6c-54b1-48ac-bce4-c1233cca6f50",
+        "relationship--b5d765eb-ee82-413a-92b5-a22e9353569b",
+        "relationship--b816e8ec-ae3f-481e-8b8a-5cb36d00366f",
+        "relationship--c1473454-7923-436c-bb7c-1fce1881b78c",
+        "relationship--c988577d-f524-4453-b3cd-29704af34867",
+        "relationship--ccba8b01-a2db-4bf9-8a9c-a2e069eafccd",
+        "relationship--cea103ab-9c03-4852-bd25-cb9f522a5caf",
+        "relationship--cf9d5af3-cf1d-430b-911c-742601f492c9",
+        "relationship--d2d5d9f7-d51a-482f-b5ab-95647a5df2a3",
+        "relationship--d7a7c0fd-1ae1-4b5d-875a-4ebb91e3d65e",
+        "relationship--da9255aa-55b3-444e-a1ef-914175642430",
+        "relationship--db39bd7c-924a-4c54-a474-0d13043cc6e1",
+        "relationship--e3b68266-eddb-4721-aa6f-99e1d7aea677",
+        "relationship--e411a60f-7374-491d-a075-77dee551dae4",
+        "relationship--e4e11c40-0c30-470a-83b3-6cb32c02a5f1",
+        "relationship--e83ee8e5-c2b9-4469-942b-a36e4a92a5e5",
+        "relationship--ee2f9940-5666-40c7-a69e-d67645cabf13",
+        "relationship--f4cc5c56-4f12-4d92-a20f-c970e9a87122",
+        "relationship--f4ed9fff-1223-4ae6-a27c-be507e07ee19",
+        "relationship--fa24e4fd-c868-4579-8293-63918f44bc42",
+        "relationship--fa5958eb-add0-4f61-8836-1a0889231dde",
+        "relationship--fd3eb69e-741c-4fb1-ab0a-0d8236babf3e",
+        "report--4b3d7c97-7d6a-48c0-89a9-4bfedf98d78a",
+        "report--4d67e5c6-fed9-461c-bfca-7bd6c77569d7",
+        "report--796a7d01-173e-4d58-a0b4-0e17118d4de2",
+        "report--ce2a42c5-8e1d-4a7b-beb5-c25605dc6d7e",
+        "url--672018e0-8d59-4aae-be06-f1d7076d04a6",
+        "url--7f7e0008-2e83-4ea0-a704-e095ceda9dab",
+        "url--9106c0f4-1874-46a5-ad36-325ba10ac455",
+        "url--960ff3b2-3654-413a-b39f-1ffc4fd0d269",
+        "url--97dbd1b9-deb8-4076-a6c3-d8f8267ab247",
+        "url--bac2013c-1cd7-4769-aaea-f3a43bff457b",
+        "url--c1a17cdb-c281-4e44-a3f7-4436591c6443",
+        "url--e1d2f256-6203-4e1a-b4d3-3dfcb9dc8530"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--lazarus",
+      "x_activity_id": "activity--daily-cdc4a98583750e026424"
+    }
+  ]
+}

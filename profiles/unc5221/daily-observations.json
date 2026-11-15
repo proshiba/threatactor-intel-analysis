@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--unc5221",
-  "updated_at": "2026-07-27T11:17:26Z",
+  "updated_at": "2026-11-15T08:50:12Z",
   "records": [
     {
       "record_id": "daily-record--1f33a6aa3c9da2d689a312ea",
@@ -94,6 +94,66 @@
         "suggested_confidence": "medium"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--94cbe6031d634a353dc207d9",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "unc5221",
+        "canonical_name": "UNC5221",
+        "matched_term": "UNC5221",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "news-body",
+        "raw_value": "UNC5221"
+      },
+      "activity": {
+        "title": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正",
+        "summary": "BeyondTrustは、Remote Support（RS）26.2.3以前に影響する認証回避の脆弱性CVE-2026-102764を修正した。認証されていない遠隔の攻撃者が、対象機器でファイル操作を行える。 Mandiantは、中国との関連が疑われる諜報アクターARMORY CASTLE（旧UNC5221）が、2026年8月下旬から本脆弱性をゼロデイとして悪用していた証拠を確認した。 攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。ログを削除し、侵害した管理者認証情報で内部システムへ横展開した。 root権限の取得により、機器が保存・仲介する認証情報へのアクセスや、再起動・設定リセット後も残るファイルの改変が可能になった。Mandiantは、悪用期間中に公開されていた脆弱な機器の調査を求めている。 SaaS環境には修正済みだが、自動更新を有効にしていない自社運用環境は手動対応が必要。Privileged Remote Accessでは悪用方法は確認されていないものの、共通コードを使うため予防的な修正が提供された。",
+        "news_date": "2026-10-17",
+        "news_url": "https://www.bleepingcomputer.com/news/security/beyondtrust-patches-zero-day-exploited-in-attacks-since-august/",
+        "primary_url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+        "activity_reference": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+        "news_path": "daily-news/news/2026_10-12/20261017.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "source_path": "daily-news/news/2026_10-12/20261017.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用。一次ソース（BeyondTrust BT26-05）は取得時に403で原文を確認できなかった（明記）。tech-memo要約に加え、The Record・CyberScoop・CSO Online・BleepingComputer等の独立した二次報道で、Mandiant/GTIGが追跡するARMORY CASTLE（旧UNC5221、別名Warp Panda）によるCVE-2026-102764（Remote Support 26.2.3以前、CVSS 9.3）のゼロデイ悪用をBeyondTrustがmoderate-to-high confidenceで帰属したことを確認した。悪用開始は2026-08-29。root権限取得・認証情報窃取・横展開が報じられている。SAWFLYウェブシェルとBARECLAWトンネラーの名称はtech-memo要約由来で二次報道からは確認できなかったため、capability候補は生成されておらず取り込まない。確信度は「moderate to high」の帰属とUNC5221照合（exact、ニュース本文）を考慮しmediumとする。ARMORY CASTLEはMandiantによるUNC5221の改称であり、unc5221プロファイルのaliasへ追加する提案として報告する（本取込では追加しない）。",
+      "activity_claim": {
+        "assessment": "attribution-uncertain",
+        "actor_role": "unknown",
+        "match_location": "body",
+        "evidence_text": "- Mandiantは、中国との関連が疑われる諜報アクターARMORY CASTLE（旧UNC5221）が、2026年8月下旬から本脆弱性をゼロデイとして悪用していた証拠を確認した。",
+        "reasons": [
+          "一致箇所が推測・類似・関連のみを示している"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-29T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "value": null
+        }
+      },
+      "source_commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177"
     },
     {
       "record_id": "daily-record--9ac4b7d72f47c1e3e402a737",

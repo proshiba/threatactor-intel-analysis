@@ -527,6 +527,108 @@ class OpenCTIBundleTests(unittest.TestCase):
         self.assertEqual(current_object["created"], CREATED)
         self.assertEqual(current_object["modified"], NOW)
 
+    def test_relationship_description_refresh_advances_modified_with_fallback(
+        self,
+    ) -> None:
+        # 参照先Activityのタイトル改名やenrichの再実行で、relationshipの
+        # 派生narrative(description)だけが追従して変わるケース。評価・参照・
+        # 期間が不変なら、modifiedをコーパス生成時刻へ進めて取り込む。
+        previous_object = stix_base(
+            "relationship",
+            "rel--description-refresh",
+            CREATED,
+            {
+                "relationship_type": "targets",
+                "source_ref": "intrusion-set--00000000-0000-4000-8000-000000000001",
+                "target_ref": "location--00000000-0000-4000-8000-000000000002",
+                "description": "活動「旧タイトル」の記述で標的として明示された国・地域。",
+                "x_confidence": "high",
+            },
+        )
+        current_object = copy.deepcopy(previous_object)
+        current_object["description"] = (
+            "活動「新タイトル」の記述で標的として明示された国・地域。"
+        )
+        current_bundle = {"type": "bundle", "objects": [current_object]}
+        previous_bundle = {"type": "bundle", "objects": [previous_object]}
+
+        preserve_object_versions(
+            current_bundle, previous_bundle, fallback_modified=NOW
+        )
+        self.assertEqual(current_object["created"], CREATED)
+        self.assertEqual(current_object["modified"], NOW)
+
+    def test_relationship_description_refresh_without_fallback_still_fails(
+        self,
+    ) -> None:
+        previous_object = stix_base(
+            "relationship",
+            "rel--description-refresh-no-fallback",
+            CREATED,
+            {
+                "relationship_type": "targets",
+                "source_ref": "intrusion-set--00000000-0000-4000-8000-000000000001",
+                "target_ref": "location--00000000-0000-4000-8000-000000000002",
+                "description": "活動「旧タイトル」の記述。",
+            },
+        )
+        current_object = copy.deepcopy(previous_object)
+        current_object["description"] = "活動「新タイトル」の記述。"
+        with self.assertRaisesRegex(
+            ValueError, "semantic content changed without a newer modified"
+        ):
+            preserve_object_versions(
+                {"type": "bundle", "objects": [current_object]},
+                {"type": "bundle", "objects": [previous_object]},
+            )
+
+    def test_relationship_description_plus_other_change_still_fails(self) -> None:
+        previous_object = stix_base(
+            "relationship",
+            "rel--description-and-confidence",
+            CREATED,
+            {
+                "relationship_type": "targets",
+                "source_ref": "intrusion-set--00000000-0000-4000-8000-000000000001",
+                "target_ref": "location--00000000-0000-4000-8000-000000000002",
+                "description": "活動「旧タイトル」の記述。",
+                "x_confidence": "medium",
+            },
+        )
+        current_object = copy.deepcopy(previous_object)
+        current_object["description"] = "活動「新タイトル」の記述。"
+        current_object["x_confidence"] = "high"
+        with self.assertRaisesRegex(
+            ValueError, "semantic content changed without a newer modified"
+        ):
+            preserve_object_versions(
+                {"type": "bundle", "objects": [current_object]},
+                {"type": "bundle", "objects": [previous_object]},
+                fallback_modified=NOW,
+            )
+
+    def test_non_relationship_description_change_still_fails(self) -> None:
+        previous_object = stix_base(
+            "report",
+            "report--description-change",
+            CREATED,
+            {
+                "name": "Report",
+                "object_refs": [],
+                "description": "旧説明。",
+            },
+        )
+        current_object = copy.deepcopy(previous_object)
+        current_object["description"] = "新説明。"
+        with self.assertRaisesRegex(
+            ValueError, "semantic content changed without a newer modified"
+        ):
+            preserve_object_versions(
+                {"type": "bundle", "objects": [current_object]},
+                {"type": "bundle", "objects": [previous_object]},
+                fallback_modified=NOW,
+            )
+
     def test_unversioned_observable_allows_only_role_label_migration(self) -> None:
         indicator = {
             "type": "domain",

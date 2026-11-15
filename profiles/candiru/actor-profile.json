@@ -4,7 +4,7 @@
   "name": "Candiru",
   "status": "draft",
   "created_at": "2026-07-25T09:00:29Z",
-  "updated_at": "2026-09-21T13:20:00Z",
+  "updated_at": "2026-11-15T09:02:08Z",
   "languages": [
     "ja"
   ],
@@ -58,11 +58,156 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-ec4d7a840a430c64b5de",
+      "name": "標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃",
+      "activity_type": "cyber-espionage",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Citizen Labは、Al Jazeeraの端末に標的型広告経由でCandiruスパイウェアを感染させた「AdFection」を確認した。広告をクリックする必要はなく、端末上に表示されるだけで攻撃が進行する。 イスラエル企業Discover-Techは、主要な広告ネットワークで配信枠を購入し、広告にJavaScriptを埋め込んだ。接続元IPや広告識別子などで標的を選別し、対象端末にだけ追加コードを返していた。 Al Jazeeraが提供した証拠には、2024～2025年に少なくとも45台を標的とした攻撃が含まれる。通信ログでは広告基盤からCandiruの検証サーバー、続いてC2への接続が確認された。 侵害されたWindows端末から回収したDLLは、既知検体とのコードやインフラの共通点から、高い確信度でCandiruに帰属された。同社の監視ツールは過去にも記者や活動家らへの攻撃に使われている。 2026年3～6月の広告入札は37.7億件、落札は4.42億件に上り、関連スクリプト付き広告は75,373のアプリと120,768のサイトに掲載された。ただし、これらは感染件数を示さない。",
+      "target_refs": [
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--f59d8cd27581f6f4e91f"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-ab07ef22a949312f9e64"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--ec4d7a840a430c64b5de97e6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用。Citizen Lab原文を確認した。Al Jazeera端末への標的型広告経由ゼロクリック感染（AdFection）を「with high confidence to Candiru's spyware delivered via Discover-Tech's ads」と帰属し、回収DLLは2021年捕捉の既知Candiruチェーンの新版として高確信度で帰属されている。広告事業者Discover-Techは「on behalf of mercenary spyware vendor Candiru」と記述され、配信パイプラインがCandiruの代理として運用された。candiruプロファイルは傭兵スパイウェアベンダーそのもののアクターであり、本件は第三者によるvendor製品の使用ではなく、Candiruの検証サーバー・C2を含む攻撃チェーンと代理配信基盤の帰属である（vendor製品使用をvendor自身の攻撃と解釈しない規則に抵触しない）。最終顧客（運用委託元の政府等）は原文でも特定されておらず、推定しない。Discover-Techはunknown-clusters.jsonのdiscover-techクラスタに記録済み。2026年3〜6月の広告入札統計は感染件数を示さないという原文の但し書きを保持する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--candiru",
+          "name": "Candiru",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--5403aec9c83d6a925f61",
+            "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--f59d8cd27581f6f4e91f"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+            "precision": "year",
+            "status": "known",
+            "value": "2024-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+            "precision": "year",
+            "status": "known",
+            "value": "2025-01-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-ab07ef22a949312f9e64"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "name": "メディア・報道",
+        "description": "活動「標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2024-01-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2025-01-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ab07ef22a949312f9e64"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "name": "非営利・市民社会",
+        "description": "活動「標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2024-01-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2025-01-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ab07ef22a949312f9e64"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
     "roles": [],
     "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
     "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
@@ -278,6 +423,32 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
+      "source_id": "source--daily-ab07ef22a949312f9e64",
+      "path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+      "title": "標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃",
+      "publisher": "citizenlab.ca",
+      "published_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261017.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. Citizen Lab原文を取得して確認した（アクセス日2026-11-15）。Candiruのスパイウェア・検証サーバー・C2への高確信度帰属とDiscover-Techの代理配信役を原文で確認。",
+      "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+      "accessed_at": "2026-11-15T00:00:00Z",
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
+    },
+    {
       "source_id": "source--osint-misp-microsoft-activity-group",
       "path": "actor_profile/reference/osint/misp-microsoft-activity-group.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/microsoft-activity-group.json",
@@ -351,7 +522,54 @@
     "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
-  "victim_cases": [],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--f59d8cd27581f6f4e91f",
+      "name": "被害事例: 標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Citizen Labは、Al Jazeeraの端末に標的型広告経由でCandiruスパイウェアを感染させた「AdFection」を確認した。広告をクリックする必要はなく、端末上に表示されるだけで攻撃が進行する。 イスラエル企業Discover-Techは、主要な広告ネットワークで配信枠を購入し、広告にJavaScriptを埋め込んだ。接続元IPや広告識別子などで標的を選別し、対象端末にだけ追加コードを返していた。 Al Jazeeraが提供した証拠には、2024～2025年に少なくとも45台を標的とした攻撃が含まれる。通信ログでは広告基盤からCandiruの検証サーバー、続いてC2への接続が確認された。 侵害されたWindows端末から回収したDLLは、既知検体とのコードやインフラの共通点から、高い確信度でCandiruに帰属された。同社の監視ツールは過去にも記者や活動家らへの攻撃に使われている。 2026年3～6月の広告入札は37.7億件、落札は4.42億件に上り、関連スクリプト付き広告は75,373のアプリと120,768のサイトに掲載された。ただし、これらは感染件数を示さない。",
+      "activity_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "サーバー",
+        "エンドポイント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-ab07ef22a949312f9e64"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
   "associated_entities": [],
   "entity_relationships": [],
   "hunting_pivots": []

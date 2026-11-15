@@ -1556,6 +1556,35 @@ def preserve_object_versions(
                 # それ以外の意味変化は従来どおりfail-closedのまま。
                 item["modified"] = fallback_modified
                 continue
+            current_without_description = {
+                key: value
+                for key, value in current_without_refs.items()
+                if key != "description"
+            }
+            previous_without_description = {
+                key: value
+                for key, value in previous_without_refs.items()
+                if key != "description"
+            }
+            if (
+                fallback_modified
+                and item.get("type") == "relationship"
+                and current_without_description == previous_without_description
+                and previous_refs <= current_refs
+                and datetime.fromisoformat(
+                    fallback_modified.replace("Z", "+00:00")
+                )
+                > previous_time
+            ):
+                # relationshipのdescriptionは、参照先Activityのタイトル等を
+                # 引用して組み立てる派生narrativeであり、enrichの再実行や
+                # タイトルのcuration改名で文面だけが追従して変わる。評価・
+                # 参照・期間・両端のrefが不変でdescriptionのみ異なる場合は
+                # 管理された表現更新として、modifiedをコーパスの生成時刻へ
+                # 進めて取り込む。それ以外の意味変化は従来どおり
+                # fail-closedのまま。
+                item["modified"] = fallback_modified
+                continue
             raise ValueError(
                 "STIX object semantic content changed without a newer "
                 f"modified value: {item.get('id', 'unknown')} "

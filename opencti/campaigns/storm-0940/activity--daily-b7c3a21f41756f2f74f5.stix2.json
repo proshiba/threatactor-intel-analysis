@@ -1,0 +1,1511 @@
+{
+  "type": "bundle",
+  "id": "bundle--fe0bb1f2-8950-4460-a8b7-e63e3e2c41c2",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--737ef322-5ef2-422c-b010-0a8ad7cef7cd",
+      "created": "2026-11-15T08:50:55Z",
+      "modified": "2026-11-15T08:50:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Password Spraying",
+      "description": "ARTEXは偵察、スキャン、パスワードスプレー、OAuth悪用などを支援。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1110.003",
+          "url": "https://attack.mitre.org/techniques/T1110/003/"
+        },
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--29fb9fefdd41362c1628",
+      "x_tactic": "Credential Access",
+      "x_activity_refs": [
+        "activity--daily-b7c3a21f41756f2f74f5"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入",
+      "description": "Microsoftは、中国国家と連携するStorm-0940が、2026年9月初旬からAIエージェント型侵入テスト基盤ARTEXを攻撃に悪用していると報告。一部では3時間未満でクラウドの特権アクセスに到達した。 同社はConnectWiseのサプライチェーン侵害を同攻撃者に帰属。盗んだアプリ認証情報と顧客が既に付与した権限を使い、対話型のユーザーログインを介さずアクセスした。 ARTEXは偵察、スキャン、パスワードスプレー、OAuth悪用などを支援。攻撃者はMicrosoft Graph経由の探索やアプリ認証情報の追加を行い、元の接続を修復した後にも残る永続化を試みた。 ConnectWise関連の侵入試行は2,250超のテナントに及んだ。別途、10月10～14日のパスワードスプレーでは15万件超の認証失敗が発生したが、この活動による認証成功は確認されなかった。 対象アプリの存在や認証成功だけでは、データ閲覧・持ち出しを断定できない。Microsoft製品の脆弱性を悪用した事案ではなく、侵害された外部アプリの信頼と権限が悪用された。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-b7c3a21f41756f2f74f5",
+      "x_activity_type": "campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--b7c3a21f41756f2f74f55c9d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用。Microsoft原文を確認した。「Microsoft assesses that Storm-0940 was responsible for the recently disclosed ConnectWise supply chain compromise」「Storm-0940, a China-state aligned actor, used the agentic AI penetration testing framework ARTEX」と直接帰属。2026年9月からのARTEX悪用、2,250超テナントへのサインイン試行、金融・政府・エネルギー・製造等の世界数百組織への標的化、一部で3時間未満の特権クラウドアクセス到達、10/10-14のスプレー（8組織327アカウント・認証成功なし）を原文で確認。Microsoft製品の脆弱性悪用ではなく侵害された外部アプリの信頼と権限の悪用という原文の但し書きを保持。単一組織の侵害ではなく多数組織への作戦波のためactivity_typeを自動値intrusionからcampaignへ変更（STIX: campaign）。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--storm-0940",
+          "name": "Storm-0940",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--29fb9fefdd41362c1628"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--006693e85e7a9e4e672a"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-09-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-10-14T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-23T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "campaign",
+          "phases": [
+            "Credential Access"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-13f72bf8c14aa9230704"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-09-01T00:00:00Z",
+      "last_seen": "2026-10-14T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--057f62b9-9651-417e-b8f6-d52775b44800",
+      "created": "2026-11-15T08:50:55Z",
+      "modified": "2026-11-15T08:50:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入",
+      "identity_class": "organization",
+      "description": "Microsoftは、中国国家と連携するStorm-0940が、2026年9月初旬からAIエージェント型侵入テスト基盤ARTEXを攻撃に悪用していると報告。一部では3時間未満でクラウドの特権アクセスに到達した。 同社はConnectWiseのサプライチェーン侵害を同攻撃者に帰属。盗んだアプリ認証情報と顧客が既に付与した権限を使い、対話型のユーザーログインを介さずアクセスした。 ARTEXは偵察、スキャン、パスワードスプレー、OAuth悪用などを支援。攻撃者はMicrosoft Graph経由の探索やアプリ認証情報の追加を行い、元の接続を修復した後にも残る永続化を試みた。 ConnectWise関連の侵入試行は2,250超のテナントに及んだ。別途、10月10～14日のパスワードスプレーでは15万件超の認証失敗が発生したが、この活動による認証成功は確認されなかった。 対象アプリの存在や認証成功だけでは、データ閲覧・持ち出しを断定できない。Microsoft製品の脆弱性を悪用した事案ではなく、侵害された外部アプリの信頼と権限が悪用された。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--006693e85e7a9e4e672a",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--29fb9fefdd41362c1628"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "対象アプリの存在や認証成功だけでは、データ閲覧・持ち出しを断定できない。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--16ae40f1-383b-451b-8b4b-f39141fa4cf6",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 187.15.88.186",
+      "pattern": "[ipv4-addr:value = '187.15.88.186']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b7c3a21f41756f2f74f5"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "source"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-13f72bf8c14aa9230704",
+          "value": "2026-10-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "IPv4-Addr",
+      "labels": [
+        "source"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4faa5fb5-5865-40bb-b262-7a06d2af7dac",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 144.172.64.60",
+      "pattern": "[ipv4-addr:value = '144.172.64.60']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b7c3a21f41756f2f74f5"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "source"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-13f72bf8c14aa9230704",
+          "value": "2026-10-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "IPv4-Addr",
+      "labels": [
+        "source"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--549e9fde-5e23-40da-917b-d10e48297ab7",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 144.172.64.99",
+      "pattern": "[ipv4-addr:value = '144.172.64.99']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-10T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b7c3a21f41756f2f74f5"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "source"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-13f72bf8c14aa9230704",
+          "value": "2026-10-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "IPv4-Addr",
+      "labels": [
+        "source"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--65c57faf-6ef7-448c-8838-0f6c9caf5ca1",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 144.172.64.128",
+      "pattern": "[ipv4-addr:value = '144.172.64.128']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b7c3a21f41756f2f74f5"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "source"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-13f72bf8c14aa9230704",
+          "value": "2026-10-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "IPv4-Addr",
+      "labels": [
+        "source"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b0ee8136-2955-40ed-8b23-7946286df6ab",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 187.15.89.186",
+      "pattern": "[ipv4-addr:value = '187.15.89.186']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b7c3a21f41756f2f74f5"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "source"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-13f72bf8c14aa9230704",
+          "value": "2026-10-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "IPv4-Addr",
+      "labels": [
+        "source"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c8fbf1b0-1ea1-4073-9e04-105fe6d17e16",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 187.15.90.217",
+      "pattern": "[ipv4-addr:value = '187.15.90.217']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b7c3a21f41756f2f74f5"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "source"
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-13f72bf8c14aa9230704",
+          "value": "2026-10-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "IPv4-Addr",
+      "labels": [
+        "source"
+      ]
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "created": "2026-07-25T15:23:03Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-0940",
+      "aliases": [],
+      "description": "Storm-0940の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--storm-0940",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Storm-0940の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--3d622de1-6552-442e-8ef9-d157b30063fe",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "144.172.64.60",
+      "x_opencti_labels": [
+        "source"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--3f82516c-edcb-4944-8c01-f7bd2f79d104",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "187.15.89.186",
+      "x_opencti_labels": [
+        "source"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--4ccfc635-bc73-4613-82de-aa920bf808d8",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "144.172.64.99",
+      "x_opencti_labels": [
+        "source"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--872efa39-b6d3-4b99-b2b6-4de07904d5a7",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "187.15.90.217",
+      "x_opencti_labels": [
+        "source"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--ac10f748-1f1f-4383-a728-2d205aa16d1e",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "187.15.88.186",
+      "x_opencti_labels": [
+        "source"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--f43948fb-996f-416b-a54a-84330f983eb6",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "144.172.64.128",
+      "x_opencti_labels": [
+        "source"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--097e1a5d-1c9c-4499-9785-3dcb49989fff",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b0ee8136-2955-40ed-8b23-7946286df6ab",
+      "target_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0e101371-305d-4644-8b53-94003a2d0050",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--4faa5fb5-5865-40bb-b262-7a06d2af7dac",
+      "target_ref": "ipv4-addr--3d622de1-6552-442e-8ef9-d157b30063fe",
+      "description": "indicator--sha256:bdf24cd0fbd134c76a214dfd744f657c9a525bb8802412ed2ec4e21f38b997ce directly represents the atomic ipv4-addr observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:bdf24cd0fbd134c76a214dfd744f657c9a525bb8802412ed2ec4e21f38b997ce",
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1210725b-ad6c-4e93-8659-8c46e5c163b9",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4faa5fb5-5865-40bb-b262-7a06d2af7dac",
+      "target_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "description": "ipv4: 144.172.64.60 is explicitly scoped to campaign ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--268f6066-4e65-414c-9857-91edc9e97dfb",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--c8fbf1b0-1ea1-4073-9e04-105fe6d17e16",
+      "target_ref": "ipv4-addr--872efa39-b6d3-4b99-b2b6-4de07904d5a7",
+      "description": "indicator--sha256:f4f33b697ecabd547f33646edf0bb5473e614df2f3269a7cf22da3c4c04270d1 directly represents the atomic ipv4-addr observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:f4f33b697ecabd547f33646edf0bb5473e614df2f3269a7cf22da3c4c04270d1",
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4354e637-3ad1-4502-99ca-183ef5436cff",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--549e9fde-5e23-40da-917b-d10e48297ab7",
+      "target_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--47ce3868-1f99-4be1-81ee-afe0aab99dba",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "target_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "description": "ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 is attributed or linked to Storm-0940.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "last": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "first_precision": "month",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-10-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-09-01T00:00:00Z",
+      "stop_time": "2026-10-14T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5cf7f395-0c2f-4ff4-95f9-cb1282d90186",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--16ae40f1-383b-451b-8b4b-f39141fa4cf6",
+      "target_ref": "ipv4-addr--ac10f748-1f1f-4383-a728-2d205aa16d1e",
+      "description": "indicator--sha256:5527015cf89c8b53f30eb4950fd245f25388c3210ea7e3c726d7ea0ac2724476 directly represents the atomic ipv4-addr observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:5527015cf89c8b53f30eb4950fd245f25388c3210ea7e3c726d7ea0ac2724476",
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6d057170-4dac-414a-8855-72c7e38614e9",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c8fbf1b0-1ea1-4073-9e04-105fe6d17e16",
+      "target_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "description": "ipv4: 187.15.90.217 is explicitly scoped to campaign ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6d8d0910-58dd-4d6c-b16b-f7b6b781a317",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--549e9fde-5e23-40da-917b-d10e48297ab7",
+      "target_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "description": "ipv4: 144.172.64.99 is explicitly scoped to campaign ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7513c342-7e78-40b3-b079-2f9a25af4a35",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--65c57faf-6ef7-448c-8838-0f6c9caf5ca1",
+      "target_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--84784610-ab4e-436c-8325-58e7575c97f4",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--b0ee8136-2955-40ed-8b23-7946286df6ab",
+      "target_ref": "ipv4-addr--3f82516c-edcb-4944-8c01-f7bd2f79d104",
+      "description": "indicator--sha256:1777bab607fe7e1c7a2862478b4311490cfb9807d64af079cac0d06cd7eea290 directly represents the atomic ipv4-addr observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:1777bab607fe7e1c7a2862478b4311490cfb9807d64af079cac0d06cd7eea290",
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9a8d3a6b-554c-4d1e-b9a0-8d1178b55685",
+      "created": "2026-11-15T08:50:55Z",
+      "modified": "2026-11-15T08:50:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "target_ref": "attack-pattern--737ef322-5ef2-422c-b010-0a8ad7cef7cd",
+      "description": "ARTEXは偵察、スキャン、パスワードスプレー、OAuth悪用などを支援。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。; activity-period",
+        "last": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。; activity-period",
+        "first_precision": "month",
+        "last_precision": "day"
+      },
+      "start_time": "2026-09-01T00:00:00Z",
+      "stop_time": "2026-10-14T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a74ca074-aa62-453f-8f76-eeb220b0611b",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--16ae40f1-383b-451b-8b4b-f39141fa4cf6",
+      "target_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "description": "ipv4: 187.15.88.186 is explicitly scoped to campaign ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ae427dc2-05db-4e4b-813b-1af471b25548",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b0ee8136-2955-40ed-8b23-7946286df6ab",
+      "target_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "description": "ipv4: 187.15.89.186 is explicitly scoped to campaign ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ae4e806b-a1aa-4eee-bfb4-0882eb73153a",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--549e9fde-5e23-40da-917b-d10e48297ab7",
+      "target_ref": "ipv4-addr--4ccfc635-bc73-4613-82de-aa920bf808d8",
+      "description": "indicator--sha256:4f973212ab9be856ce9909aac99ff709c7b4d3cc5d9b5bfce16d5bde8e361356 directly represents the atomic ipv4-addr observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:4f973212ab9be856ce9909aac99ff709c7b4d3cc5d9b5bfce16d5bde8e361356",
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c5fa57b0-2ee2-4c51-b4bf-6e3cb8147783",
+      "created": "2026-11-15T08:50:55Z",
+      "modified": "2026-11-15T08:50:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "target_ref": "attack-pattern--737ef322-5ef2-422c-b010-0a8ad7cef7cd",
+      "description": "ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 uses ttp--activity-rule--29fb9fefdd41362c1628.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "last": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "first_precision": "month",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-10-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-09-01T00:00:00Z",
+      "stop_time": "2026-10-14T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ce7df12c-4731-4b9b-8f34-817076659bb9",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4faa5fb5-5865-40bb-b262-7a06d2af7dac",
+      "target_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d2aba444-383c-4315-8f92-da4bbaa5156b",
+      "created": "2026-11-15T08:50:55Z",
+      "modified": "2026-11-15T08:50:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "target_ref": "identity--057f62b9-9651-417e-b8f6-d52775b44800",
+      "description": "ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 affected victim--activity-rule--006693e85e7a9e4e672a.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "last": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "first_precision": "month",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-10-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-09-01T00:00:00Z",
+      "stop_time": "2026-10-14T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d86a861c-8c2c-420c-9294-5f7c46d1ffdc",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--16ae40f1-383b-451b-8b4b-f39141fa4cf6",
+      "target_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d9514453-df0f-40c4-9818-4ac5886ebd4c",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--65c57faf-6ef7-448c-8838-0f6c9caf5ca1",
+      "target_ref": "ipv4-addr--f43948fb-996f-416b-a54a-84330f983eb6",
+      "description": "indicator--sha256:766bbbf7b40fecb5dfe205dc218895709db93130645e25b4846d5306cc4668ee directly represents the atomic ipv4-addr observable derived from the same canonical IOC record.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:766bbbf7b40fecb5dfe205dc218895709db93130645e25b4846d5306cc4668ee",
+      "x_observation_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ],
+      "x_ioc_roles": [
+        "source"
+      ],
+      "x_ioc_role_source_refs": [
+        "source--daily-13f72bf8c14aa9230704"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e39cc27d-16fe-4316-a365-d4ae6c451aac",
+      "created": "2026-11-15T08:50:12Z",
+      "modified": "2026-11-15T08:50:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c8fbf1b0-1ea1-4073-9e04-105fe6d17e16",
+      "target_ref": "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fb72d0cb-aae9-43d9-b8ad-ee77f0baa572",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--65c57faf-6ef7-448c-8838-0f6c9caf5ca1",
+      "target_ref": "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+      "description": "ipv4: 144.172.64.128 is explicitly scoped to campaign ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1064ad80-31d7-4f96-a8ce-b9e117aaf2d8",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-10-23T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--737ef322-5ef2-422c-b010-0a8ad7cef7cd",
+        "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+        "identity--057f62b9-9651-417e-b8f6-d52775b44800",
+        "indicator--16ae40f1-383b-451b-8b4b-f39141fa4cf6",
+        "indicator--4faa5fb5-5865-40bb-b262-7a06d2af7dac",
+        "indicator--549e9fde-5e23-40da-917b-d10e48297ab7",
+        "indicator--65c57faf-6ef7-448c-8838-0f6c9caf5ca1",
+        "indicator--b0ee8136-2955-40ed-8b23-7946286df6ab",
+        "indicator--c8fbf1b0-1ea1-4073-9e04-105fe6d17e16",
+        "relationship--0e101371-305d-4644-8b53-94003a2d0050",
+        "relationship--268f6066-4e65-414c-9857-91edc9e97dfb",
+        "relationship--47ce3868-1f99-4be1-81ee-afe0aab99dba",
+        "relationship--5cf7f395-0c2f-4ff4-95f9-cb1282d90186",
+        "relationship--84784610-ab4e-436c-8325-58e7575c97f4",
+        "relationship--9a8d3a6b-554c-4d1e-b9a0-8d1178b55685",
+        "relationship--ae4e806b-a1aa-4eee-bfb4-0882eb73153a",
+        "relationship--c5fa57b0-2ee2-4c51-b4bf-6e3cb8147783",
+        "relationship--d2aba444-383c-4315-8f92-da4bbaa5156b",
+        "relationship--d9514453-df0f-40c4-9818-4ac5886ebd4c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--daily-13f72bf8c14aa9230704",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-13f72bf8c14aa9230704",
+      "x_evidence_slice_scope": "campaign:actor--storm-0940:activity--daily-b7c3a21f41756f2f74f5",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--161f92cb-cdf9-4c51-a37b-824b70bcbd5f",
+      "created": "2026-11-15T09:02:08Z",
+      "modified": "2026-11-15T09:02:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-0940 / ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入",
+      "description": "Microsoftは、中国国家と連携するStorm-0940が、2026年9月初旬からAIエージェント型侵入テスト基盤ARTEXを攻撃に悪用していると報告。一部では3時間未満でクラウドの特権アクセスに到達した。 同社はConnectWiseのサプライチェーン侵害を同攻撃者に帰属。盗んだアプリ認証情報と顧客が既に付与した権限を使い、対話型のユーザーログインを介さずアクセスした。 ARTEXは偵察、スキャン、パスワードスプレー、OAuth悪用などを支援。攻撃者はMicrosoft Graph経由の探索やアプリ認証情報の追加を行い、元の接続を修復した後にも残る永続化を試みた。 ConnectWise関連の侵入試行は2,250超のテナントに及んだ。別途、10月10～14日のパスワードスプレーでは15万件超の認証失敗が発生したが、この活動による認証成功は確認されなかった。 対象アプリの存在や認証成功だけでは、データ閲覧・持ち出しを断定できない。Microsoft製品の脆弱性を悪用した事案ではなく、侵害された外部アプリの信頼と権限が悪用された。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-11-15T09:02:08Z",
+      "object_refs": [
+        "attack-pattern--737ef322-5ef2-422c-b010-0a8ad7cef7cd",
+        "campaign--862bdaec-6446-4247-8ce8-2d789999455f",
+        "identity--057f62b9-9651-417e-b8f6-d52775b44800",
+        "indicator--16ae40f1-383b-451b-8b4b-f39141fa4cf6",
+        "indicator--4faa5fb5-5865-40bb-b262-7a06d2af7dac",
+        "indicator--549e9fde-5e23-40da-917b-d10e48297ab7",
+        "indicator--65c57faf-6ef7-448c-8838-0f6c9caf5ca1",
+        "indicator--b0ee8136-2955-40ed-8b23-7946286df6ab",
+        "indicator--c8fbf1b0-1ea1-4073-9e04-105fe6d17e16",
+        "intrusion-set--251c34d5-ff1e-45f1-bf1a-944ec7bef169",
+        "ipv4-addr--3d622de1-6552-442e-8ef9-d157b30063fe",
+        "ipv4-addr--3f82516c-edcb-4944-8c01-f7bd2f79d104",
+        "ipv4-addr--4ccfc635-bc73-4613-82de-aa920bf808d8",
+        "ipv4-addr--872efa39-b6d3-4b99-b2b6-4de07904d5a7",
+        "ipv4-addr--ac10f748-1f1f-4383-a728-2d205aa16d1e",
+        "ipv4-addr--f43948fb-996f-416b-a54a-84330f983eb6",
+        "relationship--097e1a5d-1c9c-4499-9785-3dcb49989fff",
+        "relationship--0e101371-305d-4644-8b53-94003a2d0050",
+        "relationship--1210725b-ad6c-4e93-8659-8c46e5c163b9",
+        "relationship--268f6066-4e65-414c-9857-91edc9e97dfb",
+        "relationship--4354e637-3ad1-4502-99ca-183ef5436cff",
+        "relationship--47ce3868-1f99-4be1-81ee-afe0aab99dba",
+        "relationship--5cf7f395-0c2f-4ff4-95f9-cb1282d90186",
+        "relationship--6d057170-4dac-414a-8855-72c7e38614e9",
+        "relationship--6d8d0910-58dd-4d6c-b16b-f7b6b781a317",
+        "relationship--7513c342-7e78-40b3-b079-2f9a25af4a35",
+        "relationship--84784610-ab4e-436c-8325-58e7575c97f4",
+        "relationship--9a8d3a6b-554c-4d1e-b9a0-8d1178b55685",
+        "relationship--a74ca074-aa62-453f-8f76-eeb220b0611b",
+        "relationship--ae427dc2-05db-4e4b-813b-1af471b25548",
+        "relationship--ae4e806b-a1aa-4eee-bfb4-0882eb73153a",
+        "relationship--c5fa57b0-2ee2-4c51-b4bf-6e3cb8147783",
+        "relationship--ce7df12c-4731-4b9b-8f34-817076659bb9",
+        "relationship--d2aba444-383c-4315-8f92-da4bbaa5156b",
+        "relationship--d86a861c-8c2c-420c-9294-5f7c46d1ffdc",
+        "relationship--d9514453-df0f-40c4-9818-4ac5886ebd4c",
+        "relationship--e39cc27d-16fe-4316-a365-d4ae6c451aac",
+        "relationship--fb72d0cb-aae9-43d9-b8ad-ee77f0baa572",
+        "report--1064ad80-31d7-4f96-a8ce-b9e117aaf2d8"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--storm-0940",
+      "x_activity_id": "activity--daily-b7c3a21f41756f2f74f5"
+    }
+  ]
+}

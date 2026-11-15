@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--apt29",
-  "updated_at": "2026-09-15T22:14:20Z",
+  "updated_at": "2026-11-15T08:50:08Z",
   "records": [
     {
       "record_id": "daily-record--0b52a99ee832ba3f8f9fba83",
@@ -1213,6 +1213,67 @@
         "suggested_confidence": "medium"
       },
       "source_commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0"
+    },
+    {
+      "record_id": "daily-record--73cc25666a7d9eccdad31740",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "apt29",
+        "canonical_name": "APT29",
+        "matched_term": "APT29",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "news-title",
+        "raw_value": "APT29"
+      },
+      "activity": {
+        "title": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+        "summary": "Sekoiaは、侵害した正規サイトや偽サイトを通じてiOS・Android端末を狙う水飲み場攻撃を分析し、中～高程度の確度でAPT29へ帰属した。サイト閲覧後、追加の利用者操作なしに既知脆弱性の攻撃チェーンが実行される。 攻撃者は正規サイトへのJavaScript挿入に加え、America250やロンドンのホテルを装うサイトを使用した。訪問者の端末とブラウザのバージョンを識別し、C2から対応する攻撃チェーンを配信した。 ウクライナのWeb分析サービスPlerdyも侵害され、8月27日～9月3日にSEOトラッカーが改変された。同トラッカーは主にウクライナの数千サイトで読み込まれていたが、端末の感染台数は示されていない。 iOS向け攻撃はSafariのCookieに加え、一部のチェーンでWhatsApp・Telegramのデータベース、Keychain認証情報、位置情報、写真を窃取した。Android向けはAndroSnitchでChromeの認証情報や履歴、Wi-Fi認証情報などを収集した。 分析されたペイロードに永続化機能はなく、再起動で活動を停止できるが、侵害サイトへの再訪で再感染する可能性がある。悪用された脆弱性はすべて修正済みで、最新のセキュリティ更新の適用が推奨される。",
+        "news_date": "2026-11-05",
+        "news_url": "https://www.bleepingcomputer.com/news/security/hackers-use-n-day-exploits-in-zero-click-attacks-on-ios-android-devices/",
+        "primary_url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+        "activity_reference": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+        "news_path": "daily-news/news/2026_10-12/20261105.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+          "source_path": "daily-news/news/2026_10-12/20261105.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用。Sekoia原文を確認した。「we assess with moderate to high confidence that this campaign was conducted by APT29」（または少なくともそのサブグループ）と帰属。侵害した正規サイトへのJavaScript挿入とAmerica250・ロンドンのホテルを装う偽サイトで、iOS 16.7/18.5とAndroid Chrome 139-145（143除く）の既知脆弱性チェーンを配信する水飲み場攻撃。ウクライナのWeb分析サービスPlerdyの侵害（8/27-9/3）で主にウクライナの数千サイト（軍・防衛関連含む）にトラッカー改変が波及。被害は欧州・米国にも分布。AndroSnitchはAndroidチェーン最終段として解析されたが被害端末上での実行確認は示されておらず、capability候補も生成されていないため取り込まない。インフラ作成日（2026年4〜8月）は観測日に転用しない。確信度はmoderate-to-highの帰属に基づきmedium。モバイル端末からの情報窃取を目的とするためactivity_typeを自動値infrastructure-operationからcyber-espionageへ変更。",
+      "activity_claim": {
+        "assessment": "strong-subject",
+        "actor_role": "operator",
+        "match_location": "title",
+        "evidence_text": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+        "reasons": [
+          "exact名が活動を主題とする記事タイトルに明記されている"
+        ],
+        "suggested_confidence": "high"
+      },
+      "activity_type": "cyber-espionage",
+      "activity_period": {
+        "first_observed": {
+          "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-27T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-03T00:00:00Z"
+        }
+      },
+      "source_commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177"
     },
     {
       "record_id": "daily-record--8409455ea9e6cd6510649e8d",

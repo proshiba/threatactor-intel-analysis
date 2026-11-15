@@ -2899,6 +2899,109 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--4dba9a58-c64c-4daf-b818-a90accaeef90",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入",
+      "description": "ESETによると、北朝鮮系DeceptiveDevelopmentは2026年4～9月、開発者から盗んだ認証情報で公開・非公開リポジトリを改ざんした。偽の採用課題を起点に、利用者へ被害を広げるサプライチェーン侵害へ活動を拡大している。 感染端末からGit認証情報、SSH鍵、アクセストークンを窃取し、本人になりすまして悪性コードを追加する。変更を隠すためコミット履歴を書き換える場合もあり、複数のパッケージ配布基盤に影響が及んだ。 後続ではPython製OmniStealerとNode.js製DEV#POPPER RATを確認した。ブラウザー情報や開発者の秘密情報を盗み、VS Code、Cursor、Discordへのコード追加で再実行を図る。 NullReceiver方式ではEthereum取引の送金先からC2のIPを取得する。攻撃者は新たな取引だけで接続先を変更でき、実在開発者の改ざん済みリポジトリでは隠しVS Codeタスクが処理を起動した。 偽課題の配布には自前運用のGitea、後続ペイロードにはJSONホスティングやIPFS関連サービスを利用した。研究者は、感染拡大と基盤停止への耐性を高める動きと評価している。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "external_id": "source--daily-a11d7f9e28599f142241",
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-d372aa00a072885d3153",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--d372aa00a072885d3153a36f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 採用。ESETのWeLiveSecurity記事（APT Activity Report Q2 2026–Q3 2026）を確認した。DeceptiveDevelopmentが偽採用課題を起点とする手口から、開発者の認証情報（Git認証情報・SSH鍵・アクセストークン）を窃取して公開・非公開リポジトリへ悪性コードを注入する広範なソフトウェアサプライチェーン侵害へ拡大したことを原文で確認。コミット履歴の書き換えと複数パッケージ配布基盤への影響を記述。DeceptiveDevelopmentはscope: overlappingのalias（MITRE ATT&CK登録）だが、ESETは命名以来この指定子を偽求人・偽面接ルアーの北朝鮮系クラスタ（本プロファイルの追跡対象）に用いており、本プロファイルには同系統報告の採用前例が複数ある。OmniStealer・DEV#POPPER RAT・NullReceiverはtech-memo要約に現れるがランディング記事では確認できず（詳細は報告書本体）、capability候補も生成されていないため取り込まない。偽面接ルアーの語に引きずられた自動分類phishing-campaignを、リポジトリ改ざんによるマルウェア混入を主題とするmalware-campaignへ変更。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--932f4928d5e1ec28e2df"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--cc516ee68469ee47c5cd"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-04-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "同上。報告対象期間の終端（2026年9月）。",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-09-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-a11d7f9e28599f142241"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-04-01T00:00:00Z",
+      "last_seen": "2026-09-01T00:00:00Z"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--69c7e241-4561-424a-89b5-6963e3c67498",
       "created": "2026-07-27T11:04:31Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -3143,7 +3246,7 @@
       "spec_version": "2.1",
       "id": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3162,6 +3265,12 @@
           "description": "Source: https://www.bleepingcomputer.com/news/security/new-ottercookie-malware-used-to-backdoor-devs-in-fake-job-offers/",
           "external_id": "source--daily-47e80e1dc37b49447e5b",
           "url": "https://www.bleepingcomputer.com/news/security/new-ottercookie-malware-used-to-backdoor-devs-in-fake-job-offers/"
+        },
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "external_id": "source--daily-a11d7f9e28599f142241",
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/"
         },
         {
           "source_name": "thehackernews.com",
@@ -3818,6 +3927,66 @@
         "basis": "daily-news-file-date"
       },
       "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0c7b5cb0-9e01-44aa-b494-b0ce758825bf",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入",
+      "identity_class": "organization",
+      "description": "ESETによると、北朝鮮系DeceptiveDevelopmentは2026年4～9月、開発者から盗んだ認証情報で公開・非公開リポジトリを改ざんした。偽の採用課題を起点に、利用者へ被害を広げるサプライチェーン侵害へ活動を拡大している。 感染端末からGit認証情報、SSH鍵、アクセストークンを窃取し、本人になりすまして悪性コードを追加する。変更を隠すためコミット履歴を書き換える場合もあり、複数のパッケージ配布基盤に影響が及んだ。 後続ではPython製OmniStealerとNode.js製DEV#POPPER RATを確認した。ブラウザー情報や開発者の秘密情報を盗み、VS Code、Cursor、Discordへのコード追加で再実行を図る。 NullReceiver方式ではEthereum取引の送金先からC2のIPを取得する。攻撃者は新たな取引だけで接続先を変更でき、実在開発者の改ざん済みリポジトリでは隠しVS Codeタスクが処理を起動した。 偽課題の配布には自前運用のGitea、後続ペイロードにはJSONホスティングやIPFS関連サービスを利用した。研究者は、感染拡大と基盤停止への耐性を高める動きと評価している。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "external_id": "source--daily-a11d7f9e28599f142241",
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--cc516ee68469ee47c5cd",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "感染端末からGit認証情報、SSH鍵、アクセストークンを窃取し、本人になりすまして悪性コードを追加する。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
@@ -6978,7 +7147,7 @@
       "spec_version": "2.1",
       "id": "relationship--152b8f98-1b6f-49fc-807e-a35161c1c42d",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:51:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7001,6 +7170,12 @@
           "url": "https://www.bleepingcomputer.com/news/security/new-ottercookie-malware-used-to-backdoor-devs-in-fake-job-offers/"
         },
         {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "external_id": "source--daily-a11d7f9e28599f142241",
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/"
+        },
+        {
           "source_name": "thehackernews.com",
           "description": "Source: https://thehackernews.com/2024/08/north-korean-hackers-target-developers.html",
           "external_id": "source--daily-b84641d39a296b1d232d",
@@ -7020,23 +7195,25 @@
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "basis": "同上。報告対象期間の終端（2026年9月）。; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
       },
       "x_temporal_basis": {
-        "first": "not-stated",
-        "last": "not-stated",
-        "first_precision": "unknown",
-        "last_precision": "unknown"
-      }
+        "first": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。; activity-period",
+        "last": "同上。報告対象期間の終端（2026年9月）。; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -9504,6 +9681,153 @@
       },
       "start_time": "2026-06-23T00:00:00Z",
       "stop_time": "2026-09-21T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f1ee7c69-d85f-4348-a4ad-b297817933f3",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--4dba9a58-c64c-4daf-b818-a90accaeef90",
+      "target_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "description": "北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入 is attributed or linked to Contagious Interview.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "external_id": "source--daily-a11d7f9e28599f142241",
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "last": "同上。報告対象期間の終端（2026年9月）。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--787d20d6-006e-4f39-8d0d-0712877ca215",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--4dba9a58-c64c-4daf-b818-a90accaeef90",
+      "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+      "description": "北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入 targets target--activity-rule--sector--932f4928d5e1ec28e2df.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "external_id": "source--daily-a11d7f9e28599f142241",
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "last": "同上。報告対象期間の終端（2026年9月）。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3e1fe697-6c22-4d60-9d20-76eeb1e0ff38",
+      "created": "2026-11-15T08:51:04Z",
+      "modified": "2026-11-15T08:51:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--4dba9a58-c64c-4daf-b818-a90accaeef90",
+      "target_ref": "identity--0c7b5cb0-9e01-44aa-b494-b0ce758825bf",
+      "description": "北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入 affected victim--activity-rule--cc516ee68469ee47c5cd.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "external_id": "source--daily-a11d7f9e28599f142241",
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "last": "同上。報告対象期間の終端（2026年9月）。",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -14908,7 +15232,7 @@
       "spec_version": "2.1",
       "id": "report--18120405-d5f0-4eab-b859-51696e7c9a2d",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-10-12T09:12:00Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14917,7 +15241,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-10-12T09:12:00Z",
+      "published": "2026-11-15T09:02:08Z",
       "object_refs": [
         "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
         "malware--13467814-c037-4e30-80c4-d1e517fb452c",
@@ -14941,6 +15265,7 @@
         "campaign--467a41f8-7b79-4de3-abe6-18a896fbc0ea",
         "campaign--6fb5ce7c-3178-4ed3-9066-f9730a6520cc",
         "campaign--c819c5ab-c37d-4db9-bf9d-10abcac7ebcf",
+        "campaign--4dba9a58-c64c-4daf-b818-a90accaeef90",
         "campaign--69c7e241-4561-424a-89b5-6963e3c67498",
         "campaign--adc32ff7-5f62-4e54-890f-8ddcb3b07f72",
         "identity--ce779dc4-787c-4ab2-9633-ddd394505807",
@@ -14956,6 +15281,7 @@
         "identity--615cd97a-bfc4-4a34-a046-f59540f17276",
         "identity--e4806d10-23b0-416b-9ca9-8c5f2fb11873",
         "identity--1d1ad382-93c1-436b-9970-03498ee6e965",
+        "identity--0c7b5cb0-9e01-44aa-b494-b0ce758825bf",
         "identity--4f81fda0-c119-4d96-926f-41176436a8c3",
         "identity--ed839d38-2e74-44c3-b605-8d2856f7626e",
         "identity--f1f860a3-3869-44dd-9ae8-868ae9353290",

@@ -3386,5 +3386,449 @@
     "confidence": "high",
     "review_notes": "採用。独立した一次資料2本が当該アクターを実行主体として明記している。Proofpoint(2026-09-09公開)は「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」と記載し、Volexity(2026-09-09公開)も「JungleBamboo (also known as APT31/Violet Typhoon/TA412)」として同一クラスターを指し、2026-09-01の初回メールと2026-09-02の2回目の標的型キャンペーンを観測している。Violet Typhoon は本プロファイルの canonical name であり、APT31 は scope: overlapping の別名として登録済みで、2025-11-24 の APT31 活動を既に採用した前例と整合する。BlueMoon は Chrome の CVE-2026-85046(V8 type confusion)、CVE-2026-87491(V8 sandbox escape)、Windows の CVE-2026-85880(カーネル権限昇格)を連鎖させる攻撃キットで、成功後は Chrome の親プロセスへコードを注入し curl でローダーを取得する。標的は Proofpoint によれば米国のNGO、鉱業、現物商品取引企業。活動期間は両資料が明示した観測日のみを採り、記事公開日および tech-memo 日次ファイルの日付は流用していない。同キットを用いた UNK_LateNight(米航空宇宙・防衛、ShadowPad)、UNK_DoubleCheck(ベトナム製造業)、UNK_QuietRacket(インドネシア・シンガポールの政府/コンサル/金融)、UTA0560(NGO、Volexity観測)は本アクターへの帰属が示されていないため取り込まず、unknown-clusters.json へ記録した。記事見出しはキット側を主題としているが、当該アクターが参加したキャンペーンそのものを指しており別クラスターの作戦ではないため activity_overrides は用いていない。",
     "review_status": "approved"
+  },
+  "candiru|https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_period": {
+      "first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "Candiru",
+        "status": "rejected",
+        "review_notes": "不採用。IOC CSVのmalware列値「Candiru」はアクターと同名であり、同名のMalware entityを新設するとActor/Malwareの entity 境界を침害する。Citizen Lab原文は回収DLLを「a newer version of the Candiru attack chain」と記述し、固有のマルウェア名（DevilsTongue等）を本報告では用いていない。IOC観測自体は保持される。"
+      }
+    ],
+    "review_notes": "採用。Citizen Lab原文を確認した。Al Jazeera端末への標的型広告経由ゼロクリック感染（AdFection）を「with high confidence to Candiru's spyware delivered via Discover-Tech's ads」と帰属し、回収DLLは2021年捕捉の既知Candiruチェーンの新版として高確信度で帰属されている。広告事業者Discover-Techは「on behalf of mercenary spyware vendor Candiru」と記述され、配信パイプラインがCandiruの代理として運用された。candiruプロファイルは傭兵スパイウェアベンダーそのもののアクターであり、本件は第三者によるvendor製品の使用ではなく、Candiruの検証サーバー・C2を含む攻撃チェーンと代理配信基盤の帰属である（vendor製品使用をvendor自身の攻撃と解釈しない規則に抵触しない）。最終顧客（運用委託元の政府等）は原文でも特定されておらず、推定しない。Discover-Techはunknown-clusters.jsonのdiscover-techクラスタに記録済み。2026年3〜6月の広告入札統計は感染件数を示さないという原文の但し書きを保持する。"
+  },
+  "unc5221|https://www.beyondtrust.com/trust-center/security-advisories/bt26-05": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_period": {
+      "first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      }
+    },
+    "review_notes": "採用。一次ソース（BeyondTrust BT26-05）は取得時に403で原文を確認できなかった（明記）。tech-memo要約に加え、The Record・CyberScoop・CSO Online・BleepingComputer等の独立した二次報道で、Mandiant/GTIGが追跡するARMORY CASTLE（旧UNC5221、別名Warp Panda）によるCVE-2026-102764（Remote Support 26.2.3以前、CVSS 9.3）のゼロデイ悪用をBeyondTrustがmoderate-to-high confidenceで帰属したことを確認した。悪用開始は2026-08-29。root権限取得・認証情報窃取・横展開が報じられている。SAWFLYウェブシェルとBARECLAWトンネラーの名称はtech-memo要約由来で二次報道からは確認できなかったため、capability候補は生成されておらず取り込まない。確信度は「moderate to high」の帰属とUNC5221照合（exact、ニュース本文）を考慮しmediumとする。ARMORY CASTLEはMandiantによるUNC5221の改称であり、unc5221プロファイルのaliasへ追加する提案として報告する（本取込では追加しない）。"
+  },
+  "apt28|https://www.security.com/threat-intelligence/swallowtail-russia-nato-targets": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_period": {
+      "first_observed": {
+        "basis": "Symantec: 造船企業で2026-07-24にマクロ付きWord文書が開かれHookedgeに感染（最古の日付付き事象）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-07-24T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Symantec: 「The most recent activity noted is September 24, 2026」。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-24T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。Symantec原文を確認した。原文は「Swallowtail (aka APT28, Fancy Bear, Forest Blizzard)」「a Russian espionage group」と記載し、Swallowtail（scope: overlappingのalias）を本プロファイルのクラスタ境界（APT28/Fancy Bear/Forest Blizzard）と明示的に等置している。標的はNATO加盟2カ国の法執行機関・軍用航空機エンジン製造企業・海軍造船企業（国名は原文も明示せず）。造船企業の侵入は少なくとも2カ月継続し、7/24の初感染、7/27・28・31、8月下旬のローダー再観測、9/24の直近活動が記載される。Hookedge backdoorの展開を原文で確認（HOOKEDGEはRecorded Future報告由来の既存capabilityとして登録済みで、本レコードにcapability候補はない）。NTLM認証応答収集PowerShell、反射型ローダーld.exe（最終ペイロード未回収・機能不明）の記述を保持。"
+  },
+  "lazarus|https://securelist.com/lazarus-operation-flashhole/121541/": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_type": "cyber-espionage",
+    "activity_period": {
+      "first_observed": {
+        "basis": "Kaspersky: 「the earliest evidence of this new operation dates back to July 2025」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "ClientHub",
+        "status": "approved",
+        "review_notes": "承認。Kaspersky原文が本キャンペーンのチェーン内で新規特定したマルウェアとして記述。Dropbox通信とLPEClientとのデータ交換を担う。"
+      },
+      {
+        "name": "Cubridge",
+        "status": "approved",
+        "review_notes": "承認。Kaspersky原文が「the central orchestrator of the entire malware framework」と記述し、メモリ上で読み込まれコマンド実行・ファイル操作・画面取得を担う。"
+      },
+      {
+        "name": "TouchShift",
+        "status": "approved",
+        "review_notes": "承認。Kaspersky原文が本チェーンで使用されるローダーとして記述（TouchHubがサービスとして導入）。既知のLazarus系マルウェアの発展形。"
+      }
+    ],
+    "review_notes": "採用。Kaspersky原文を確認した。Operation FlashHoleをLazarusへ帰属し、「we assess with medium-to-high confidence that the same actor is responsible for both the SyncHole and FlashHole operations」として広域Cascade Holeキャンペーンの最新波と位置付ける。2025年7月が最古の証跡。韓国のソフトウェア・建設・有線通信機器製造の少なくとも3社で被害を確認。フィッシングページから細工GitHubページとINISAFE CrossWeb EXを介したメモリ上実行チェーン、非公開GitHubリポジトリからのTechHub取得、LPEClient・ClientHub・Cubridgeの役割、ML-KEM-1024とGOST/Threefishによるペイロード秘匿を原文で確認。2026年1月のKaspersky対応は記載があるが活動終期の明示ではないためlast_observedはunknown。活動の主題は韓国組織への諜報活動であり、initial accessのフィッシング語に引きずられた自動分類phishing-campaignをcyber-espionageへ変更。"
+  },
+  "storm-0940|https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_type": "campaign",
+    "activity_period": {
+      "first_observed": {
+        "basis": "Microsoft: ARTEX悪用活動は「began as early as September 2026」。月精度。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft: パスワードスプレーは2026-10-10〜10-14（151,000超の認証失敗、認証成功は未観測）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-14T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。Microsoft原文を確認した。「Microsoft assesses that Storm-0940 was responsible for the recently disclosed ConnectWise supply chain compromise」「Storm-0940, a China-state aligned actor, used the agentic AI penetration testing framework ARTEX」と直接帰属。2026年9月からのARTEX悪用、2,250超テナントへのサインイン試行、金融・政府・エネルギー・製造等の世界数百組織への標的化、一部で3時間未満の特権クラウドアクセス到達、10/10-14のスプレー（8組織327アカウント・認証成功なし）を原文で確認。Microsoft製品の脆弱性悪用ではなく侵害された外部アプリの信頼と権限の悪用という原文の但し書きを保持。単一組織の侵害ではなく多数組織への作戦波のためactivity_typeを自動値intrusionからcampaignへ変更（STIX: campaign）。"
+  },
+  "apt41|https://securelist.com/uefi-bootkit-blackx/121539/": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_period": {
+      "first_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "last_observed": {
+        "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "OxiDLLRunner",
+        "status": "approved",
+        "review_notes": "承認。Kaspersky原文が本キャンペーンでブートキット経由配布の観測ペイロードの一つとして記述し、OLLVM難読化はAPT41帰属根拠の一つに挙げられている。DLLサイドローディングで起動しRust製ペイロードが外部ドメインからDLLプラグインを取得する。"
+      }
+    ],
+    "review_notes": "採用。Kaspersky原文を確認した。「we have attributed this attack to the APT41 threat actor with medium confidence」と明示されたmedium confidenceの単一ベンダー帰属であり、レコードのconfidenceをmediumに保持して確定帰属へ昇格しない。標的は中央アジア（タジキスタン・ウズベキスタン・トルクメニスタン）の外交機関。BlackXはBaton Drop（CVE-2022-21894）悪用の UEFIブートキットで、独自MOK登録・BlackLotus類似実装・セキュリティ製品無効化ドライバー・Google Drive/OneDrive/Yandex.DiskをC2とするRATを原文で確認。活動期間は原文に開始日の明示がなく、発見時点（2026年初頭）の展開継続のみを年精度で保持。"
+  },
+  "volt-typhoon|https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_period": {
+      "first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。Lumen Black Lotus Labs原文を確認した。Silent TrainをVolt Typhoonの中継・隠蔽基盤として直接帰属（「Volt Typhoon's Silent Train is a covert network designed to gain and maintain access」）し、約3年間追跡。VeloCloud Orchestratorのゼロデイ（CVE-2026-16812）、N-able N-centralの未公開脆弱性チェーン（CVE-2025-8875/8876）、Quest KACEのゼロデイ疑い（moderate confidence）を観測。Cisco Catalyst SD-WANは公表済み重大脆弱性の悪用でありゼロデイとは記述されない（tech-memo要約の「ゼロデイ悪用を観測した」一括記述を原文に基づき補正）。Versa Directorは2024年中頃に公知。海外中継はIntelbrasモデム、米国内経由はNetgear Orbi、2025年初頭からは1〜3カ月保持の侵害済み企業システムを併用するハイブリッド構成。既定の自動分類infrastructure-operationが実態に一致するため変更しない。"
+  },
+  "contagious-interview|https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_type": "malware-campaign",
+    "activity_period": {
+      "first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。ESETのWeLiveSecurity記事（APT Activity Report Q2 2026–Q3 2026）を確認した。DeceptiveDevelopmentが偽採用課題を起点とする手口から、開発者の認証情報（Git認証情報・SSH鍵・アクセストークン）を窃取して公開・非公開リポジトリへ悪性コードを注入する広範なソフトウェアサプライチェーン侵害へ拡大したことを原文で確認。コミット履歴の書き換えと複数パッケージ配布基盤への影響を記述。DeceptiveDevelopmentはscope: overlappingのalias（MITRE ATT&CK登録）だが、ESETは命名以来この指定子を偽求人・偽面接ルアーの北朝鮮系クラスタ（本プロファイルの追跡対象）に用いており、本プロファイルには同系統報告の採用前例が複数ある。OmniStealer・DEV#POPPER RAT・NullReceiverはtech-memo要約に現れるがランディング記事では確認できず（詳細は報告書本体）、capability候補も生成されていないため取り込まない。偽面接ルアーの語に引きずられた自動分類phishing-campaignを、リポジトリ改ざんによるマルウェア混入を主題とするmalware-campaignへ変更。"
+  },
+  "unc4899|https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_period": {
+      "first_observed": {
+        "basis": "FBI/TRM（二次報道で確認）: 窃取は2026-10-29ごろ発生。TRMは10のブロックチェーン上で20:05 UTCから約20分間の流出を観測。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-29T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "同上。窃取発生日。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-29T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。一次ソース（FBI alert）は取得時に403で原文を確認できなかった（明記）。The Record・SecurityWeek等の独立した複数の二次報道で、FBI・US Secret Service・IRS-CIが2026-10-31付でBinanceからの約63億ドルの暗号資産窃取（2026-10-29発生）を北朝鮮のTraderTraitorへ正式に帰属し、Ethereum 608件・Bitcoin 19件・Solana 1件のアドレスを公開して遮断を要請したことを確認した。TraderTraitorはscope: overlappingのaliasだが、本プロファイルにはTraderTraitor名義の帰属活動の採用前例（activity--unc4899-tradertraitor-india-it-services-2026等）があり、米政府のTraderTraitor帰属（Bybit事案前例）と同一のクラスタ境界で追跡している。同一インシデントの他レコード3件（Binance公式説明・Richard Teng発言・Contagious Interview類似性報道）は重複または帰属未確定のため不採用とし、初期侵入（9月の偽採用面接起点）等の詳細は各不採用noteへ保持した。活動期間は窃取発生日のみを採り、アラート公開日（10-31）は期間へ転用しない。reported_atは一次資料の公開日を原文確認できなかったため設定せず、日次ファイル日付の既定に委ねる。"
+  },
+  "bitter|https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_type": "malware-campaign",
+    "activity_period": {
+      "first_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "PapRAT",
+        "status": "approved",
+        "review_notes": "承認。Fortinet原文が第2・第3の感染経路でMSIインストーラ経由で導入される独自RATとして解析。C++版（平文HTTP・8種コマンド）とRust版（HTTPS・文字列反転とROT-3）を記述。"
+      },
+      {
+        "name": "WmRAT",
+        "status": "approved",
+        "review_notes": "承認。Fortinet原文が「PapRAT also delivers WmRAT」としてPapRATのDWWダウンロードコマンド経由の二次ペイロード配布を記述。"
+      }
+    ],
+    "review_notes": "採用。Fortinet原文を確認した。「we attribute this activity to BITTER with high confidence」と明示（誘導ファイル名・C2通信・メタデータ根拠）。標的は南アジアに集中（telemetry）。政府・エネルギー・エンジニアリングはグループの一般的傾向としての記述であり本キャンペーンのセクターとしては明示されていないため流用しない。活動期間は「over the past several months」のみで明示日付がなくunknownとし、公開日（2026-11-02）を期間へ転用しない。LNK+ftp.exe、VHDX内LNK+囮表計算+MSI、URLショートカット+WebDAVの3経路を原文で確認。マルウェア展開を主題とするためactivity_typeを自動値infrastructure-operationからmalware-campaignへ変更。"
+  },
+  "apt29|https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_type": "cyber-espionage",
+    "activity_period": {
+      "first_observed": {
+        "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-27T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-03T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。Sekoia原文を確認した。「we assess with moderate to high confidence that this campaign was conducted by APT29」（または少なくともそのサブグループ）と帰属。侵害した正規サイトへのJavaScript挿入とAmerica250・ロンドンのホテルを装う偽サイトで、iOS 16.7/18.5とAndroid Chrome 139-145（143除く）の既知脆弱性チェーンを配信する水飲み場攻撃。ウクライナのWeb分析サービスPlerdyの侵害（8/27-9/3）で主にウクライナの数千サイト（軍・防衛関連含む）にトラッカー改変が波及。被害は欧州・米国にも分布。AndroSnitchはAndroidチェーン最終段として解析されたが被害端末上での実行確認は示されておらず、capability候補も生成されていないため取り込まない。インフラ作成日（2026年4〜8月）は観測日に転用しない。確信度はmoderate-to-highの帰属に基づきmedium。モバイル端末からの情報窃取を目的とするためactivity_typeを自動値infrastructure-operationからcyber-espionageへ変更。"
+  },
+  "cyberav3ngers|http://www.diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/declaration-d-attribution-a-l-iran-de-cyber-attaques-visant-la-france": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_type": "disruptive-activity",
+    "reported_at": {
+      "basis": "source-publication",
+      "precision": "day",
+      "status": "known",
+      "value": "2026-11-09T00:00:00Z"
+    },
+    "activity_period": {
+      "first_observed": {
+        "basis": "フランス外務省声明: 「la nuit du 11 au 12 octobre」。2026-11-09付声明の直近10月であることから2026年と判断。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-11T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "同上。11日から12日にかけての夜間の攻撃。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-10-12T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。フランス外務省の帰属声明原文（2026-11-09付）を確認した。10月11〜12日夜の冷蔵設備へのサイバー攻撃を「l'unité cyberoffensive SHAHID KAVEH, affiliée au centre électronique et cyber du Corps des Gardiens de la Révolution Islamique d'Iran」へ帰属。Shahid Kaveh Groupは本プロファイルのscope: exactのalias（CISA共同政府勧告由来）であり、政府による帰属声明としてconfidence highとする。フランス国内700超拠点のスーパー等の産業用冷蔵制御装置が侵害され、霜取り設定の高温変更により火災（複数件）と数千万ユーロ規模の食品損失が発生。声明はCyberAv3ngers・Soldiers of Solomon等のペルソナ名を挙げていない（tech-memo要約のそれらへの言及は二次報道由来）。Emennet Pasargad（声明表記Emmenet Pasargad）は本攻撃へ寄与したとしてEUが2026年3月に制裁した実体として言及されるが、部隊間関係は示されておらず関係を生成しない（unknown-clustersのshahid-shoostariエントリの記録と整合）。同時期の小規模水力発電設備（Schneider Electric機器）への攻撃の言及は関連活動として説明に保持。EU広域の同種冷蔵設備攻撃（FBI/CISA勧告、帰属なし）はeu-refrigeration-attacksクラスタとして台帳に留め、本Activityはフランス政府が帰属した範囲に限る。破壊的影響（火災・物損）を主題とするためactivity_typeを自動値intrusionからdisruptive-activityへ変更。"
+  },
+  "turla|https://github.com/eset/malware-ioc/tree/master/turla": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_type": "reported-activity",
+    "activity_overrides": {
+      "title": "Turla Cerealツールセットの公開IOC一覧（ESET malware-iocリポジトリ）",
+      "summary": "ESETがmalware-iocリポジトリのturlaフォルダで公開したCerealツールセットのSHA-1一覧。CerealLoader（Microsoft.Exchange.Data.Transport.ni.dll等への偽装名を含む）、CerealRunner、CerealSprinter、CerealHermit、CerealIron、CerealMoth、bootstrapper DLL（x86/x64、Win32/Agent.AIOQ）の検体ハッシュを含む。WeLiveSecurity記事「Exchange for breakfast: Turla's Cereal tricks are not for kids」のIOC補完であり、活動本体は同記事のActivityとして採用済み。"
+    },
+    "activity_period": {
+      "first_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "Cereal bootstrapper DLL (x64)",
+        "status": "rejected",
+        "review_notes": "不採用。ESET記事本文はbootstrapper DLLを独立コンポーネントとして命名しておらず、IOCリポジトリの検出名はWin32/Agent.AIOQ（.NETチェーンを起動するネイティブローダー）。x86/x64のビット幅で分割したcapability entityはコンポーネント境界として不適切。IOC（SHA-1）観測は保持される。"
+      },
+      {
+        "name": "Cereal bootstrapper DLL (x86)",
+        "status": "rejected",
+        "review_notes": "不採用。x64版と同一の理由。"
+      },
+      {
+        "name": "CerealHermit",
+        "status": "approved",
+        "review_notes": "承認。ESET記事がネットワーク機能を持たずディスクから命令を読むNeuron系バックドアとして記述し、一部侵入で両バックドアの併置を確認。IOCリポジトリにも掲載。"
+      },
+      {
+        "name": "CerealIron",
+        "status": "approved",
+        "review_notes": "承認。ESET記事が非.NETプロセスから.NETアセンブリを実行するインジェクタとして記述し、観測された実行チェーンに登場。IOCリポジトリにも掲載。"
+      },
+      {
+        "name": "CerealLoader",
+        "status": "approved",
+        "review_notes": "承認。ESET記事が暗号化ファイルから.NETアセンブリを読込・実行するローダーとして記述。ncobjapi.dll・wbemcomn.dll等への偽装を確認。IOCリポジトリにも掲載。"
+      },
+      {
+        "name": "CerealMoth",
+        "status": "approved",
+        "review_notes": "承認。ESET記事がアセンブリとメソッド名を受け取り実行するコンポーネントとして記述し、観測対象に列挙。IOCリポジトリにも掲載。"
+      },
+      {
+        "name": "CerealRunner",
+        "status": "approved",
+        "review_notes": "承認。ESET記事が暗号化コマンドプログラムを内包・実行するコンポーネントとして記述し、両侵入で多数の検体を検出。IOCリポジトリにも掲載。"
+      },
+      {
+        "name": "CerealSprinter",
+        "status": "approved",
+        "review_notes": "承認。ESET記事がCerealRunner同様に他コンポーネントの読込・実行のみに使われるコンポーネントとして記述。IOCリポジトリにも掲載。"
+      }
+    ],
+    "review_notes": "採用。ESETのmalware-iocリポジトリturlaフォルダを確認し、README.adocの「Exchange for breakfast: Turla's Cereal tricks are not for kids - Indicators of Compromise」節にCerealツールセット各検体のSHA-1とファイル名（CerealLoaderの偽装名10件、他コンポーネント、bootstrapper DLL x86/x64）が掲載されていることを確認した。見出しのないIOC CSV由来レコードのため、自動生成題名「Turlaの日次IOC観測」を内容を示す題へactivity_overridesで差し替えた（1本の資料が見出しを持たないケースの表示名差し替えであり、活動実体はWeLiveSecurity記事のActivityが正）。IOC一覧自体に観測日・活動期間の記載はないため期間はunknownとし、welivesecurity記事の侵害日時（2025-11-28検知等）はそちらのActivityで保持する。"
+  },
+  "turla|https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_period": {
+      "first_observed": {
+        "basis": "ESET: カザフスタンの政府組織のExchangeサーバーで2025-11-28にツールセットを初検知。",
+        "precision": "day",
+        "status": "known",
+        "value": "2025-11-28T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "ESET: カザフスタンでの活動が2026-01-15に急増。原文が示す最も新しい具体的活動日。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-01-15T00:00:00Z"
+      }
+    },
+    "review_notes": "採用。ESET原文を確認した。「We attribute Cereal, with high confidence, to the Russia-aligned APT group Turla」と明示（別のTurla関連コンポーネントの併用と旧Turlaマルウェアとの概念的類似が根拠）。標的はカザフスタンとルーマニアの政府組織各1。カザフスタンで2025-11-28に初検知、ルーマニアは2025-12-23に侵害、カザフスタンで2026-01-15に活動急増。CerealBoxはEdgeTransport.exeへ注入され新規トランスポートエージェント登録なしにメール本文を検査、ルーマニアではNATO・EU関連アドレスのメールを選別収集。CerealNeuronは正規Exchangeサービス風パスで暗号化Web要求を待ち受け、外部C2は観測されず侵害Exchange自体が制御点。ロシア反体制派の可視化目的はESETの仮説であり断定しない。capability候補は本レコードにはなく、Cereal各コンポーネントはESET IOCリポジトリ由来レコードのcapability_decisionsで承認した。自動分類cyber-espionageが実態に一致。"
+  },
+  "unc3753|https://blog.checkpoint.com/security/how-luna-moth-runs-data-extortion-like-a-business/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。「The Luna Moth Files」は公開者・入手経路不明の、Luna Moth（Silent Ransom Group、UNC3753）の内部資料と称する未検証リークの分析記事であり、新規の攻撃Activityではない。Check Pointの直近被害50件中42件が法律事務所という記述は既知活動の集計的文脈情報で、個別事象の観測日・期間の一次根拠がない。内容には未検証の主張が含まれると記事自体が明記しており、攻撃者の身元・支払い実績・ディープフェイク使用は裏付けが必要とされている。"
+  },
+  "famous-chollima|https://www.justice.gov/opa/pr/justice-department-announces-coordinated-actions-combat-north-korean-remote-it-worker": {
+    "review_status": "rejected",
+    "review_notes": "不採用。DOJ/FBIによるテキサス州のラップトップファーム捜索は法執行アクションであり攻撃Activityではない（AGENT.md 法執行・制裁記事のルーティング）。北朝鮮IT労働者スキームに関するentity/legal_actionsへの反映は別レビュー候補として報告する。公開日を活動期間へ転用しない。"
+  },
+  "unc6240|https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。身代金交渉担当者がShinyHunters恐喝サイト運営に関与した疑いに関する米当局の捜査報道であり、アクターの攻撃Activityではない。捜査中の疑いを確定事実として扱わない。"
+  },
+  "earth-lusca|https://securelist.com/lazarus-operation-flashhole/121541/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。名称衝突。earth-luscaのoverlapping alias「CHROMIUM」が、Lazarus記事本文のChromium系ブラウザーへの言及に誤一致した。記事の主体はLazarus（別レコードで採用）でありearth-luscaではない。"
+  },
+  "mustang-panda|https://www.sophos.com/en-us/blog/bronze-sandcastle-deploys-modified-meterpreter-shells": {
+    "review_status": "rejected",
+    "review_notes": "不採用。Sophos原文はBRONZE SANDCASTLEを「the observed activity could not be reliably linked to either group」としてBRONZE PRESIDENT（mustang-pandaのexact alias）とも BRONZE ATLASとも結び付けず、別指定子として新設している。標的地域の重複だけでmustang-pandaへ統合しない。unknown-clusters.jsonのbronze-sandcastleクラスタにexplicitly-not-linkedの記録を保持済み。"
+  },
+  "earth-lusca|https://www.varonis.com/blog/stealc-returns": {
+    "review_status": "rejected",
+    "review_notes": "不採用。名称衝突。earth-luscaのoverlapping alias「CHROMIUM」が、StealC/Stadia解析記事本文のChromium App-Bound Encryption言及に誤一致した。記事はStealC系マルウェアの解析でありアクター帰属記事ではない。"
+  },
+  "volt-typhoon|https://blog.talosintelligence.com/uat-11473-keydrift/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。TalosはKeyDrift活動をUAT-11473として別クラスタで追跡しており、「UAT-11473とVolt TyphoonのSilent Trainフレームワーク…には高い確度での重複」は指標・インフラ重複の報告であって同一性の立証ではない。volt-typhoonプロファイルへ統合せず、unknown-clusters.jsonのuat-11473クラスタに観測を保持する。"
+  },
+  "storm-0940|https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。CrowdStrikeのVAPOR PANDAに関する記事であり、tech-memo要約自体が「本活動はStorm-0940によるARTEX利用とは別のキャンペーンと評価されている」と明記する。Storm-0940名の本文一致は対比文脈への一致であり、本活動の実行主体ではない。VAPOR PANDAはunknown-clusters.jsonのvapor-pandaクラスタに記録済みで、ARTEX・BLOODALCHEMY等の観測はそちらに保持する。"
+  },
+  "unc4899|https://x.com/_RichardTeng/status/2116072080525656150": {
+    "review_status": "rejected",
+    "review_notes": "不採用。2026-10-29のBinance暗号資産窃取（約63.6億ドル、TRM観測では20:05 UTCから約20分で大部分が流出）に関するBinance側説明の報道で、FBI帰属レコード（daily-record--86171c98d66e12628d41ec36）と同一インシデント。Binance自身は帰属を公表しておらず、TRM/ChainalysisのTraderTraitor評価は第三者評価に留まる。ActivityはFBI帰属レコードで採用済みのため重複として不採用。DevOpsエンジニア端末侵害からサービスコンテナへのアクセス・不正出金という経路の詳細は本noteに保持。"
+  },
+  "unc6240|https://www.bleepingcomputer.com/news/security/fintech-platform-sageworks-taken-offline-after-suspected-cyberattack/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。Abrigo/Sageworksの一時停止はtech-memo要約自体が、ShinyHunters関係者を名乗る人物の過去の窃取主張について「今回の停止との関連は示されていない」と明記する。主体未確定のインシデント報道でありunc6240のActivityとして採用しない。"
+  },
+  "contagious-interview|https://www.binance.com/en/blog/community/3229153443759566763": {
+    "review_status": "rejected",
+    "review_notes": "不採用。Binance窃取の初期侵入（偽採用面接・悪意あるコーディング課題）はContagious Interview/Operation Dream Jobと手口が類似するが、原文は「今回の侵害がどちらのキャンペーンに属するかは未確認」と明記する。FBIはTraderTraitorへ帰属しており（unc4899側レコードで採用済み）、手口類似だけでcontagious-interviewへ帰属しない。"
+  },
+  "unc4899|https://www.binance.com/en/blog/community/3229153443759566763": {
+    "review_status": "rejected",
+    "review_notes": "不採用。FBI帰属レコード（daily-record--86171c98d66e12628d41ec36）と同一インシデント（Binance窃取）のBinance公式詳細報告であり、Activityの重複作成を避けるため不採用とする。本資料の詳細（2026年9月の偽採用面接でmacOSのHomebrew配下pyenvを悪意ある実行ファイルへ置換、10-20までに社内AIツールも利用してウォレット基盤担当2名を追加侵害し認証情報とコンテナ配備トークンを取得、10-29に署名サービスへ不正アクセスし複数チェーンで資産窃取）は本noteへ保持し、将来curated Activityへ昇格する際の期間精緻化（first_observed 2026-09）と出典追加の候補とする。"
+  },
+  "unc6240|https://haveibeenpwned.com/Breach/Harvard": {
+    "review_status": "rejected",
+    "review_notes": "不採用。ハーバード大学の2025年の既知情報漏洩に関するHIBP登録（約85万件のメールアドレス）の報道であり、新規の攻撃Activityではない。ShinyHuntersの窃取主張・身代金拒否の経緯は過去事例への言及で、帰属確定の新規根拠もない。"
+  },
+  "mustang-panda|https://www.welivesecurity.com/en/eset-research/slippynunchucks-hijacks-sogou-input-methods-brand-promotion-mechanism-to-distribute-malware/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。tech-memo要約自体が「ESETは本活動とMustang Pandaとの既知の関連を確認していない」と明記する。SlippyNunchucksはunknown-clusters.jsonのslippynunchucksクラスタに記録済みで、Sogou Input Method悪用の観測はそちらに保持する。"
+  },
+  "storm-0940|https://censys.com/blog/artex-agentic-asbestos/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。CensysによるARTEX公開コンソールの実態調査（1,465ホスト観測）であり、Storm-0940への言及は他社報告（Microsoft）の紹介に留まる。公開インスタンスには正規の許可を得たテスト環境も含まれる可能性があると原文が明記しており、IOC CSVのactor列のStorm-0940をARTEXホスト観測（ipv4 3件）へ帰属させる根拠はない。Storm-0940のARTEX悪用Activity自体はMicrosoft報告のレコードで採用済み。"
+  },
+  "unc6240|https://www.bleepingcomputer.com/news/security/binance-denies-data-breach-after-alleged-shinyhunters-claims/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。ShinyHuntersを名乗る人物による3億3,500万人分の情報流出主張をBinanceが否定した報道。未検証の自称主張であり、攻撃Activityとして採用しない。"
+  },
+  "famoussparrow|https://research.checkpoint.com/2026/not-all-that-glitters-is-gold-tracking-copperdragons-sparrow-framework-around-the-globe/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。Check Point原文はCopperDragonを複数の中国関連アクターへ共有ツールセットを供給した可能性のある存在（digital quartermaster仮説）として提示し、FamousSparrowはその利用者の一例として挙げられるのみで、OceanGate等の活動クラスタの実行主体と同定していない。原文は「the use of the same backdoor or C2 infrastructure does not necessarily mean that two intrusions were conducted by the same actor」と明示的に警告する。ツール共有をidentityへ昇格しない。CopperDragon・OceanGate・DarkWire・SilentDeliveryはunknown-clusters.jsonに記録済み。"
+  },
+  "scattered-spider|https://krebsonsecurity.com/2026/11/who-runs-the-ransomware-group-qilin/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。Qilin管理者「Haise」の運営者個人をKrebsOnSecurityが追跡した調査報道であり、scattered-spiderの攻撃Activityではない。「HaiseはScattered SpiderやRansomHubとの協業を主張している」はアクター自身の主張であって第三者の立証がなく、関係生成の根拠にしない。Qilinの観測はunknown-clusters.jsonのqilinクラスタに記録済み。"
+  },
+  "unc5221|https://research.checkpoint.com/2026/php2shell-exploitation-on-check-point-gateway/": {
+    "review_status": "rejected",
+    "review_notes": "不採用。Check PointはPHP2Shell攻撃（Check Point Security Gateway Mobile Accessポータルへの攻撃、10-30イスラエル、11-02以降標的拡大、destroy_v6ワイパー展開）の主体を確定しておらず、「TSGA・TSProxyにはUNC5221関連のPhiliKitとの類似性が示されたが、攻撃主体は確定していない」。ツール類似だけでunc5221へ帰属しない。"
   }
 }

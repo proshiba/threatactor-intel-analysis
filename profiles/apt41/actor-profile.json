@@ -4,7 +4,7 @@
   "name": "APT41",
   "status": "review",
   "created_at": "2026-07-25T09:00:23Z",
-  "updated_at": "2026-10-12T11:06:20Z",
+  "updated_at": "2026-11-15T09:02:08Z",
   "languages": [
     "ja"
   ],
@@ -366,34 +366,30 @@
         "analyst_notes": ""
       },
       {
-        "id": "malware--mitre--s1052",
-        "name": "DEADEYE",
-        "aliases": [
-          "DEADEYE",
-          "DEADEYE.APPEND",
-          "DEADEYE.EMBED"
-        ],
+        "id": "malware--daily-3a443ce4fc6e4f9a93d7",
+        "name": "OxiDLLRunner",
+        "aliases": [],
         "types": [
-          "Windows"
+          "loader"
         ],
-        "description": "[DEADEYE](https://attack.mitre.org/software/S1052) is a malware launcher that has been used by [APT41](https://attack.mitre.org/groups/G0096) since at least May 2021. [DEADEYE](https://attack.mitre.org/software/S1052) has variants that can either embed a payload inside a compiled binary (DEADEYE.EMBED) or append it to the end of a file (DEADEYE.APPEND).(Citation: Mandiant APT41)",
+        "description": "APT41との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
         "first_observed": {
-          "value": "2021-05-01T04:00:00.000Z",
-          "precision": "second",
-          "status": "known",
-          "basis": "mitre-attack-campaign; activity-period"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "last_observed": {
-          "value": "2022-02-01T05:00:00.000Z",
-          "precision": "second",
+          "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。",
+          "precision": "year",
           "status": "known",
-          "basis": "mitre-attack-campaign; activity-period"
+          "value": "2026-01-01T00:00:00Z"
         },
-        "confidence": "high",
+        "confidence": "medium",
         "evidence_refs": [
-          "source--mitre-attack-19-2"
+          "source--daily-3725c3b81541e6c9e87f"
         ],
-        "analyst_notes": "MITRE ATT&CK campaign-to-software relationship. ATT&CK coverage is a public-reporting subset."
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
       },
       {
         "id": "malware--derusbi",
@@ -440,14 +436,15 @@
           "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2024-06-30T22:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack-campaign; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mandiant-apt41-arisen-from-dust-2024"
+          "source--mandiant-apt41-arisen-from-dust-2024",
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Primary-source-verified capability used in the linked activity."
       },
@@ -466,14 +463,15 @@
           "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2024-06-30T22:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack-campaign; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mandiant-apt41-arisen-from-dust-2024"
+          "source--mandiant-apt41-arisen-from-dust-2024",
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Primary-source-verified capability used in the linked activity."
       },
@@ -596,6 +594,36 @@
           "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--mitre--s1052",
+        "name": "DEADEYE",
+        "aliases": [
+          "DEADEYE",
+          "DEADEYE.APPEND",
+          "DEADEYE.EMBED"
+        ],
+        "types": [
+          "Windows"
+        ],
+        "description": "[DEADEYE](https://attack.mitre.org/software/S1052) is a malware launcher that has been used by [APT41](https://attack.mitre.org/groups/G0096) since at least May 2021. [DEADEYE](https://attack.mitre.org/software/S1052) has variants that can either embed a payload inside a compiled binary (DEADEYE.EMBED) or append it to the end of a file (DEADEYE.APPEND).(Citation: Mandiant APT41)",
+        "first_observed": {
+          "value": "2021-05-01T04:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack-campaign; activity-period"
+        },
+        "last_observed": {
+          "value": "2022-02-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack-campaign; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": "MITRE ATT&CK campaign-to-software relationship. ATT&CK coverage is a public-reporting subset."
       },
       {
         "id": "malware--mopsled",
@@ -1530,6 +1558,9 @@
             "ttp--mitre-campaign--cea5d87cd4915061f59f",
             "ttp--mitre-campaign--da5afb863a829acf91ec",
             "ttp--mitre-campaign--e0caaf729ac45c1741b0"
+          ],
+          "tool_refs": [
+            "tool--certutil"
           ]
         },
         "infrastructure": {
@@ -1592,7 +1623,10 @@
       },
       "stix_object_type": "campaign",
       "activity_refs": [],
-      "grouping_context": null
+      "grouping_context": null,
+      "tool_refs": [
+        "tool--certutil"
+      ]
     },
     {
       "activity_id": "activity--apt41-toughprogress-2024",
@@ -1846,6 +1880,11 @@
             "ttp--mitre-campaign--dd2806caf9ed7ce8832e",
             "ttp--mitre-campaign--e08d88171340f247d673",
             "ttp--mitre-campaign--e297da4a7e091757ba2c"
+          ],
+          "tool_refs": [
+            "tool--dsquery",
+            "tool--mimikatz",
+            "tool--ping"
           ]
         },
         "infrastructure": {
@@ -1911,7 +1950,12 @@
       },
       "stix_object_type": "campaign",
       "activity_refs": [],
-      "grouping_context": null
+      "grouping_context": null,
+      "tool_refs": [
+        "tool--dsquery",
+        "tool--mimikatz",
+        "tool--ping"
+      ]
     },
     {
       "activity_id": "activity--daily-207ba8f2eb504435e5e4",
@@ -1940,6 +1984,7 @@
       "malware_refs": [
         "malware--antsword",
         "malware--bluebeam",
+        "malware--cobalt-strike",
         "malware--dustpan",
         "malware--dusttrap",
         "malware--pinegrove",
@@ -1969,6 +2014,7 @@
           "malware_refs": [
             "malware--antsword",
             "malware--bluebeam",
+            "malware--cobalt-strike",
             "malware--dustpan",
             "malware--dusttrap",
             "malware--pinegrove",
@@ -2006,7 +2052,9 @@
           },
           "activity_type": "intrusion",
           "phases": [],
-          "results": [],
+          "results": [
+            "data-theft"
+          ],
           "direction": {
             "source_countries": [
               "China"
@@ -2465,7 +2513,6 @@
       "description": "Cisco Talosは、2023年7月中旬から台湾の政府関連研究機関1組織で観測された侵入を、中程度の確度でAPT41へ帰属した。攻撃者はShadowPadとCobalt Strikeに加え、Webシェルと独自ツールを使用した。単一組織の事例であるためIncidentとして保持する。",
       "target_refs": [
         "target--activity-rule--country--0c17dd6f4a5e07d5f7d6",
-        "target--mitre-group--sector--7c6d9d0cea82bb2a535f",
         "target--sector--government"
       ],
       "malware_refs": [
@@ -2479,7 +2526,9 @@
         "source--daily-84e64bef4061ae862a75"
       ],
       "analyst_notes": "Cisco Talosの帰属確度（medium confidence）をそのまま反映。公開日を侵入終期として扱っていない。",
-      "ttp_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--b58011f8fb2daf77b2cf"
+      ],
       "victim_refs": [
         "victim--activity-rule--44132c017907996cb8ad"
       ],
@@ -2497,7 +2546,9 @@
             "malware--cobalt-strike",
             "malware--shadowpad"
           ],
-          "ttp_refs": []
+          "ttp_refs": [
+            "ttp--activity-rule--b58011f8fb2daf77b2cf"
+          ]
         },
         "infrastructure": {
           "infrastructure_refs": []
@@ -2505,7 +2556,6 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--country--0c17dd6f4a5e07d5f7d6",
-            "target--mitre-group--sector--7c6d9d0cea82bb2a535f",
             "target--sector--government"
           ],
           "victim_refs": [
@@ -2532,7 +2582,9 @@
             "basis": "source-publication"
           },
           "activity_type": "reported-activity",
-          "phases": [],
+          "phases": [
+            "Persistence"
+          ],
           "results": [],
           "direction": {
             "source_countries": [
@@ -2554,6 +2606,119 @@
       "stix_object_type": "incident",
       "activity_refs": [],
       "grouping_context": null
+    },
+    {
+      "activity_id": "activity--daily-80bdb1418911a0edf32c",
+      "name": "BlackX UEFIブートキット、Baton Drop脆弱性でSecure Bootを回避",
+      "activity_type": "cyber-espionage",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "last_observed": {
+        "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Kasperskyは2026年初頭、中央アジアの外交機関を狙う諜報活動でBlackX UEFIブートキットを発見した。標的は主にタジキスタン、ウズベキスタン、トルクメニスタンで、APT41の関与を中程度の確度で評価した。 BlackXはBaton Drop脆弱性CVE-2022-21894を悪用し、独自のMachine Owner Keyを登録して任意のEFIファイルを読み込む。実装はBlackLotusに酷似するが、カーネルドライバーや後続ペイロードは異なる。 悪意あるドライバーはセキュリティ関連プロセスやレジストリコールバックを無効化し、ETWを改変する。一部処理はKaspersky・Avast製品の検出時に動作するが、Kasperskyは自社製品には有効でないと説明した。 後続のRATはGoogle Drive、OneDrive、Yandex.DiskをC2に利用する。別のOxiDLLRunnerはDLLサイドローディングで起動し、Rust製ペイロードが外部ドメインからDLLプラグインを取得する。 被害端末はWindows更新済みだったが、追加のSecure Boot失効措置が未適用だった。脆弱な起動コンポーネントの署名証明書は、期限切れだけでは読み込みを阻止できず、明示的なブロックが必要とされる。",
+      "target_refs": [
+        "target--targeting-audit--region--f4baf18afc83807f55d5"
+      ],
+      "malware_refs": [
+        "malware--daily-3a443ce4fc6e4f9a93d7"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--9ee100c701957d41dd98",
+        "ttp--activity-rule--ca7fe1cb0a3b77e8c368"
+      ],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3725c3b81541e6c9e87f"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--80bdb1418911a0edf32c9bbc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用。Kaspersky原文を確認した。「we have attributed this attack to the APT41 threat actor with medium confidence」と明示されたmedium confidenceの単一ベンダー帰属であり、レコードのconfidenceをmediumに保持して確定帰属へ昇格しない。標的は中央アジア（タジキスタン・ウズベキスタン・トルクメニスタン）の外交機関。BlackXはBaton Drop（CVE-2022-21894）悪用の UEFIブートキットで、独自MOK登録・BlackLotus類似実装・セキュリティ製品無効化ドライバー・Google Drive/OneDrive/Yandex.DiskをC2とするRATを原文で確認。活動期間は原文に開始日の明示がなく、発見時点（2026年初頭）の展開継続のみを年精度で保持。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt41",
+          "name": "APT41",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-3a443ce4fc6e4f9a93d7"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--9ee100c701957d41dd98",
+            "ttp--activity-rule--ca7fe1cb0a3b77e8c368"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--targeting-audit--region--f4baf18afc83807f55d5"
+          ],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "last_observed": {
+            "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。",
+            "precision": "year",
+            "status": "known",
+            "value": "2026-01-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Command And Control",
+            "Execution",
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": [
+              "target--targeting-audit--region--f4baf18afc83807f55d5"
+            ]
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-3725c3b81541e6c9e87f"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
     },
     {
       "activity_id": "activity--daily-81f1ddfc42d0f495f6a5",
@@ -3095,12 +3260,12 @@
       {
         "id": "target--activity-rule--country--0c17dd6f4a5e07d5f7d6",
         "name": "台湾",
-        "description": "活動「中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃」の記述で標的として明示された国・地域。",
+        "description": "活動「APT41、台湾の政府系研究機関1組織を侵害」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": "2023-07-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "source-stated"
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
           "value": null,
@@ -3161,6 +3326,28 @@
       }
     ],
     "regions": [
+      {
+        "id": "target--targeting-audit--region--f4baf18afc83807f55d5",
+        "name": "中央アジア",
+        "description": "活動「BlackX UEFIブートキット、Baton Drop脆弱性でSecure Bootを回避」の記述で標的地域として中央アジアが明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。",
+          "precision": "year",
+          "status": "known",
+          "value": "2026-01-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-3725c3b81541e6c9e87f"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
       {
         "id": "target--targeting-audit--region--6d0708d549c0d72a8b57",
         "name": "東アジア",
@@ -3293,7 +3480,6 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--daily-84e64bef4061ae862a75",
           "source--mitre-attack-19-2"
         ],
         "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
@@ -3347,10 +3533,10 @@
         "name": "Government",
         "description": "The observed TOUGHPROGRESS campaign targeted multiple government entities.",
         "first_observed": {
-          "value": "2024-10-01T00:00:00Z",
+          "value": "2023-07-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "gtig-observation"
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
           "value": "2024-10-31T00:00:00Z",
@@ -3360,6 +3546,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--cisco-talos-apt41-taiwan-institute-2024",
           "source--daily-6f4ea1988c3e4d76819a",
           "source--daily-7e05524db14274790b02",
           "source--daily-84e64bef4061ae862a75",
@@ -3525,6 +3712,37 @@
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
+      "ttp_id": "ttp--activity-rule--9ee100c701957d41dd98",
+      "tactic": "Execution, Stealth",
+      "technique_id": "T1574.001",
+      "technique_name": "DLL",
+      "observed_behavior": "別のOxiDLLRunnerはDLLサイドローディングで起動し、Rust製ペイロードが外部ドメインからDLLプラグインを取得する。",
+      "activity_refs": [
+        "activity--daily-80bdb1418911a0edf32c"
+      ],
+      "malware_refs": [
+        "malware--daily-3a443ce4fc6e4f9a93d7"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3725c3b81541e6c9e87f"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
       "ttp_id": "ttp--activity-rule--a2c1d051b47c4140df1d",
       "tactic": "Command And Control",
       "technique_id": "T1102.003",
@@ -3550,6 +3768,68 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-6f4ea1988c3e4d76819a"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--b58011f8fb2daf77b2cf",
+      "tactic": "Persistence",
+      "technique_id": "T1505.003",
+      "technique_name": "Web Shell",
+      "observed_behavior": "攻撃者はShadowPadとCobalt Strikeに加え、Webシェルと独自ツールを使用した。",
+      "activity_refs": [
+        "activity--daily-7e72b05415dea6793880"
+      ],
+      "malware_refs": [
+        "malware--cobalt-strike",
+        "malware--shadowpad"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2023-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--cisco-talos-apt41-taiwan-institute-2024",
+        "source--daily-84e64bef4061ae862a75"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--ca7fe1cb0a3b77e8c368",
+      "tactic": "Command And Control",
+      "technique_id": "T1102.003",
+      "technique_name": "One-Way Communication",
+      "observed_behavior": "後続のRATはGoogle Drive、OneDrive、Yandex.DiskをC2に利用する。",
+      "activity_refs": [
+        "activity--daily-80bdb1418911a0edf32c"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3725c3b81541e6c9e87f"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -7493,6 +7773,288 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
+      "source_id": "source--barium--1daa9a873506d87b",
+      "path": "summary/2026/Cloudflare-2026-threat-report.pdf",
+      "title": "Cloudflare 2026 threat report",
+      "publisher": "",
+      "published_at": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--1f400a9d3f2e41f0",
+      "path": "actor_profile/evidence/barium.csv",
+      "title": "barium",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--barium--21422a698347bb8f",
+      "path": "A_Threat_Actor_Encyclopedia.pdf",
+      "title": "A Threat Actor Encyclopedia",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--339c36d0d6a6db7b",
+      "path": "APT-hunting/hunting-cobaltstrike-beacons-in-the-dark.pdf",
+      "title": "hunting cobaltstrike beacons in the dark",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--68a19d1b26dd988c",
+      "path": "Threat_Group_Cards_v2.0.pdf",
+      "title": "Threat Group Cards v2.0",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--7c9ff3fad63d6fda",
+      "path": "summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf",
+      "title": "Modern Asian APT groups TTPs report eng",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--818ca3056deabc96",
+      "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
+      "title": "Secureworks NC3 2022StateoftheThreat",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--81edbe1c428a9855",
+      "path": "International Strategic/China/A-three-beat-waltz-The-ecosystem-behind-Chinese-state-sponsored-cyber-threats.pdf",
+      "title": "A three beat waltz The ecosystem behind Chinese state sponsored cyber threats",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--95457a1e86f185fa",
+      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
+      "title": "APT group Intelligence Research handbook 2022",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--aec9df3f01fe8a80",
+      "path": "summary/2020/APT-blackberry-mobile-malware-report.pdf",
+      "title": "APT blackberry mobile malware report",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--b2fc1a83e9e428da",
+      "path": "Threat Group Cards.pdf",
+      "title": "Threat Group Cards",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--db420ade9ac8e5ca",
+      "path": "microsoft-threat-actor-list.xlsx",
+      "title": "microsoft threat actor list",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "spreadsheet",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--e336c8205101f88f",
+      "path": "International Strategic/China/china-cyber-report.pdf",
+      "title": "china cyber report",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--barium--eb48a9941711fdcc",
+      "path": "summary/2024/threat actor list from cs.csv",
+      "title": "threat actor list from cs",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--cisco-talos-apt41-taiwan-institute-2024",
+      "path": "https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/",
+      "url": "https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/",
+      "title": "Chinese hacking group APT41 compromised Taiwanese government-affiliated research institute with ShadowPad and Cobalt Strike",
+      "publisher": "Cisco Talos",
+      "published_at": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc",
+        "victim-case"
+      ],
+      "analyst_notes": "Cisco Talos attributes the single-institute intrusion to APT41 with medium confidence and dates the initial compromise to mid-July 2023."
+    },
+    {
       "source_id": "source--daily-2e4c99df2d0471e846db",
       "path": "https://intel.breakglass.tech/post/apt41-winnti-elf-cloud-credential-harvester-alibaba-typosquat",
       "title": "APT41 Winnti の ELF 型クラウド認証情報収集マルウェア：Alibaba のタイポスクワット基盤と 6 年にわたる系譜",
@@ -7514,6 +8076,33 @@
       "actor_scope": "unknown",
       "claims_supported": [
         "activity"
+      ]
+    },
+    {
+      "source_id": "source--daily-3725c3b81541e6c9e87f",
+      "path": "https://securelist.com/uefi-bootkit-blackx/121539/",
+      "title": "BlackX UEFIブートキット、Baton Drop脆弱性でSecure Bootを回避",
+      "publisher": "securelist.com",
+      "published_at": {
+        "value": "2026-10-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261026.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. Kaspersky原文を取得して確認した（アクセス日2026-11-15）。「we have attributed this attack to the APT41 threat actor with medium confidence」の帰属確度を原文で確認（確度はレコードのconfidenceで保持）。",
+      "url": "https://securelist.com/uefi-bootkit-blackx/121539/",
+      "accessed_at": "2026-11-15T00:00:00Z",
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "ttp"
       ]
     },
     {
@@ -7771,6 +8360,58 @@
       ]
     },
     {
+      "source_id": "source--doj-apt41-chengdu404-2020",
+      "path": "https://www.justice.gov/archives/opa/pr/seven-international-cyber-defendants-including-apt41-actors-charged-connection-computer",
+      "title": "Seven International Cyber Defendants, Including APT41 Actors, Charged In Connection With Computer Intrusion Campaigns Against More Than 100 Victims Globally",
+      "publisher": "U.S. Department of Justice",
+      "published_at": {
+        "value": "2020-09-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-legal",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "The conduct is alleged in indictments and is not recorded as a conviction. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.justice.gov/archives/opa/pr/seven-international-cyber-defendants-including-apt41-actors-charged-connection-computer"
+    },
+    {
+      "source_id": "source--doj-apt41-sea-gamer-mall-indictment-2020",
+      "path": "https://www.justice.gov/archives/opa/press-release/file/1317211/dl",
+      "title": "United States v. Wong Ong Hua and Ling Yang Ching indictment",
+      "publisher": "U.S. Department of Justice",
+      "published_at": {
+        "value": "2020-09-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-legal",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "The conduct is alleged in an indictment; arrests are separately recorded. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.justice.gov/archives/opa/press-release/file/1317211/dl"
+    },
+    {
       "source_id": "source--gtig-apt41-toughprogress-2025",
       "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-innovative-tactics/",
       "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-innovative-tactics/",
@@ -7800,6 +8441,140 @@
         "artifact"
       ],
       "analyst_notes": "GTIG attributes the campaign to APT41/HOODOO with high confidence."
+    },
+    {
+      "source_id": "source--gtig-unified-actor-naming-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Updated Cyber Threat Actor Naming System",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-23T11:24:50Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
+    },
+    {
+      "source_id": "source--mandiant-apt41-arisen-from-dust-2024",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
+      "title": "APT41 Has Arisen From the DUST",
+      "publisher": "Mandiant",
+      "published_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Mandiant directly attributes the sustained campaign observed since 2023 to APT41 and enumerates the affected countries, sectors, and toolchain."
+    },
+    {
+      "source_id": "source--mandiant-apt41-dual-use-2019",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-dual-espionage-and-cyber-crime-operation",
+      "title": "APT41: A Dual Espionage and Cyber Crime Operation",
+      "publisher": "Mandiant",
+      "published_at": {
+        "value": "2019-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "assessment"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-dual-espionage-and-cyber-crime-operation"
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     },
     {
       "source_id": "source--mitre-live-apt41-2025",
@@ -7851,6 +8626,32 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-gtig-threat-actor-naming",
+      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -7905,6 +8706,32 @@
       "analyst_notes": "Dataset version=23. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
       "source_id": "source--osint-misp-mitre-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-intrusion-set.json",
@@ -7955,83 +8782,6 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--gtig-unified-actor-naming-2026",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "title": "Updated Cyber Threat Actor Naming System",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": "2026-07-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-23T11:24:50Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias"
-      ],
-      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
-    },
-    {
-      "source_id": "source--osint-gtig-threat-actor-naming",
-      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
-    },
-    {
-      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
       "source_id": "source--osint-misp-tidal-groups",
@@ -8112,449 +8862,6 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
-    },
-    {
-      "source_id": "source--barium--1f400a9d3f2e41f0",
-      "path": "actor_profile/evidence/barium.csv",
-      "title": "barium",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--barium--339c36d0d6a6db7b",
-      "path": "APT-hunting/hunting-cobaltstrike-beacons-in-the-dark.pdf",
-      "title": "hunting cobaltstrike beacons in the dark",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--21422a698347bb8f",
-      "path": "A_Threat_Actor_Encyclopedia.pdf",
-      "title": "A Threat Actor Encyclopedia",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--81edbe1c428a9855",
-      "path": "International Strategic/China/A-three-beat-waltz-The-ecosystem-behind-Chinese-state-sponsored-cyber-threats.pdf",
-      "title": "A three beat waltz The ecosystem behind Chinese state sponsored cyber threats",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--e336c8205101f88f",
-      "path": "International Strategic/China/china-cyber-report.pdf",
-      "title": "china cyber report",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--b2fc1a83e9e428da",
-      "path": "Threat Group Cards.pdf",
-      "title": "Threat Group Cards",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--68a19d1b26dd988c",
-      "path": "Threat_Group_Cards_v2.0.pdf",
-      "title": "Threat Group Cards v2.0",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--db420ade9ac8e5ca",
-      "path": "microsoft-threat-actor-list.xlsx",
-      "title": "microsoft threat actor list",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "spreadsheet",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--aec9df3f01fe8a80",
-      "path": "summary/2020/APT-blackberry-mobile-malware-report.pdf",
-      "title": "APT blackberry mobile malware report",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--95457a1e86f185fa",
-      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
-      "title": "APT group Intelligence Research handbook 2022",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--7c9ff3fad63d6fda",
-      "path": "summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf",
-      "title": "Modern Asian APT groups TTPs report eng",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--818ca3056deabc96",
-      "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
-      "title": "Secureworks NC3 2022StateoftheThreat",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--eb48a9941711fdcc",
-      "path": "summary/2024/threat actor list from cs.csv",
-      "title": "threat actor list from cs",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--barium--1daa9a873506d87b",
-      "path": "summary/2026/Cloudflare-2026-threat-report.pdf",
-      "title": "Cloudflare 2026 threat report",
-      "publisher": "",
-      "published_at": {
-        "value": "2026-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-enterprise-19.1.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
-    },
-    {
-      "source_id": "source--mitre-attack-19-2",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    {
-      "source_id": "source--doj-apt41-chengdu404-2020",
-      "path": "https://www.justice.gov/archives/opa/pr/seven-international-cyber-defendants-including-apt41-actors-charged-connection-computer",
-      "title": "Seven International Cyber Defendants, Including APT41 Actors, Charged In Connection With Computer Intrusion Campaigns Against More Than 100 Victims Globally",
-      "publisher": "U.S. Department of Justice",
-      "published_at": {
-        "value": "2020-09-16T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "government-legal",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "accessed_at": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "identity",
-        "legal-action",
-        "relationship"
-      ],
-      "analyst_notes": "The conduct is alleged in indictments and is not recorded as a conviction. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://www.justice.gov/archives/opa/pr/seven-international-cyber-defendants-including-apt41-actors-charged-connection-computer"
-    },
-    {
-      "source_id": "source--doj-apt41-sea-gamer-mall-indictment-2020",
-      "path": "https://www.justice.gov/archives/opa/press-release/file/1317211/dl",
-      "title": "United States v. Wong Ong Hua and Ling Yang Ching indictment",
-      "publisher": "U.S. Department of Justice",
-      "published_at": {
-        "value": "2020-09-16T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "government-legal",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "accessed_at": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "identity",
-        "legal-action",
-        "relationship"
-      ],
-      "analyst_notes": "The conduct is alleged in an indictment; arrests are separately recorded. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://www.justice.gov/archives/opa/press-release/file/1317211/dl"
-    },
-    {
-      "source_id": "source--mandiant-apt41-dual-use-2019",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-dual-espionage-and-cyber-crime-operation",
-      "title": "APT41: A Dual Espionage and Cyber Crime Operation",
-      "publisher": "Mandiant",
-      "published_at": {
-        "value": "2019-08-07T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "vendor-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "accessed_at": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "assessment"
-      ],
-      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-dual-espionage-and-cyber-crime-operation"
-    },
-    {
-      "source_id": "source--mandiant-apt41-arisen-from-dust-2024",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
-      "title": "APT41 Has Arisen From the DUST",
-      "publisher": "Mandiant",
-      "published_at": {
-        "value": "2024-07-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-21T00:00:00Z",
-      "language": "en",
-      "source_type": "vendor-threat-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "activity",
-        "attribution",
-        "capability",
-        "targeting",
-        "ttp",
-        "ioc"
-      ],
-      "analyst_notes": "Mandiant directly attributes the sustained campaign observed since 2023 to APT41 and enumerates the affected countries, sectors, and toolchain."
-    },
-    {
-      "source_id": "source--cisco-talos-apt41-taiwan-institute-2024",
-      "path": "https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/",
-      "url": "https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/",
-      "title": "Chinese hacking group APT41 compromised Taiwanese government-affiliated research institute with ShadowPad and Cobalt Strike",
-      "publisher": "Cisco Talos",
-      "published_at": {
-        "value": "2024-08-01T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-21T00:00:00Z",
-      "language": "en",
-      "source_type": "vendor-threat-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "activity",
-        "attribution",
-        "capability",
-        "targeting",
-        "ttp",
-        "ioc",
-        "victim-case"
-      ],
-      "analyst_notes": "Cisco Talos attributes the single-institute intrusion to APT41 with medium confidence and dates the initial compromise to mid-July 2023."
     }
   ],
   "assessment": {
@@ -8591,34 +8898,44 @@
     "history": "2024年10月、GTIGはAPT41が侵害済み政府サイトからLNKを含むZIPを配布し、PLUSDROP、PLUSINJECT、TOUGHPROGRESSを展開する活動を確認した。最終段はGoogle Calendarを暗号化C2として悪用した。",
     "capability_details": "DUSTTRAP, DUSTPAN, ASPXSpy, China Chopper, LightSpy, PlugX, KEYPLUG, Winnti for Linux, gh0st RAT, Derusbi, MESSAGETAP, Cobalt Strike, MOPSLED, ROCKBOOT, ZxShell, BLACKCOFFEE, njRAT, ShadowPad, CRACKSHOT, GEARSHIFT, HIGHNOON, JUMPALL, POISONPLUG, HOTCHAI, LATELUNCH, LIFEBOAT, LOWKEY, PACMAN, PHOTO, POTROAST, SAGEHIRE, SWEETCANDLE, SOGU, TERA, TIDYELF, WIDETONE, WINTERLOVE, XDoor, Xmrig, Net, certutil, PowerSploit, Impacket, ipconfig, Empire, dsquery, netstat, BITSAdmin, sqlmap, pwdump, Mimikatz, Ping, ftp",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=イタリア、台湾、日本、米国。標的地域=東アジア。日本は確認時に個別国として保持する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=イタリア、台湾、日本、米国。標的地域=中央アジア、東アジア。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
     {
       "victim_case_id": "victim--activity-rule--245a1455d3e9d746af70",
-      "name": "被害事例: 中国のAPT41が再び活動を再開し、企業を侵害",
+      "name": "被害事例: APT41、2023年以降に複数国・複数業種へ継続侵入",
       "victim_name": null,
       "disclosure_status": "aggregate",
       "victim_type": "multiple-organizations",
       "case_status": "reported",
-      "description": "APT41は世界中の複数の組織を侵害。 2023年以来、長期間にわたり不正アクセスを維持。機密データを抜き出すことに成功した。 イタリア、スペイン、台湾、トルコ、英国が主要ターゲット。 メディア、技術、自動車業界などが標的。 DUSTPANやDUSTTRAPなどのコードネームを持つカスタムツールと一般的な悪意のあるソフトウェアを使用。",
+      "description": "Mandiantは、APT41が2023年以降、イタリア、スペイン、台湾、タイ、トルコ、英国の海運・物流、メディア・娯楽、技術、自動車組織へ継続的に侵入したと報告した。攻撃ではANTSword、BLUEBEAM、DUSTPAN、Cobalt Strike Beacon、DUSTTRAP、SQLULDR2、PINEGROVEを組み合わせ、長期アクセスとデータ窃取を行った。",
       "activity_refs": [
         "activity--daily-207ba8f2eb504435e5e4"
       ],
       "target_refs": [],
       "malware_refs": [
+        "malware--antsword",
+        "malware--bluebeam",
+        "malware--cobalt-strike",
         "malware--dustpan",
-        "malware--dusttrap"
+        "malware--dusttrap",
+        "malware--pinegrove",
+        "malware--sqluldr2"
       ],
       "ttp_refs": [],
       "affected_assets": [],
-      "impacts": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "攻撃ではANTSword、BLUEBEAM、DUSTPAN、Cobalt Strike Beacon、DUSTTRAP、SQLULDR2、PINEGROVEを組み合わせ、長期アクセスとデータ窃取を行った。"
+        }
+      ],
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
       },
       "last_observed": {
         "value": null,
@@ -8627,10 +8944,10 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2024-07-20T00:00:00Z",
+        "value": "2024-07-18T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
       "confidence": "high",
       "evidence_refs": [
@@ -8641,32 +8958,33 @@
     },
     {
       "victim_case_id": "victim--activity-rule--44132c017907996cb8ad",
-      "name": "被害事例: 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃",
+      "name": "被害事例: APT41、台湾の政府系研究機関1組織を侵害",
       "victim_name": null,
-      "disclosure_status": "anonymous",
-      "victim_type": "unknown",
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
       "case_status": "reported",
-      "description": "中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃",
+      "description": "Cisco Talosは、2023年7月中旬から台湾の政府関連研究機関1組織で観測された侵入を、中程度の確度でAPT41へ帰属した。攻撃者はShadowPadとCobalt Strikeに加え、Webシェルと独自ツールを使用した。単一組織の事例であるためIncidentとして保持する。",
       "activity_refs": [
         "activity--daily-7e72b05415dea6793880"
       ],
       "target_refs": [
         "target--activity-rule--country--0c17dd6f4a5e07d5f7d6",
-        "target--mitre-group--sector--7c6d9d0cea82bb2a535f",
         "target--sector--government"
       ],
       "malware_refs": [
         "malware--cobalt-strike",
         "malware--shadowpad"
       ],
-      "ttp_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--b58011f8fb2daf77b2cf"
+      ],
       "affected_assets": [],
       "impacts": [],
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2023-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
       "last_observed": {
         "value": null,
@@ -8675,12 +8993,12 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2024-08-02T00:00:00Z",
+        "value": "2024-08-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "confidence": "high",
+      "confidence": "medium",
       "evidence_refs": [
         "source--cisco-talos-apt41-taiwan-institute-2024",
         "source--daily-84e64bef4061ae862a75"

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc4899`
 - 状態: review
-- 更新日時: 2026-09-23T12:16:55Z
+- 更新日時: 2026-11-15T09:02:09Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -146,6 +146,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に | phishing-campaign | 不明 | 不明 | 2024-06-15 | target--targeting-audit--country--3d2cc0a2a96320ae86c4 |  |  | victim--activity-rule--52b83d60644538555152 | 北朝鮮のハッカーが、ブラジルのフィンテック企業を標的に洗練されたフィッシング攻撃を実行。 UNC4899（Jade Sleet）がPythonアプリをトロイの木馬化し、SNSで標的に接触し、GitHubプロジェクトを通じてマルウェアを配布。 有名な暗号通貨企業を装う求人でフィッシング。無害なPDFが添付されている。ターゲットが求人に反応したら追加のPDFを送る。 PDFで、スキルに関するアンケートと、GitHubからプロジェクトをダウンロードして、コーディング課題を完了するように要求。このプロジェクトにマルウェアが仕込まれている。 他の北朝鮮グループも同様の手法を使用し、フィッシングメールで悪意のあるソフトウェアを配信。 | 中 | `source--daily-eba291a90b11ea99ea6e` |
+| FBI、Binanceからの約63億ドルの暗号資産窃取を北朝鮮のTraderTraitorに帰属 | intrusion | 2026-10-29 | 2026-10-29 | 2026-11-02 | target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--63c9fa67327d005b07b7 |  |  | victim--activity-rule--7f38e82a04bc24355b44 | FBIは10月31日、Binanceで10月29日ごろに発生した約63億ドルの暗号資産窃取について、北朝鮮の国家支援型攻撃グループTraderTraitorによる犯行と公表した。 Binanceによると、侵害されたDevOpsエンジニアの端末を足掛かりにサービスコンテナへアクセスされ、不正な出金取引が送信された。10のブロックチェーンで約63.6億ドルが窃取された。 FBIは、攻撃者が盗んだ資産を主にEthereumへ交換していることを確認しており、今後DeFiや即時暗号資産交換サービスを通じて資金洗浄されると予測している。 FBIは関連する暗号資産アドレス628件を公開した。内訳はEthereum608件、Bitcoin19件、Solana1件で、関係事業者に関連取引の遮断を求めている。 Binanceは11月1日時点で被害額の約95%を補填し、残る低流動性トークンの調達を継続していると説明した。同日中の段階的な出金再開を予定し、損失を利用者へ転嫁しないと表明した。 | 中 | `source--daily-6efe7cd8ff47300944a6` |
 | 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | infrastructure-operation | 不明 | 不明 | 2025-04-16 | target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--5287d9830bb2ca5ae994 | victim--activity-rule--a255592b2e5fc1bdeb05 | 北朝鮮と関連があるとされるハッカーグループ「Slow Pisces」（別名：Jade Sleet、PUKCHONG、TraderTraitor、UNC4899）は、暗号通貨開発者を標的にしたマルウェアキャンペーンを実施。 LinkedInを通じて開発者に接触し、偽の求人情報やコーディング課題を装ってマルウェアを配布。 被害者は、GitHub上のトロイの木馬化されたPythonプロジェクトをダウンロード・実行するよう誘導され、これにより「RN Loader」および「RN Stealer」と呼ばれるマルウェアに感染。 「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。 攻撃は多段階で行われ、C2サーバーは被害者のIPアドレスや地理情報などに基づいてペイロードの配信を制御。 コード実行には、`yaml.load()`や`ejs.render()`などの手法を用いて検出を回避。 | 中 | `source--daily-744b9664f686bf2ed5cd` |
 | インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | intrusion | 2026-03-18 | 2026-06-01 | 2026-09-18 | target--targeting-audit--country--a5e16727ee50a3229e2f | malware--flatroof, malware--roofdeck | ttp--activity-rule--27317de8fad143103d24 | victim--activity-rule--02cdbdef3e6b8d3a8be3 | SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を "an IT services provider based in India and unaffiliated with cryptocurrency" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
 
@@ -154,6 +155,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に | UNC4899 | 情報なし | 情報なし | 情報なし | ブラジル | 被害事例: 北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に | 中 |
+| FBI、Binanceからの約63億ドルの暗号資産窃取を北朝鮮のTraderTraitorに帰属 | UNC4899 | 情報なし | 情報なし | 情報なし | 北朝鮮, 暗号資産・Web3 | 被害事例: FBI、Binanceからの約63億ドルの暗号資産窃取を北朝鮮のTraderTraitorに帰属 | 中 |
 | 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | UNC4899 | 情報なし | T1083 File and Directory Discovery | 情報なし | 北朝鮮, IT・ソフトウェア | 被害事例: 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | 中 |
 | インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | UNC4899 | FLATROOF, ROOFDECK | T1102.003 One-Way Communication | 情報なし | インド | 被害事例: インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | 中 |
 
@@ -165,7 +167,8 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|---|---|
 | countries | インド | 活動「インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)」の記述で標的・被害国として明示されている。 | 2026-03-18 | 2026-06-01 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
 | countries | ブラジル | 活動「北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-eba291a90b11ea99ea6e` |
-| countries | 北朝鮮 | 活動「北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-744b9664f686bf2ed5cd` |
+| countries | 北朝鮮 | 活動「北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開」の記述で標的として明示された国・地域。 | 2026-10-29 | 2026-10-29 | 中 | `source--daily-6efe7cd8ff47300944a6`, `source--daily-744b9664f686bf2ed5cd` |
+| sectors | 暗号資産・Web3 | 活動「FBI、Binanceからの約63億ドルの暗号資産窃取を北朝鮮のTraderTraitorに帰属」の記述で標的として明示された産業。 | 2026-10-29 | 2026-10-29 | 中 | `source--daily-6efe7cd8ff47300944a6` |
 | sectors | IT・ソフトウェア | 活動「北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-744b9664f686bf2ed5cd` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
@@ -176,6 +179,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | 非公開 | aggregate | multiple-organizations | reported |  | malware--flatroof, malware--roofdeck | ttp--activity-rule--27317de8fad143103d24 | 開発環境／ソースコード |  | 2026-03-18 | 2026-06-01 | 2026-09-18 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
 | 被害事例: 北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に | 非公開 | aggregate | multiple-organizations | reported |  |  |  | メール／メールアカウント, 開発環境／ソースコード |  | 不明 | 不明 | 2024-06-15 | 中 | `source--daily-eba291a90b11ea99ea6e` |
+| 被害事例: FBI、Binanceからの約63億ドルの暗号資産窃取を北朝鮮のTraderTraitorに帰属 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--63c9fa67327d005b07b7 |  |  | エンドポイント |  | 2026-10-29 | 2026-10-29 | 2026-11-02 | 中 | `source--daily-6efe7cd8ff47300944a6` |
 | 被害事例: 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--5287d9830bb2ca5ae994 | サーバー, クラウド／SaaS, 開発環境／ソースコード |  | 不明 | 不明 | 2025-04-16 | 中 | `source--daily-744b9664f686bf2ed5cd` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -214,10 +218,15 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-6efe7cd8ff47300944a6 | FBI、Binanceからの約63億ドルの暗号資産窃取を北朝鮮のTraderTraitorに帰属 | fbi.gov | 2026-11-02 | https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack | osint-report | TLP:CLEAR | 中 |
 | source--daily-744b9664f686bf2ed5cd | 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | thehackernews.com | 2025-04-16 | https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-eba291a90b11ea99ea6e | 北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に | thehackernews.com | 2024-06-15 | https://thehackernews.com/2024/06/north-korean-hackers-target-brazilian.html | osint-report | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--sentinellabs-tradertraitor-2026-09 | Don't Call Us, We'll Call Your APIs \| TraderTraitor Backdoors Resurface on Victim With No Crypto Ties | SentinelLabs (SentinelOne) | 2026-09-18 | https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/ | vendor-research | TLP:CLEAR | 高 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--unc4899--028ff7267b0d9392 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--unc4899--0ff0d325de512842 | 2024 Blockchain Security and AML Annual Report(EN) |  | 2024 | summary/2025/2024-Blockchain-Security-and-AML-Annual-Report(EN).pdf | report | TLP:CLEAR | 中 |
 | source--unc4899--1390332551d8c3af | advances in threat actor usage of ai tools en |  | 不明 | AISecurity/2025/advances-in-threat-actor-usage-of-ai-tools-en.pdf | report | TLP:CLEAR | 中 |
@@ -228,10 +237,6 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 | source--unc4899--b5b8dda7301c9303 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--unc4899--d91b559d4a2e0f1b | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
 | source--unc4899--e1520dd17d1e4dfd | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
-| source--sentinellabs-tradertraitor-2026-09 | Don't Call Us, We'll Call Your APIs \| TraderTraitor Backdoors Resurface on Victim With No Crypto Ties | SentinelLabs (SentinelOne) | 2026-09-18 | https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/ | vendor-research | TLP:CLEAR | 高 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

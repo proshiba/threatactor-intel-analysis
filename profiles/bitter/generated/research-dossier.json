@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-12T11:10:25Z",
+  "generated_at": "2026-11-15T09:04:06Z",
   "actor_ref": "actor--bitter",
   "actor_name": "BITTER",
-  "profile_updated_at": "2026-10-12T11:06:20Z",
+  "profile_updated_at": "2026-11-15T09:02:08Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -18,15 +18,15 @@
       "attribution": "lead-only"
     },
     "canonical_counts": {
-      "activities": 3,
+      "activities": 4,
       "dated_activities": 0,
       "relationships": 0,
       "associated_entities": 0,
       "entity_relationships": 0,
       "hunting_pivots": 1,
       "hunting_pivot_observations": 2,
-      "malware": 1,
-      "activity_linked_malware": 1,
+      "malware": 3,
+      "activity_linked_malware": 3,
       "tools": 0,
       "targets": 17,
       "motivations": 1
@@ -382,6 +382,185 @@
         ]
       },
       {
+        "activity_id": "activity--daily-e9be13aa9fe6ec1966a7",
+        "name": "BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開",
+        "activity_type": "malware-campaign",
+        "stix_object_type": "campaign",
+        "grouping_context": null,
+        "activity_refs": [],
+        "first_observed": {
+          "basis": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "value": null
+        },
+        "last_observed": {
+          "basis": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "value": null
+        },
+        "reported_at": {
+          "value": "2026-11-03T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        },
+        "description": "FortiGuard Labsは、南アジアの組織を狙い、スクリプトと独自の遠隔操作マルウェアPapRATでアクセスを維持する攻撃を分析した。誘導ファイル名、C2通信、メタデータなどからBITTERの活動と高い確度で評価している。 第1の感染経路はLNKからWindows標準のftp.exeを悪用してスクリプトを実行する。curlとスケジュールタスクで追加命令を取得し、端末情報や実行プロセス、ウイルス対策製品などを収集・送信する。 第2の経路はVHDX内のLNKから囮の表計算ファイルとMSIを起動し、PapRATを展開する。第3の経路はURLショートカットからWebDAV上のLNKとMSIへ誘導し、PapRAT経由でWmRATも配布する。 C++版PapRATは平文HTTPでC2へ定期接続し、コマンド実行、ファイル送受信・削除、ドライブやディレクトリの列挙、画面取得など8種類の命令に対応する。C2設定はXORで符号化されている。 Rust版はHTTPS通信を実装し、初回42秒の待機後に5秒間隔で命令を取得する。文字列の反転とROT-3で定数を隠し、PowerShell実行、待機、終了を追加して命令数を11種類へ拡張した。",
+        "target_refs": [
+          "target--targeting-audit--region--9e3521a2792ed327b1cb"
+        ],
+        "malware_refs": [
+          "malware--daily-5a368b6af9aaabe6c7bd",
+          "malware--daily-7ef36c269474f791ee94"
+        ],
+        "infrastructure_refs": [],
+        "ttp_refs": [
+          "ttp--activity-rule--1968d1ca30b79d89dc40",
+          "ttp--activity-rule--6dc0cbbd27d5a42f19bd",
+          "ttp--activity-rule--e11248a1b180ee0efb8c",
+          "ttp--activity-rule--ef6ac041643e9e3840cf"
+        ],
+        "victim_refs": [
+          "victim--activity-rule--f1bed97336dd297292e7"
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-77315d6b7a6b8ce93784"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--e9be13aa9fe6ec1966a730c0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用。Fortinet原文を確認した。「we attribute this activity to BITTER with high confidence」と明示（誘導ファイル名・C2通信・メタデータ根拠）。標的は南アジアに集中（telemetry）。政府・エネルギー・エンジニアリングはグループの一般的傾向としての記述であり本キャンペーンのセクターとしては明示されていないため流用しない。活動期間は「over the past several months」のみで明示日付がなくunknownとし、公開日（2026-11-02）を期間へ転用しない。LNK+ftp.exe、VHDX内LNK+囮表計算+MSI、URLショートカット+WebDAVの3経路を原文で確認。マルウェア展開を主題とするためactivity_typeを自動値infrastructure-operationからmalware-campaignへ変更。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--bitter",
+            "name": "BITTER",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--daily-5a368b6af9aaabe6c7bd",
+              "malware--daily-7ef36c269474f791ee94"
+            ],
+            "ttp_refs": [
+              "ttp--activity-rule--1968d1ca30b79d89dc40",
+              "ttp--activity-rule--6dc0cbbd27d5a42f19bd",
+              "ttp--activity-rule--e11248a1b180ee0efb8c",
+              "ttp--activity-rule--ef6ac041643e9e3840cf"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [
+              "target--targeting-audit--region--9e3521a2792ed327b1cb"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--f1bed97336dd297292e7"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "basis": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "value": null
+            },
+            "last_observed": {
+              "basis": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "value": null
+            },
+            "reported_at": {
+              "value": "2026-11-03T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "daily-news-file-date"
+            },
+            "activity_type": "malware-campaign",
+            "phases": [
+              "Command And Control",
+              "Discovery",
+              "Execution",
+              "Persistence",
+              "Privilege Escalation"
+            ],
+            "results": [],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": [
+                "target--targeting-audit--region--9e3521a2792ed327b1cb"
+              ]
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--daily-77315d6b7a6b8ce93784"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--76be549df03630a33d367a78",
+            "category": "activity",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "BITTER conducted or is associated with BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開: FortiGuard Labsは、南アジアの組織を狙い、スクリプトと独自の遠隔操作マルウェアPapRATでアクセスを維持する攻撃を分析した。誘導ファイル名、C2通信、メタデータなどからBITTERの活動と高い確度で評価している。 第1の感染経路はLNKからWindows標準のftp.exeを悪用してスクリプトを実行する。curlとスケジュールタスクで追加命令を取得し、端末情報や実行プロセス、ウイルス対策製品などを収集・送信する。 第2の経路はVHDX内のLNKから囮の表計算ファイルとMSIを起動し、PapRATを展開する。第3の経路はURLショートカットからWebDAV上のLNKとMSIへ誘導し、PapRAT経由でWmRATも配布する。 C++版PapRATは平文HTTPでC2へ定期接続し、コマンド実行、ファイル送受信・削除、ドライブやディレクトリの列挙、画面取得など8種類の命令に対応する。C2設定はXORで符号化されている。 Rust版はHTTPS通信を実装し、初回42秒の待機後に5秒間隔で命令を取得する。文字列の反転とROT-3で定数を隠し、PowerShell実行、待機、終了を追加して命令数を11種類へ拡張した。",
+            "evidence_refs": [
+              "source--daily-77315d6b7a6b8ce93784"
+            ],
+            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--daily-5a368b6af9aaabe6c7bd",
+            "name": "WmRAT"
+          },
+          {
+            "id": "malware--daily-7ef36c269474f791ee94",
+            "name": "PapRAT"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--targeting-audit--region--9e3521a2792ed327b1cb",
+            "name": "南アジア"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--f1bed97336dd297292e7",
+            "name": "aggregate"
+          }
+        ],
+        "techniques": [
+          {
+            "id": "ttp--activity-rule--1968d1ca30b79d89dc40",
+            "technique_id": "T1053.005",
+            "name": "Scheduled Task"
+          },
+          {
+            "id": "ttp--activity-rule--6dc0cbbd27d5a42f19bd",
+            "technique_id": "T1083",
+            "name": "File and Directory Discovery"
+          },
+          {
+            "id": "ttp--activity-rule--e11248a1b180ee0efb8c",
+            "technique_id": "T1071.001",
+            "name": "Web Protocols"
+          },
+          {
+            "id": "ttp--activity-rule--ef6ac041643e9e3840cf",
+            "technique_id": "T1057",
+            "name": "Process Discovery"
+          }
+        ]
+      },
+      {
         "activity_id": "activity--daily-eefbf765e8e0809844c2",
         "name": "BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に",
         "activity_type": "phishing-campaign",
@@ -566,14 +745,15 @@
         },
         "description": "Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 同グループは、南アジアの政府機関や外交機関を主な標的としており、中国、サウジアラビア、南米、トルコなどにも攻撃を拡大している。 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 使用されるマルウェアには、WmRAT、MiyaRAT、KugelBlitz、BDarkRAT、ArtraDownloader、MuuyDownloader（ZxxZ）などが含まれる。 Bitterは、他国の政府や外交機関になりすまし、マルウェアを拡散する手法を用いており、標的のネットワークに対して追加のペイロードを展開する。",
         "target_refs": [
-          "target--country--saudi-arabia",
           "target--mitre-group--country--7cc14f1275a45f6b7435",
           "target--mitre-group--sector--45b05f79fd85ee2358d0",
+          "target--targeting-audit--country--2f279f636f8ccddb6e2f",
           "target--targeting-audit--country--c2ef45f6da30d424fc31",
           "target--targeting-audit--region--862f6013670d5c6f487e",
           "target--targeting-audit--region--9e3521a2792ed327b1cb"
         ],
         "malware_refs": [
+          "malware--daily-5a368b6af9aaabe6c7bd",
           "malware--zxxz"
         ],
         "infrastructure_refs": [],
@@ -597,6 +777,7 @@
           },
           "capability": {
             "malware_refs": [
+              "malware--daily-5a368b6af9aaabe6c7bd",
               "malware--zxxz"
             ],
             "ttp_refs": [
@@ -608,9 +789,9 @@
           },
           "victim": {
             "target_refs": [
-              "target--country--saudi-arabia",
               "target--mitre-group--country--7cc14f1275a45f6b7435",
               "target--mitre-group--sector--45b05f79fd85ee2358d0",
+              "target--targeting-audit--country--2f279f636f8ccddb6e2f",
               "target--targeting-audit--country--c2ef45f6da30d424fc31",
               "target--targeting-audit--region--862f6013670d5c6f487e",
               "target--targeting-audit--region--9e3521a2792ed327b1cb"
@@ -648,8 +829,8 @@
             "direction": {
               "source_countries": [],
               "target_country_refs": [
-                "target--country--saudi-arabia",
                 "target--mitre-group--country--7cc14f1275a45f6b7435",
+                "target--targeting-audit--country--2f279f636f8ccddb6e2f",
                 "target--targeting-audit--country--c2ef45f6da30d424fc31"
               ],
               "target_region_refs": [
@@ -683,15 +864,15 @@
         ],
         "malware": [
           {
+            "id": "malware--daily-5a368b6af9aaabe6c7bd",
+            "name": "WmRAT"
+          },
+          {
             "id": "malware--zxxz",
             "name": "ZxxZ"
           }
         ],
         "targets": [
-          {
-            "id": "target--country--saudi-arabia",
-            "name": "サウジアラビア"
-          },
           {
             "id": "target--mitre-group--country--7cc14f1275a45f6b7435",
             "name": "中国"
@@ -699,6 +880,10 @@
           {
             "id": "target--mitre-group--sector--45b05f79fd85ee2358d0",
             "name": "政府・行政"
+          },
+          {
+            "id": "target--targeting-audit--country--2f279f636f8ccddb6e2f",
+            "name": "サウジアラビア"
           },
           {
             "id": "target--targeting-audit--country--c2ef45f6da30d424fc31",
@@ -729,6 +914,173 @@
       }
     ],
     "malware_usage": [
+      {
+        "id": "malware--daily-7ef36c269474f791ee94",
+        "name": "PapRAT",
+        "aliases": [],
+        "types": [
+          "RAT"
+        ],
+        "description": "BITTERとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-77315d6b7a6b8ce93784"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--11d45a31c5f0f72b182d1c9c",
+            "category": "capability-malware",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "BITTER uses or has used PapRAT.",
+            "evidence_refs": [
+              "source--daily-77315d6b7a6b8ce93784"
+            ],
+            "verification_rationale": "Evidence tier=repository.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-e9be13aa9fe6ec1966a7",
+            "activity_name": "BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開",
+            "first_observed": {
+              "basis": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "value": null
+            },
+            "last_observed": {
+              "basis": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "value": null
+            },
+            "evidence_refs": [
+              "source--daily-77315d6b7a6b8ce93784"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--daily-5a368b6af9aaabe6c7bd",
+        "name": "WmRAT",
+        "aliases": [],
+        "types": [
+          "RAT"
+        ],
+        "description": "BITTERとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-77315d6b7a6b8ce93784"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--a009b49e543aef3795e864d7",
+            "category": "capability-malware",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "BITTER uses or has used WmRAT.",
+            "evidence_refs": [
+              "source--daily-77315d6b7a6b8ce93784"
+            ],
+            "verification_rationale": "Evidence tier=repository.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-3d87dd146a5797f63b60",
+            "activity_name": "Bitterハッカーグループ、サイバー作戦を拡大",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-d3ece976544c2d6909ce"
+            ]
+          },
+          {
+            "activity_id": "activity--daily-e9be13aa9fe6ec1966a7",
+            "activity_name": "BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開",
+            "first_observed": {
+              "basis": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "value": null
+            },
+            "last_observed": {
+              "basis": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "value": null
+            },
+            "evidence_refs": [
+              "source--daily-77315d6b7a6b8ce93784"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      },
       {
         "id": "malware--zxxz",
         "name": "ZxxZ",
@@ -849,9 +1201,9 @@
         ]
       },
       {
-        "id": "target--country--saudi-arabia",
+        "id": "target--targeting-audit--country--2f279f636f8ccddb6e2f",
         "name": "サウジアラビア",
-        "description": "Targeting text mentions saudi arabia.",
+        "description": "活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的・被害国として明示されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -868,10 +1220,10 @@
         "evidence_refs": [
           "source--daily-d3ece976544c2d6909ce"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--f3bf5aa8ebf00eb8efa14037",
+            "claim_id": "claim--b718db4bbbae6b341b863737",
             "category": "target-country",
             "verification_status": "partially-supported",
             "confidence": "medium",
@@ -970,9 +1322,9 @@
         "activity_refs": []
       },
       {
-        "id": "target--country--pakistan",
+        "id": "target--targeting-audit--country--0d990dae98a8ffa60486",
         "name": "パキスタン",
-        "description": "Targeting text mentions pakistan.",
+        "description": "MITRE ATT&CKのGroup概要でBITTERの標的国として明示されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -987,19 +1339,17 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1",
           "source--mitre-attack-19-2"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--651d56b7ec58031a168f3351",
+            "claim_id": "claim--fa6d25db22c5840439def8d2",
             "category": "target-country",
             "verification_status": "supported",
             "confidence": "high",
             "statement": "BITTER targets country パキスタン.",
             "evidence_refs": [
-              "source--mitre-attack-19-1",
               "source--mitre-attack-19-2"
             ],
             "verification_rationale": "Evidence tier=knowledge-base; attribution and infrastructure geography are not targeting evidence.",
@@ -1233,9 +1583,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-77315d6b7a6b8ce93784",
           "source--daily-d3ece976544c2d6909ce",
           "source--daily-f0b4d93d130c33f27095",
-          "source--mitre-attack-19-1",
           "source--mitre-attack-19-2"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
@@ -1247,9 +1597,9 @@
             "confidence": "medium",
             "statement": "BITTER targets region 南アジア.",
             "evidence_refs": [
+              "source--daily-77315d6b7a6b8ce93784",
               "source--daily-d3ece976544c2d6909ce",
               "source--daily-f0b4d93d130c33f27095",
-              "source--mitre-attack-19-1",
               "source--mitre-attack-19-2"
             ],
             "verification_rationale": "Evidence tier=knowledge-base; attribution and infrastructure geography are not targeting evidence.",
@@ -1259,7 +1609,8 @@
         "category": "region",
         "activity_refs": [
           "activity--daily-3d87dd146a5797f63b60",
-          "activity--daily-6408cf1dda686dc502da"
+          "activity--daily-6408cf1dda686dc502da",
+          "activity--daily-e9be13aa9fe6ec1966a7"
         ]
       },
       {
@@ -2177,7 +2528,7 @@
   },
   "claim_audit_counts": {
     "supported": 35,
-    "partially-supported": 22
+    "partially-supported": 30
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -2197,6 +2548,31 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+    },
+    "source--bitdefender-bitter-android-2020": {
+      "source_id": "source--bitdefender-bitter-android-2020",
+      "path": "https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool",
+      "title": "BitterAPT Revisited: The Untold Evolution of an Android Espionage Tool",
+      "publisher": "Bitdefender",
+      "published_at": {
+        "value": "2020-06-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool"
     },
     "source--bitter--2cfec8a10f89e0b3": {
       "source_id": "source--bitter--2cfec8a10f89e0b3",
@@ -2368,6 +2744,34 @@
         "victim-case"
       ]
     },
+    "source--daily-77315d6b7a6b8ce93784": {
+      "source_id": "source--daily-77315d6b7a6b8ce93784",
+      "path": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+      "title": "BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開",
+      "publisher": "fortinet.com",
+      "published_at": {
+        "value": "2026-11-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261103.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. Fortinet原文を取得して確認した（アクセス日2026-11-15）。「we attribute this activity to BITTER with high confidence」とPapRAT/WmRATの展開を原文で確認。",
+      "url": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+      "accessed_at": "2026-11-15T00:00:00Z",
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
+    },
     "source--daily-d3ece976544c2d6909ce": {
       "source_id": "source--daily-d3ece976544c2d6909ce",
       "path": "https://thehackernews.com/2025/06/bitter-hacker-group-expands-cyber.html",
@@ -2422,6 +2826,62 @@
         "victim-case"
       ]
     },
+    "source--mitre-attack-19-1": {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    "source--mitre-attack-19-2": {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
     "source--osint-etda-threat-group-cards": {
       "source_id": "source--osint-etda-threat-group-cards",
       "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
@@ -2474,6 +2934,32 @@
       ],
       "analyst_notes": "Dataset version=6. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
+    "source--osint-misp-mitre-enterprise-intrusion-set": {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
     "source--osint-misp-mitre-intrusion-set": {
       "source_id": "source--osint-misp-mitre-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
@@ -2525,32 +3011,6 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    "source--osint-misp-mitre-enterprise-intrusion-set": {
-      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     "source--osint-misp-tidal-groups": {
       "source_id": "source--osint-misp-tidal-groups",
@@ -2631,87 +3091,6 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
-    },
-    "source--mitre-attack-19-1": {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-enterprise-19.1.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
-    },
-    "source--mitre-attack-19-2": {
-      "source_id": "source--mitre-attack-19-2",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    "source--bitdefender-bitter-android-2020": {
-      "source_id": "source--bitdefender-bitter-android-2020",
-      "path": "https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool",
-      "title": "BitterAPT Revisited: The Untold Evolution of an Android Espionage Tool",
-      "publisher": "Bitdefender",
-      "published_at": {
-        "value": "2020-06-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "vendor-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "accessed_at": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "hunting-pivot",
-        "malware"
-      ],
-      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool"
     }
   },
   "research_gaps": [
