@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-15T01:31:58Z",
+  "generated_at": "2026-11-18T01:10:42Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -13347,6 +13347,199 @@
         "UAT-11587 は既存775プロファイルおよび本台帳のいずれにも存在しない。別クラスタとして登録すべきか、Talos 原文を確認したうえで次回判断する。"
       ],
       "analyst_notes": "2026-11-12の日次チェックで、一次情報源巡回（Unit 42）により新規検知した。tech-memo 未収録かつアクター名なしのため日次キューの2系統では検知不能だった事例である。Antino という同一マルウェア名が Talos の UAT-11587 報告にも現れる点を未解決として残す。"
+    },
+    {
+      "cluster_id": "unknown-cluster--silentair",
+      "primary_name": "SilentAir",
+      "aliases": [],
+      "entity_type": "intrusion-set",
+      "status": "tracking",
+      "first_seen": "2025",
+      "last_seen": "unknown",
+      "time_basis": "Eneaは本文で「suspicious activity was observed from early 2025」とし、一部はそれ以前にも遡ると述べる。一方でKey Takeaways節（2026-11-12追記）は「since before 2025」と記しており、本文とKey Takeawaysで下限が一致しない。first_seenは本文の明示下限である2025（precision: year）に留め、より古い活動の有無は未解決とする。活動終期の明示はないためlast_seenはunknownとする。公開日2026-11-11を観測日・活動期間へ転用しない。",
+      "tracking_detected_on": "2026-11-18",
+      "detected_via": "2026-11-18の日次チェックで、IOC CSV（tech-memo daily-news/iocs/2026_10-12/20261116.csv）のactor列に「LIMINAL PANDA」1件と「LIMINAL PANDA (moderate confidence)」1件が未一致名称として現れた。原文（Enea 2026-11-11）を確認したところ、後者のSCTPEハッシュを含む同一報告がSilentAirという新規アクター名を定義しているにもかかわらず、IOC CSVのactor列にはSilentAirが現れていなかった。既存775プロファイル、本台帳、excluded_name_collisionsのいずれにもSilentAirは存在しない。レビューキューにはレコードが生成されていない（照合先プロファイルが無いため）。",
+      "attribution": {
+        "state": "china-nexus-low-confidence-per-vendor",
+        "actor_type": "state-level-mobile-signaling-intrusion-set",
+        "notes": "EneaのThreat Intelligence Unitは、SilentAirを監視産業事業者とは異なる新規の「state-level」主体であると高い確度（high confidence）で評価する。一方で中国関連オペレーションとの整合（「aligns with China-nexus cyber-operations」）は低い確度（low confidence）に留めている。この2つの確度は別の主張であり、混同しない。国家級という評価はEnea自身の直接観測に基づく記述のみを根拠とし、標的国・侵害事業者の所在地やIP所在地から国家支援を推定していない。中国のネットワークが標的に含まれないという観察は、Eneaが帰属根拠として挙げたものではなく、本台帳でも帰属根拠に用いない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-11-18",
+          "publisher": "Enea (Threat Intelligence Unit)",
+          "url": "https://www.enea.com/insights/the-enemy-within-tracking-liminal-panda-and-silentair-through-mobile-networks/",
+          "title": "The Enemy Within. Tracking LIMINAL PANDA and SilentAir through Mobile Networks",
+          "published_at": "2026-11-11",
+          "published_at_note": "本文の公開日は2026-11-11。同ページには2026-11-12付でKey Takeaways節が追記されている。日次ファイル日付（2026-11-16）は収集日であって公開日ではない。",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "本文は「suspicious activity was observed from early 2025」とし、それ以前の活動にも言及する。Key Takeawaysは「since before 2025」と記す。終期の明示はない。",
+          "targets": "台湾を主要標的とする。SilentAir関連のソースはアジア6カ国以上の侵害済み通信事業者網から確認され、攻撃は東南アジア・東アジア、東アフリカ、中央アジア、中東、欧州を含む十数の国・地域の加入者へ及んだ。中国のネットワークは標的に含まれていない。",
+          "malware": [],
+          "tools": [
+            "SS7およびDiameterシグナリングの悪用（不正な位置登録更新による通信の迂回、位置追跡、情報収集、通話・SMS傍受）",
+            "通知されないsilent SMSの大量送信（傍受状態の確認等に使われた可能性）"
+          ],
+          "iocs_published": "SilentAirに紐付く固有のIOCは公開されていない。同報告が公開したMD5は2件のみで、GTPDoor v3（35f0d4d0c5519a2957338e448fce53bc）とSCTPE（da35d98c9a22e8ede93595d21fe7e63e）であり、いずれもSilentAirの検体ではない。SilentAirの実行バイナリはEneaが回収できていない。",
+          "summary": "Eneaは、侵害済みの携帯通信事業者網からSS7とDiameterを悪用して加入者を攻撃する新規主体SilentAirを報告した。不正な位置登録更新で通信を迂回させ、位置追跡、情報収集、通話・SMS傍受を行う。一部標的では傍受直後に2FAコードの受信も観測された。同報告はLIMINAL PANDAのGTPDoor v3（GTP-Cではなくデータ転送用GTP-Uに命令を隠し、libpcapでパケット取得する版）も併せて扱うが、両者を同一視していない。",
+          "verified_by_analyst": "原文を取得して確認した（アクセス日2026-11-18）。公開日2026-11-11と2026-11-12のKey Takeaways追記、SilentAirを新規state-level主体とする高確度評価、中国関連との整合を低確度に留める記述、両クラスタを直接結び付けない明示（「possible but unconfirmed」「does not directly associate the two at this time」）、台湾中心の標的範囲とアジア6カ国以上の侵害源、SilentAirバイナリ未回収、公開IOCがGTPDoor v3とSCTPEの2ハッシュのみである点を直接確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "profile_id": "cl-sta-0969",
+          "relation": "co-reported-not-attributed",
+          "evidence": "Eneaの同一報告はSilentAirとLIMINAL PANDAを併載するが、「links are possible but unconfirmed」とし「does not directly associate the two at this time」と明記する。さらに、別々のグループが同一の侵害済み事業者網へのアクセスを共有している可能性、および2つのchina-nexus主体が同じ事業者を独立に侵害した可能性の両方を挙げる。LIMINAL PANDA自体は本リポジトリのプロファイルとして存在せず、Unit 42が自社の一次報告（2025-07-29）でCL-STA-0969について「heavily overlaps with activity attributed to Liminal Panda」と評価している関係にある。したがってSilentAirとcl-sta-0969の距離は2段階の間接であり、統合しない。時期・標的の重複だけで統合しないこと、および既知ツールとの動作差（SilentAirの挙動はSCTPEと完全に一致しない）をEnea自身が指摘していることを記録する。"
+        }
+      ],
+      "related_organizations": [],
+      "unresolved_questions": [
+        "SilentAirの実行バイナリが回収されていないため、既知のSCTPEマルウェア（CrowdStrikeはSIGweaverと呼称、シンガポール政府報告がLIMINAL PANDAへ中確度で関連付け）との対応関係は確定していない。Eneaは「SilentAirの挙動はSCTPEと完全には一致しない」と述べる。",
+        "活動下限が本文（early 2025）とKey Takeaways（before 2025）で一致しない。first_seenは本文の明示下限に留めており、より古い活動の有無は未確認。",
+        "SilentAir固有のIOCが公開されていないため、tech-memoのIOC CSVに取り込める値がない。公開されている2ハッシュはGTPDoor v3とSCTPEであり、SilentAirの検体ではない。",
+        "tech-memoのIOC CSVはSCTPEハッシュのactor列に「LIMINAL PANDA (moderate confidence)」を入れているが、原文でこの中確度の帰属を述べているのはEneaではなくシンガポール政府報告である。取込時に確度の出所を取り違えないこと。",
+        "昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。単一ベンダー（Enea）の初報のみ。"
+      ],
+      "analyst_notes": "2026-11-18の日次チェックで検知。IOC CSVのactor列には現れていなかった新規アクター名であり、本文由来の未登録アクター名候補系統にも現れなかった（記事が日本語化された要約内でSilentAirを「新たな活動主体」と記述しているため、抽出パターンの指示語条件に合致しなかったとみられる）。すなわち両系統を通過した取りこぼしであり、一次情報源巡回ではなく原文確認によって初めて捕捉された。RULES.mdの非交渉ガードレールに従い、国家級という評価はEnea自身の直接記述のみを根拠とし、標的国やIP所在地からの推定は行っていない。LIMINAL PANDA / cl-sta-0969 との統合は、Enea自身が関連を未確認としているため行わない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--shadowcloud-gitdoor-graphdoor",
+      "primary_name": "Operation ShadowCloud（GitDoor / GraphDoor を運用する未帰属クラスタ）",
+      "aliases": [],
+      "entity_type": "actor-cluster",
+      "status": "tracking",
+      "first_seen": "unknown",
+      "last_seen": "unknown",
+      "time_basis": "Kasperskyは本キャンペーンを「early 2026」に特定したと述べるが、これは発見時期であって活動開始時期の明示ではない。Part 1はGitHubリポジトリ作成日が2024-09-03〜2025-12-05に分布することから「infrastructure preparation since at least the end of 2024」と推定し、Part 2はステージングディレクトリ作成日として2026.03.05〜2026.05.04を挙げる。いずれもリポジトリ作成日・ディレクトリ作成日であって攻撃観測日ではないため、first_seen / last_seenへ転用しない（OSINT_RULES.md: 証明書やサービス上のタイムスタンプはそれ自体では攻撃実行日ではない）。公開日2026-11-17も観測日へ転用しない。活動期間はobservations側のactivity_periodに原文の単位で保持する。",
+      "tracking_detected_on": "2026-11-18",
+      "detected_via": "2026-11-18の日次チェックの「確認する一次情報源」巡回で、Kaspersky Securelist（.com）のRSSから2026-11-17公開の2本（Part 1 / Part 2）を検知した。tech-memoのdaily-newsには2026-11-18時点で未収録であり（shadowcloud / graphdoor / gitdoor のいずれもキャッシュに存在しない）、IOC CSVのactor列にも本文抽出候補にも現れない。既存775プロファイル、本台帳、excluded_name_collisionsのいずれにもOperation ShadowCloud / GitDoor / GraphDoor は存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "espionage-intrusion-set-unattributed",
+        "notes": "Part 2は「Currently, we lack sufficient information to definitively attribute this activity to a specific threat group.」と明記する。そのうえでFamousSparrowおよびCopperTurtle（PLEAD RAT）といったChinese-speakingグループの活動との重複（overlaps）を挙げ、「suggests that a Chinese-speaking group may be developing and/or utilizing the GitDoor and GraphDoor backdoors」と述べるが、同時に「While this does not prove a direct link, it suggests...」と限定する。Part 1は主体を「the threat actor」としか呼ばず、帰属の検討をPart 2へ委ねている。重複の指摘はexact identityではないため、FamousSparrowプロファイルへ統合しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-11-18",
+          "publisher": "Kaspersky (GReAT) / Securelist",
+          "url": "https://securelist.com/operation-shadowcloud-gitdoor/122004/",
+          "title": "Operation ShadowCloud: cloud service–based backdoors targeting government networks in Asia and Africa. Part 1",
+          "published_at": "2026-11-17",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "キャンペーンの特定は「early 2026」。GitHubリポジトリ作成日は2024-09-03〜2025-12-05で、著者はこれを「infrastructure preparation since at least the end of 2024」の示唆とする。攻撃観測日の明示はない。",
+          "targets": "アジアおよびアフリカの政府機関が主対象。確認された被害拠点の1つとして台湾の組織が記述される。",
+          "malware": [
+            "GitDoor（GitHubをC2に用いるバックドア）",
+            "GraphDoor（SharePointとAblyをC2に用いるバックドア。詳細はPart 2）",
+            "Type 1 / Type 2 のDLLサイドローディング用ローダー"
+          ],
+          "tools": [
+            "MeshAgent（MeshCentral agent。正規ツールの悪用。初期アクセスと追加ペイロード投下に使用）",
+            "プラグイン・シェルコード群（画面取得、プロセス列挙、キーロギング、プロキシ、Mimikatzによる認証情報ダンプ、CookieKatzによるcookie窃取、PetitPotam系のNTLM coercion）",
+            "gofile（正規クラウドストレージの悪用）"
+          ],
+          "iocs_published": "公開あり。ファイルハッシュ、MeshAgentのC2インフラ、サイドローディングに使われた正規実行ファイル、GitHubアカウント、正規クラウドストレージ（gofile）が列挙される。",
+          "summary": "Kaspersky GReATは、アジア・アフリカの政府網を標的に、GitHubやSharePoint等の正規クラウドサービスをC2に用いるバックドア群を展開するキャンペーンをOperation ShadowCloudとして報告した。Part 1はMeshAgentによる初期アクセス、DLLサイドローディング型ローダー、GitDoorの機構とプラグイン群を扱う。主体は「the threat actor」としか呼ばれず、帰属の検討はPart 2へ委ねられる。Sophosのブリーフが本キャンペーンの一部に触れていたことにも言及する。",
+          "verified_by_analyst": "原文を取得して確認した（アクセス日2026-11-18）。公開日2026-11-17、著者Saurabh Sharma / Noushin Shabab、グループ名を挙げていないこと、帰属検討をPart 2へ委ねる記述、early 2026の特定時期、GitHubリポジトリ作成日の範囲とその解釈、台湾の被害拠点、MeshAgent・GitDoor・GraphDoor・ローダー種別、IOC公開範囲を直接確認した。"
+        },
+        {
+          "observed_on": "2026-11-18",
+          "publisher": "Kaspersky (GReAT) / Securelist",
+          "url": "https://securelist.com/operation-shadowcloud-graphdoor/122005/",
+          "title": "Operation ShadowCloud: cloud service–based backdoors targeting government networks in Asia and Africa. Part 2",
+          "published_at": "2026-11-17",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "明示的な観測期間の記述はない。帰属節がステージングディレクトリ作成日として2026.03.05〜2026.05.04を挙げ、複数システムでGitDoor展開から1日以内にimplantが展開されたと述べる。いずれもディレクトリ作成日・相対的な展開間隔であって攻撃観測日の明示ではない。",
+          "targets": "表題は「government networks in Asia and Africa」。本文には国・業種の個別列挙はない。",
+          "malware": [
+            "GraphDoor（MD5: 14ec33ea808e697870d00c5e434c2952）",
+            "GitDoor（Part 1で詳述）",
+            "プラグイン: kl.ts、pr.ts、scr.ts、moveDir.ts、channel.ts、abchannel.ts、ab2channel.ts"
+          ],
+          "tools": [
+            "Erfrp由来のプロキシコード",
+            "Cobalt Strike beacon",
+            "MeshCentral Agent"
+          ],
+          "iocs_published": "公開あり。GraphDoorのハッシュ、SharePointサイト2件、プロキシC2のIPアドレス約22件、Cobalt Strikeのドメイン2件。FamousSparrowとCopperTurtleの詳細レポートはKasperskyのprivate reporting購読者限定であり、本走査では未確認。",
+          "summary": "Part 2はGraphDoor（SharePointとAblyをC2に使用）とそのプラグイン群を解析し、帰属の検討を扱う。Kasperskyは「Currently, we lack sufficient information to definitively attribute this activity to a specific threat group.」と明記したうえで、FamousSparrowおよびCopperTurtle（PLEAD RAT）の活動との重複を挙げ、Chinese-speakingグループがGitDoor / GraphDoorを開発または利用している可能性を示唆するが、直接の結び付きを証明するものではないと限定する。",
+          "verified_by_analyst": "原文を取得して確認した（アクセス日2026-11-18）。公開日2026-11-17、帰属不能の明示、FamousSparrow / CopperTurtleとの重複記述とその限定表現、GraphDoorのMD5、プラグイン名、ステージングディレクトリ作成日の範囲、IOC公開範囲、private reporting限定レポートの存在を直接確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "profile_id": "famoussparrow",
+          "relation": "overlap-assessed",
+          "evidence": "Part 2は「overlaps with activity from Chinese-speaking groups such as FamousSparrow and CopperTurtle」と述べ、GitDoor / GraphDoorをChinese-speakingグループが開発または利用している可能性を示唆する。ただし同じ節で「Currently, we lack sufficient information to definitively attribute this activity to a specific threat group.」および「While this does not prove a direct link, it suggests...」と限定しており、exact identityを主張していない。famoussparrowプロファイル（直近活動 2026-06-17、過去365日以内）へ統合せず、独立クラスタとして記録する。重複の根拠となるFamousSparrowの詳細レポートはKasperskyのprivate reporting限定であり、本走査では原文を確認できていない。"
+        }
+      ],
+      "related_organizations": [],
+      "unresolved_questions": [
+        "CopperTurtle（PLEAD RATを用いるとされるクラスタ）は本リポジトリにプロファイルも台帳エントリも存在しない。重複の根拠となるKasperskyのCopperTurtle詳細レポートはprivate reporting限定で未確認であるため、別クラスタとして台帳へ追加するかは原文確認後の判断とする。",
+        "Part 1が言及するSophosのブリーフ（本キャンペーンの一部に言及）を特定・確認していない。独立した一次資料の2本目になり得るため、次回走査で追跡する。",
+        "活動期間の下限がGitHubリポジトリ作成日（2024-09-03〜2025-12-05）とステージングディレクトリ作成日（2026.03.05〜2026.05.04）という2系統のタイムスタンプで示されており、いずれも攻撃観測日ではない。first_seen / last_seenはunknownのままとし、プロファイル昇格時も観測日として採用しない。",
+        "Part 1とPart 2は同日公開の同一調査の分割であり、独立した2本の一次資料ではない。昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。",
+        "tech-memoのdaily-newsに未収録のため、本クラスタに対応するレビューキューのレコードもIOC取込も存在しない。IOC（GraphDoorハッシュ、SharePointサイト2件、プロキシC2約22件、Cobalt Strikeドメイン2件）は未取込である。"
+      ],
+      "analyst_notes": "2026-11-18の日次チェックの一次情報源巡回で検知。tech-memoのdaily-newsに載っていない新規公開であり、観点1・2（直近活動アクター／daily-news言及）のどちらにも現れなかった。GENERATION_RULES.mdとAGENT.mdのガードレールに従い、Kaspersky自身が帰属不能を明示しているため、FamousSparrowへの寄せ付けもChinese-speakingという表現からの国家支援推定も行わない。GitDoor / GraphDoor / MeshAgentはMalware / Softwareであって本クラスタのActor名ではなく、同名でActorへ統合しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--xaocmail-phantom53-operator",
+      "primary_name": "XaocMail / Phantom53 を運用する未命名のロシア語話者クラスタ",
+      "aliases": [],
+      "entity_type": "actor-cluster",
+      "status": "tracking",
+      "first_seen": "2025-10",
+      "last_seen": "unknown",
+      "time_basis": "SOCRadarは準備開始を2025年10月、テストとフレームワーク開発が2026年初頭まで継続、作戦開始を2026年8月とし、公開時点で「remains active as of this publication」と述べる。first_seenは原文が明示した準備開始の2025-10（precision: month）とする。継続中との記述はあるが最終観測日の明示がないため、公開日2026-11-13をlast_seenへ転用せず、last_seenはunknownとする（出典公開日を観測日時へ転用しない）。継続中という原文の記述はobservations側のactivity_periodに保持する。",
+      "tracking_detected_on": "2026-11-18",
+      "detected_via": "2026-11-18の日次チェックの「既存プロファイルに一致しない名前（IOC CSVのactor列）」に「XaocMail ClickFix campaign」が58観測で現れた。58行すべてがtech-memo 2026-11-18のIOC CSV（daily-news/iocs/2026_10-12/20261118.csv）1ファイル由来で、https://socradar.io/blog/xaocmail-clickfix-phantom53-havox-america-asia-europe/ を参照する。既存775プロファイル、本台帳、excluded_name_collisionsのいずれにも該当名称は存在しない。レビューキューにはレコードが生成されていない（照合先プロファイルが無いため unmatched_actor_values へ落ちる系統）。",
+      "attribution": {
+        "state": "russian-speaking-per-vendor",
+        "actor_type": "financially-motivated-phishing-operator-unnamed",
+        "notes": "SOCRadar（STRU）は主体を「a Russian-speaking threat actor」としか記述し、グループ名を与えていない。原文は「STRU uncovered an advanced, multi-stage campaign operated by a Russian-speaking threat actor utilizing a multi-component toolkit.」と述べる。確度の明示はなく、言語判定の根拠も説明されていない。XaocMailという名称についてのみ「Xaoc」がロシア語の「Chaos」に相当する旨を補足する。**重要**: XaocMailは自己ホスト型のフィッシングプラットフォーム、Phantom53はWindows向けの専用C2フレームワーク、HavoXはHavocポストエクスプロイトフレームワーク（HavoX/Havoc Demon）であり、いずれもActor名ではない。tech-memoのIOC CSVがactor列に入れている「XaocMail ClickFix campaign」はプラットフォーム名＋手法名であって主体名ではないため、原典より強い帰属にならないようこの区別を保持する。言語からの国家支援推定は行わない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-11-18",
+          "publisher": "SOCRadar (STRU)",
+          "url": "https://socradar.io/blog/xaocmail-clickfix-phantom53-havox-america-asia-europe/",
+          "title": "XaocMail, ClickFix, Phantom53 and HavoX campaign across America, Asia and Europe",
+          "published_at": "2026-11-13",
+          "published_at_note": "記事ヘッダー記載の公開日は2026-11-13。tech-memoの日次ファイル日付2026-11-18は収集日であって公開日ではない。",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "準備開始2025年10月。テスト・フレームワーク開発が2026年初頭まで継続。作戦開始2026年8月。公開時点で「remains active as of this publication」。個別の観測日の明示はない。IOC CSVの観測日列は2026-11-13が中心。",
+          "targets": "国別ではブラジルとペルーが集中的に標的化され、次いでインド、インドネシア、スペイン。業種は技術・IT系がやや多く、金融、教育、政府、物流、製造が同程度の比率で続く。表題は中南米・アジア・欧州を横断する作戦と位置付ける。",
+          "malware": [
+            "XaocMail（自己ホスト型フィッシングプラットフォーム。被害者ごとのlure生成とメールからimplantまでの導線を担う）",
+            "Phantom53（Windows端末での持続的アクセスを目的とした専用C2フレームワーク）",
+            "HavoX / Havoc Demon（Havocポストエクスプロイトフレームワーク）",
+            "Ligolo-ng（トンネリングツール）"
+          ],
+          "tools": [
+            "ClickFix型の誘導手法",
+            "Cloudflare Workers、Cloudflare KV / D1、DNS-over-HTTPS",
+            "Claude Code（原文は開発工程で使われたと記述）"
+          ],
+          "iocs_published": "公開あり。ネットワーク指標（IP、ドメイン、URL、メールアドレス）とホスト指標（SHA256）、およびthreat huntingの指針。オペレーター関連とされるGitHubアカウント、Cloudflare / GitHubのメールアドレス、オペレーターVPSも列挙されるが、原文はこれらを特定のグループへ結び付けていない。",
+          "summary": "SOCRadarのSTRUは、自己ホスト型フィッシングプラットフォームXaocMail、専用C2のPhantom53、Havocベースのポストエクスプロイトを組み合わせた多段作戦を報告した。準備は2025年10月に始まり、2026年8月に作戦が開始され、公開時点で継続中とする。ブラジルとペルーが集中的に標的化され、インド、インドネシア、スペインが続く。主体は「a Russian-speaking threat actor」とのみ記述され、グループ名も確度も与えられていない。",
+          "verified_by_analyst": "原文を取得して確認した（アクセス日2026-11-18）。公開日2026-11-13、XaocMailがプラットフォーム名でありActor名ではないこと、Phantom53がC2フレームワーク、HavoXがHavoc系であること、グループ名を与えていないことと「a Russian-speaking threat actor」という唯一の主体記述、確度の明示がないこと、準備2025-10／開始2026-08／継続中という時系列、標的国・業種、IOC公開範囲を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "related_organizations": [],
+      "unresolved_questions": [
+        "原文は主体を「a Russian-speaking threat actor」とのみ記述し、名称・確度・言語判定の根拠を示していない。既知のロシア語話者クラスタとの関係は未確認であり、言語の一致だけで既存プロファイルへ寄せない。",
+        "tech-memoのIOC CSVはactor列に「XaocMail ClickFix campaign」を入れているが、これはプラットフォーム名＋手法名であって主体名ではない。58観測を取り込む場合、actor列の値をそのままActorとして扱わない処理が必要。",
+        "原文がオペレーター関連として挙げるGitHubアカウント、Cloudflare / GitHubのメールアドレス、VPSは、個人・組織の同定には至っていない。自然人・企業として associated_entities へ記録できる水準にはなく、handle一致だけで統合しない（OSINT_RULES.md 企業・自然人節）。",
+        "原文は開発工程でClaude Codeが使われたと記述するが、これはツールの悪用であってAnthropicによる攻撃ではない（vendorや製品の使用をvendor自身による攻撃と解釈しない）。",
+        "昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。単一ベンダー（SOCRadar）の初報のみ。"
+      ],
+      "analyst_notes": "2026-11-18の日次チェックで検知。58観測は当日の未一致名称の中で2番目に多い。実体（XaocMail + Phantom53 + HavoXを組み合わせる単一オペレーター）は原文で確認できるが、原典が名称を与えていないため本台帳では機能記述による暫定名で記録する。RULES.mdの非交渉ガードレールに従い、ロシア語話者という記述から国家支援やmotivationを推定せず、プラットフォーム名・マルウェア名をActor名へ昇格させない。"
     }
   ],
   "excluded_name_collisions": [
